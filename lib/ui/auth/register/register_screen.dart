@@ -20,9 +20,7 @@ class RegisterScreen extends StatelessWidget {
           backgroundColor: whiteColor,
           elevation: 0,
           leading: GestureDetector(
-            onTap: () {
-              Get.offAll(LoginScreen());
-            },
+            onTap: () => Navigator.pop(context),
             child: Padding(
               padding: const EdgeInsets.all(15),
               child: SvgPicture.asset("assets/vector/back.svg"),
@@ -30,6 +28,7 @@ class RegisterScreen extends StatelessWidget {
           ),
         ),
         body: Form(
+          key: controller.formKey,
           child: Column(children: [
             SizedBox(
                 height: 250,
@@ -43,57 +42,54 @@ class RegisterScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Full Name",
+                      Text("Nama Lengkap",
                           style: heading.copyWith(
                               color: blackColor, fontWeight: semiBold)),
                       SizedBox(
                         height: 50,
                         child: TextFormField(
-                            controller: controller.nameController,
-                            decoration: InputDecoration(
-                                hintText: "Full Name",
-                                hintStyle:
-                                    heading1.copyWith(color: greyColor))),
+                            controller: controller.nameController),
                       ),
                       SizedBox(
                         height: 20,
                       ),
-                      Text("Phone Number",
+                      Text("Nomor Ponsel",
                           style: heading.copyWith(
                               color: blackColor, fontWeight: semiBold)),
-                      // SizedBox(
-                      //   height: 50,
-                      //   child: TextFormField(
-                      //       controller: controller.phoneNumberController,
-                      //       decoration: InputDecoration(
-                      //         prefixIcon: SizedBox(
-                      //           width: 78,
-                      //           child: Row(children: [
-                      //             Padding(
-                      //               padding: const EdgeInsets.only(
-                      //                   left: 15, bottom: 9, top: 5),
-                      //               child: Text(
-                      //                 "+62",
-                      //                 style:
-                      //                     heading1.copyWith(color: greyColor),
-                      //               ),
-                      //             ),
-                      //             SizedBox(width: 15),
-                      //             Padding(
-                      //               padding: const EdgeInsets.only(
-                      //                   bottom: 5, top: 5, right: 15),
-                      //               child: VerticalDivider(
-                      //                 width: 5,
-                      //                 color: greyColor,
-                      //                 thickness: 1,
-                      //               ),
-                      //             )
-                      //           ]),
-                      //         ),
-                      //         hintText: "81234567890",
-                      //         hintStyle: heading1.copyWith(color: greyColor),
-                      //       )),
-                      // ),
+                      SizedBox(
+                        height: 50,
+                        child: TextFormField(
+                            keyboardType: TextInputType.phone,
+                            controller: controller.phoneNumberController,
+                            decoration: InputDecoration(
+                              prefixIcon: SizedBox(
+                                width: 78,
+                                child: Row(children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 15, bottom: 9, top: 5),
+                                    child: Text(
+                                      "+62",
+                                      style:
+                                          heading1.copyWith(color: greyColor),
+                                    ),
+                                  ),
+                                  SizedBox(width: 15),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        bottom: 5, top: 5, right: 15),
+                                    child: VerticalDivider(
+                                      width: 5,
+                                      color: greyColor,
+                                      thickness: 1,
+                                    ),
+                                  )
+                                ]),
+                              ),
+                              hintText: "81234567890",
+                              hintStyle: heading1.copyWith(color: greyColor),
+                            )),
+                      ),
                       SizedBox(
                         height: 20,
                       ),
@@ -108,7 +104,7 @@ class RegisterScreen extends StatelessWidget {
                       SizedBox(
                         height: 20,
                       ),
-                      Text("Password",
+                      Text("Kata Sandi",
                           style: heading.copyWith(
                               color: blackColor, fontWeight: semiBold)),
                       SizedBox(
@@ -131,25 +127,33 @@ class RegisterScreen extends StatelessWidget {
                       SizedBox(
                         height: 20,
                       ),
-                      Text("Confirm Password",
+                      Text("Konfirmasi Kata Sandi",
                           style: heading.copyWith(
                               color: blackColor, fontWeight: semiBold)),
                       SizedBox(
                         height: 50,
                         child: TextFormField(
-                            controller: controller.passwordController,
-                            obscureText: controller.isObscured.isFalse,
-                            decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                    onPressed: () {
-                                      controller.isObscured.toggle();
-                                    },
-                                    icon: Icon(
-                                      controller.isObscured.isTrue
-                                          ? Icons.visibility_off_rounded
-                                          : Icons.visibility_rounded,
-                                      color: Colors.grey,
-                                    )))),
+                          controller: controller.passwordController,
+                          obscureText: controller.isObscured.isFalse,
+                          decoration: InputDecoration(
+                              suffixIcon: IconButton(
+                                  onPressed: () {
+                                    controller.isObscured.toggle();
+                                  },
+                                  icon: Icon(
+                                    controller.isObscured.isTrue
+                                        ? Icons.visibility_off_rounded
+                                        : Icons.visibility_rounded,
+                                    color: Colors.grey,
+                                  ))),
+                          validator: (value) {
+                            if (value != controller.passwordController.text) {
+                              return "Password tidak sama";
+                            } else {
+                              return null;
+                            }
+                          },
+                        ),
                       ),
                       SizedBox(
                         height: 20,
@@ -157,13 +161,13 @@ class RegisterScreen extends StatelessWidget {
                       Text("Address",
                           style: heading.copyWith(
                               color: blackColor, fontWeight: semiBold)),
-                      // SizedBox(
-                      //   height: 100,
-                      //   child: TextFormField(
-                      //       controller: controller.addreessController,
-                      //       maxLines: 5,
-                      //       minLines: 4),
-                      // ),
+                      SizedBox(
+                        height: 100,
+                        child: TextFormField(
+                            controller: controller.addreessController,
+                            maxLines: 5,
+                            minLines: 4),
+                      ),
                       SizedBox(
                         height: 25,
                       ),
@@ -181,7 +185,7 @@ class RegisterScreen extends StatelessWidget {
                                   controller.addreessController.text,
                                 );
                               },
-                              child: Text("Sign Up",
+                              child: Text("Daftar",
                                   style: heading.copyWith(fontWeight: bold)),
                               style: ElevatedButton.styleFrom(
                                   shape: RoundedRectangleBorder(

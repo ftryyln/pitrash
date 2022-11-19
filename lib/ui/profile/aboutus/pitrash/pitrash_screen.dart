@@ -17,19 +17,20 @@ class PiTrashScreen extends StatelessWidget {
         builder: (controller) {
           return Scaffold(
             backgroundColor: whiteColor,
-            appBar:
-                AppBar(backgroundColor: primaryColor, elevation: 0, actions: [
-              GestureDetector(
+            appBar: AppBar(
+              backgroundColor: primaryColor,
+              elevation: 0,
+              leading: GestureDetector(
                 onTap: () {
-                  Get.offAll(ProfileScreen());
+                  Get.back();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(15),
-                  child: SvgPicture.asset("assets/vector/icon_close.svg",
+                  child: SvgPicture.asset("assets/vector/back.svg",
                       color: whiteColor),
                 ),
               ),
-            ]),
+            ),
             body: SizedBox(
               height: 996,
               child: Stack(

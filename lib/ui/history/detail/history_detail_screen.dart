@@ -2,7 +2,6 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:final_project/const/color.dart';
 import 'package:final_project/const/text_style.dart';
 import 'package:final_project/ui/history/detail/history_detail_controller.dart';
-import 'package:final_project/ui/history/history_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -17,22 +16,23 @@ class HistoryDetailScreen extends StatelessWidget {
         builder: (controller) {
           return Scaffold(
             backgroundColor: whiteColor,
-            appBar:
-                AppBar(backgroundColor: primaryColor, elevation: 0, actions: [
-              GestureDetector(
+            appBar: AppBar(
+              backgroundColor: primaryColor,
+              elevation: 0,
+              leading: GestureDetector(
                 onTap: () {
-                  Get.offAll(HistoryScreen());
+                  Get.back();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(15),
-                  child: SvgPicture.asset("assets/vector/icon_close.svg",
+                  child: SvgPicture.asset("assets/vector/back.svg",
                       color: whiteColor),
                 ),
               ),
-            ]),
+            ),
             body: SingleChildScrollView(
               child: SizedBox(
-                height: 996,
+                height: 1006,
                 child: Stack(
                   children: [
                     SvgPicture.asset("assets/vector/bgappbar.svg",
@@ -45,15 +45,16 @@ class HistoryDetailScreen extends StatelessWidget {
                             Image.asset(
                                 "assets/image/historydetail/transaction.png",
                                 fit: BoxFit.contain),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             Text("Pembayaran Berhasil",
                                 style: title.copyWith(color: primaryColor)),
-                            SizedBox(
-                              height: 20,
+                            const SizedBox(
+                              height: 10,
                             ),
                             SizedBox(
+                              height: 524,
                               width: 300,
                               child: DottedBorder(
                                   borderType: BorderType.RRect,
@@ -61,14 +62,15 @@ class HistoryDetailScreen extends StatelessWidget {
                                   dashPattern: [10, 10],
                                   color: primaryColor,
                                   strokeWidth: 2,
+                                  padding: EdgeInsets.all(10),
                                   child: Card(
-                                    color: Colors.amber,
+                                    color: primaryColor,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: Center(
-                                      child: Image.asset(
-                                          "assets/image/historydetail/ss_transaction.jpg",
+                                      child: Image.network(
+                                          controller.image,
                                           fit: BoxFit.contain),
                                     ),
                                   )),

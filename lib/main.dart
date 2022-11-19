@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/pitrash', page: () => const PiTrashScreen()),
         GetPage(name: '/payment', page: () => const PaymentScreen()),
       ],
-      initialRoute: '/profile',
+      initialRoute: '/',
     );
   }
 } // This trailing comma makes auto-formatting nicer for build methods.

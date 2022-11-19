@@ -25,7 +25,7 @@ class NotificationScreen extends StatelessWidget {
               centerTitle: true,
               leading: GestureDetector(
                 onTap: () {
-                  Get.offAll(HomeScreen());
+                  Get.back();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(15),

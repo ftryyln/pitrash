@@ -1,21 +1,27 @@
 import 'package:final_project/base/base_controller.dart';
+import 'package:final_project/data/model/auth/register_model.dart';
 import 'package:final_project/data/storage_core.dart';
+import 'package:final_project/ui/auth/login/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends BaseController {
   StorageCore storage = StorageCore();
 
-  //RegisterModel? registerModel = RegisterModel();
+  RegisterModel? registerModel = RegisterModel();
   final isObscured = false.obs;
-  final TextEditingController nameController =
-      TextEditingController(text: '');
+  final TextEditingController nameController = TextEditingController(text: '');
   final TextEditingController phoneNumberController =
       TextEditingController(text: '');
   final TextEditingController emailController = TextEditingController(text: '');
-  final TextEditingController passwordController = TextEditingController(text: '');
-  final TextEditingController confirmPasswordController = TextEditingController(text: '');
-  final TextEditingController addreessController = TextEditingController(text: '');
+  final TextEditingController passwordController =
+      TextEditingController(text: '');
+  final TextEditingController confirmPasswordController =
+      TextEditingController(text: '');
+  final TextEditingController addreessController =
+      TextEditingController(text: '');
+  final formKey = GlobalKey<FormState>();
 
   @override
   void onInit() {
@@ -39,22 +45,21 @@ class RegisterController extends BaseController {
     addreessController.text;
   }
 
-  void doRegister(
-      String name, String phoneNumber, String email, String password, String confirmPasword, String address) async {
-    // try {
-    //   // isLoading.isTrue;
-    //   var response =
-    //   await repository.postRegister(name, email, username, password);
-    //   registerModel = response;
-    //   if (registerModel?.meta?.status == "success") {
-    //     Fluttertoast.showToast(msg: registerModel!.meta!.message!);
-    //     update();
-    //     Get.offAll(() => const LoginPage());
-    //   } else if (registerModel?.meta?.status == "error") {
-    //     Fluttertoast.showToast(msg: 'data tidak lengkap');
-    //   }
-    // } catch (e) {
-    return null;
-    //}
+  void doRegister(String name, String phoneNumber, String email,
+      String password, String confirmPasword, String address) async {
+    try {
+      var response =
+          await repository.postRegister(name, phoneNumber, email, password, address);
+      registerModel = response;
+      if (registerModel?.meta?.status == "Success") {
+        Fluttertoast.showToast(msg: registerModel!.meta!.message!);
+        update();
+        Get.offAll(() => const LoginScreen());
+      } else if (registerModel?.meta?.status == "Error") {
+        Fluttertoast.showToast(msg: 'Data Tidak Lengkap');
+      }
+    } catch (e) {
+      return null;
+    }
   }
 }

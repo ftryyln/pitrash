@@ -1,23 +1,26 @@
+import 'package:dio/dio.dart';
+import 'package:final_project/data/model/auth/login_model.dart';
 import 'package:final_project/data/storage_core.dart';
 import 'package:final_project/base/base_controller.dart';
-import 'package:final_project/ui/home/home_screen.dart';
+import 'package:final_project/ui/bottomappbar/bottomnavbar.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 class LoginController extends BaseController {
   final storage = StorageCore();
-  //LoginModel loginModel = LoginModel();
+  LoginModel loginModel = LoginModel();
   final isObscured = false.obs;
-  final TextEditingController usernameController =
-  TextEditingController(text: 'fit');
+  final TextEditingController emailController =
+      TextEditingController(text: 'admin@admin.com');
   final TextEditingController passwordController =
-  TextEditingController(text: '12345678');
+      TextEditingController(text: '12345678');
   final formKey = GlobalKey<FormState>();
 
   @override
   void onInit() {
     super.onInit();
-    usernameController.text;
+    emailController.text;
     passwordController.text;
     update();
   }
@@ -25,24 +28,26 @@ class LoginController extends BaseController {
   @override
   void dispose() {
     super.dispose();
-    usernameController.dispose();
+    emailController.dispose();
     passwordController.dispose();
   }
 
-  void doLogin(String username, String password) async {
+  void doLogin(String email, String password) async {
     try {
-      // var response = await repository.postLogin(username, password);
-      // loginModel = response;
-      // if (loginModel.meta?.status == "success") {
-      //   storage.saveAuthResponse(response);
-      //   Fluttertoast.showToast(msg: response.meta!.message!);
-      //   update();
-      //   Get.offAll(() => const HomeScreen(), arguments: passwordController.text);
-      // } else {
-      //   Fluttertoast.showToast(msg: response.meta!.message!);
-      // }
-      Get.offAll(() => const HomeScreen(), arguments: passwordController.text);
-    } catch (e) {
+      var response = await repository.postLogin(email, password);
+      loginModel = response;
+      update();
+      if (loginModel.meta?.status?.toLowerCase() == "success") {
+        storage.saveAuthResponse(response);
+        Fluttertoast.showToast(msg: response.meta!.message!);
+        update();
+        Get.offAll(() => const BottomNavBar(),
+            arguments: passwordController.text);
+      } else {
+        Fluttertoast.showToast(msg: response.meta!.message!);
+      }
+    } on DioError catch (e) {
+      Fluttertoast.showToast(msg: e.response.toString());
       return null;
     }
   }

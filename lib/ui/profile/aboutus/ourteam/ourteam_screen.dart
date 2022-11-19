@@ -22,7 +22,7 @@ class OurTeamScreen extends StatelessWidget {
               elevation: 0,
               leading: GestureDetector(
                 onTap: () {
-                  Get.offAll(ProfileScreen());
+                  Get.back();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(15),
@@ -180,7 +180,7 @@ class OurTeamScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border:
-                                Border.all(color: primaryColor, width: 3),
+                                    Border.all(color: primaryColor, width: 3),
                                 color: primaryColor,
                                 image: DecorationImage(
                                     image: AssetImage("assets/image/image.jpg"),

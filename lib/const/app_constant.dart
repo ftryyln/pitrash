@@ -1,1 +1,1 @@
-const baseUrl='';
+const baseUrl='http://pitrash.masuk.web.id/api';

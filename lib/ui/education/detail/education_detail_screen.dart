@@ -22,7 +22,7 @@ class EducationDetailScreen extends StatelessWidget {
               elevation: 0,
               leading: GestureDetector(
                 onTap: () {
-                  Get.offAll(EducationScreen());
+                  Get.back();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(15),

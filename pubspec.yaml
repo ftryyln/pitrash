@@ -22,6 +22,9 @@ dependencies:
   carousel_slider: ^4.1.1
   custom_navigation_bar: ^0.8.2
   dotted_border: ^2.0.0+3
+  calendar_view: ^1.0.0
+  fluttertoast: ^8.1.1
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:

@@ -3,6 +3,7 @@ import 'package:final_project/const/font_weight.dart';
 import 'package:final_project/const/text_style.dart';
 import 'package:final_project/ui/splash/splash_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -19,7 +20,7 @@ class SplashScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(child: Image.asset("assets/vector/logo.png")),
+                Expanded(child: SvgPicture.asset("assets/vector/logo.svg")),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(

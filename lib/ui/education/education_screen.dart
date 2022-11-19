@@ -3,7 +3,6 @@ import 'package:final_project/const/font_weight.dart';
 import 'package:final_project/const/text_style.dart';
 import 'package:final_project/ui/education/detail/education_detail_screen.dart';
 import 'package:final_project/ui/education/education_controller.dart';
-import 'package:final_project/ui/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -26,7 +25,7 @@ class EducationScreen extends StatelessWidget {
             centerTitle: true,
             leading: GestureDetector(
               onTap: () {
-                Get.offAll(HomeScreen());
+                Get.back();
               },
               child: Padding(
                 padding: const EdgeInsets.all(15),
@@ -61,7 +60,7 @@ class EducationScreen extends StatelessWidget {
                       width: 172,
                       child: GestureDetector(
                         onTap: () => {
-                          Get.offAll(EducationDetailScreen())
+                          Get.to(() => const EducationDetailScreen()),
                         },
                         child: Card(
                           elevation: 2,

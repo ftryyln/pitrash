@@ -17,19 +17,20 @@ class PaymentScreen extends StatelessWidget {
         builder: (controller) {
           return Scaffold(
             backgroundColor: whiteColor,
-            appBar:
-                AppBar(backgroundColor: primaryColor, elevation: 0, actions: [
-              GestureDetector(
+            appBar: AppBar(
+              backgroundColor: primaryColor,
+              elevation: 0,
+              leading: GestureDetector(
                 onTap: () {
-                  Get.offAll(HomeScreen());
+                  Get.back();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(15),
-                  child: SvgPicture.asset("assets/vector/icon_close.svg",
+                  child: SvgPicture.asset("assets/vector/back.svg",
                       color: whiteColor),
                 ),
               ),
-            ]),
+            ),
             body: SingleChildScrollView(
               child: Stack(
                 children: [
@@ -78,25 +79,38 @@ class PaymentScreen extends StatelessWidget {
                                 height: 20,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
                                     children: [
-                                      Text("Periode Tagihan", style: tiny.copyWith(color: greyColor, fontWeight: extralight)),
+                                      Text("Periode Tagihan",
+                                          style: tiny.copyWith(
+                                              color: greyColor,
+                                              fontWeight: extralight)),
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                      Text("Desember 2022", style: tiny.copyWith(color: blackColor, fontWeight: bold)),
+                                      Text("Desember 2022",
+                                          style: tiny.copyWith(
+                                              color: blackColor,
+                                              fontWeight: bold)),
                                     ],
                                   ),
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
-                                      Text("Periode Tagihan", style: tiny.copyWith(color: greyColor, fontWeight: extralight)),
+                                      Text("Periode Tagihan",
+                                          style: tiny.copyWith(
+                                              color: greyColor,
+                                              fontWeight: extralight)),
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                      Text("25 Desember 2022", style: tiny.copyWith(color: blackColor, fontWeight: bold)),
+                                      Text("25 Desember 2022",
+                                          style: tiny.copyWith(
+                                              color: blackColor,
+                                              fontWeight: bold)),
                                     ],
                                   ),
                                 ],
@@ -109,11 +123,17 @@ class PaymentScreen extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    Text("Total Tagihan", style: tiny.copyWith(color: greyColor, fontWeight: extralight)),
+                                    Text("Total Tagihan",
+                                        style: tiny.copyWith(
+                                            color: greyColor,
+                                            fontWeight: extralight)),
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    Text("Rp 15.000", style: title.copyWith(color: blackColor, fontWeight: bold)),
+                                    Text("Rp 15.000",
+                                        style: title.copyWith(
+                                            color: blackColor,
+                                            fontWeight: bold)),
                                   ],
                                 ),
                               ),
