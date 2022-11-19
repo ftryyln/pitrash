@@ -17,6 +17,7 @@ class OnBoardingScreen extends StatelessWidget {
         init: OnboardingController(),
         builder: (controller) {
           return Scaffold(
+            backgroundColor: whiteColor,
             body: Stack(
               children: [
                 CarouselSlider(
@@ -56,8 +57,8 @@ class OnBoardingScreen extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: controller.currentIndex == 0
-                                            ? white
-                                            : dark),
+                                            ? whiteColor
+                                            : darkColor),
                                   ),
                                   Container(
                                     width: 12,
@@ -66,8 +67,8 @@ class OnBoardingScreen extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: controller.currentIndex == 1
-                                            ? white
-                                            : dark),
+                                            ? whiteColor
+                                            : darkColor),
                                   ),
                                   Container(
                                       width: 12,
@@ -76,8 +77,8 @@ class OnBoardingScreen extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: controller.currentIndex == 2
-                                            ? white
-                                            : dark,
+                                            ? whiteColor
+                                            : darkColor,
                                       )),
                                 ],
                               ),

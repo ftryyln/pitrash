@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:final_project/base/base_controller.dart';
 import 'package:final_project/ui/onboarding/onboarding_screen.dart';
 import 'package:get/get.dart';
@@ -24,7 +23,6 @@ class SplashController extends BaseController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    Timer(Duration(seconds: 2),()=>Get.offAll(()=>OnBoardingScreen()));
+    Timer(Duration(seconds: 2), () => Get.offAll(() => OnBoardingScreen()));
   }
-
 }

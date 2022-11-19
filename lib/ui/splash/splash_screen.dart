@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
       init: SplashController(),
       builder: (controller) {
         return Scaffold(
-          backgroundColor: primary,
+          backgroundColor: primaryColor,
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -24,7 +24,7 @@ class SplashScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
-                      Text("From", style: bodyWhite.copyWith(fontWeight: medium)),
+                      Text("From", style: body.copyWith(fontWeight: medium)),
                       Text("Aqafe", style: aqafe.copyWith(fontWeight: bold))
                     ],
                   ),
