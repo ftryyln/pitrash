@@ -4,6 +4,7 @@ import 'package:final_project/data/model/auth/login_model.dart';
 import 'package:final_project/data/model/auth/logout_model.dart';
 import 'package:final_project/data/model/auth/register_model.dart';
 import 'package:final_project/data/model/education/education_model.dart';
+import 'package:final_project/data/model/notification/list_notif_model.dart';
 import 'package:final_project/data/model/profile/profile_model.dart';
 import 'package:final_project/data/model/transaction/history_transaction_model.dart';
 import 'package:final_project/data/network_core.dart';
@@ -99,6 +100,21 @@ class RepositoryImpl implements Repository {
       return EducationModel.fromJson(response.data);
     } on DioError catch (e) {
       return EducationModel.fromJson(e.response?.data);
+    }
+  }
+
+  @override
+  FutureOr<ListNotifModel> getNotificationList() async {
+    try {
+      var response =
+          await network.dio.get("/notification",
+          options: Options(headers: {
+            "Accept": "application/json",
+            "Authorization": "Bearer ${storage.getAccessToken()}"
+          }));
+      return ListNotifModel.fromJson(response.data);
+    } on DioError catch (e) {
+      return ListNotifModel.fromJson(e.response?.data);
     }
   }
 
