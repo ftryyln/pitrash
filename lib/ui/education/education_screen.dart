@@ -123,7 +123,7 @@ class EducationScreen extends StatelessWidget {
                       width: 172,
                       child: GestureDetector(
                         onTap: () => {
-                          Get.offAll(EducationDetailScreen())
+                          Get.to(() => const EducationDetailScreen()),
                         },
                         child: Card(
                           elevation: 2,

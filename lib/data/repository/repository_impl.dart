@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:final_project/data/model/auth/login_model.dart';
 import 'package:final_project/data/model/auth/logout_model.dart';
 import 'package:final_project/data/model/auth/register_model.dart';
+import 'package:final_project/data/model/education/education_model.dart';
 import 'package:final_project/data/model/profile/profile_model.dart';
 import 'package:final_project/data/model/transaction/history_transaction_model.dart';
 import 'package:final_project/data/network_core.dart';
@@ -28,7 +28,7 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  FutureOr<RegisterModel> postRegister(String name, String email,
+  Future postRegister(String name, String email,
       String password, String phone, String address) async {
     try {
       var response = await network.dio.post("/register",
@@ -86,6 +86,34 @@ class RepositoryImpl implements Repository {
       return ProfileModel.fromJson(e.response?.data);
     }
   }
+
+  @override
+  FutureOr<EducationModel> getEducation() async {
+    try {
+      var response = await network.dio.get("/user/${storage.getCurrentUserId()}",
+          options: Options(headers: {
+            "Accept": "application/json",
+            "Authorization": "Bearer ${storage.getAccessToken()}"
+          }));
+      return EducationModel.fromJson(response.data);
+    } on DioError catch (e) {
+      return EducationModel.fromJson(e.response?.data);
+    }
+  }
+
+  // @override
+  // FutureOr<ScheduleModel> getSchedule() async {
+  //   try {
+  //     var response = await network.dio.get("/user/${storage.getCurrentUserId()}",
+  //         options: Options(headers: {
+  //           "Accept": "application/json",
+  //           "Authorization": "Bearer ${storage.getAccessToken()}"
+  //         }));
+  //     return ScheduleModel.fromJson(response.data);
+  //   } on DioError catch (e) {
+  //     return ScheduleModel.fromJson(e.response?.data);
+  //   }
+  // }
 
   // @override
   // Future<FutureOr> postUpdateProfile(String id, String name, String email, String phone, String password, String address, File image, String token) async {

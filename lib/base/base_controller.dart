@@ -3,6 +3,6 @@ import 'package:get/get.dart';
 import '../data/repository/repository.dart';
 
 class BaseController extends GetxController {
-  final Repository repository = Get.find<Repository>();
+  final repository = Get.find<Repository>();
   final storage = Get.find<StorageCore>();
 }

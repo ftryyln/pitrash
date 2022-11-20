@@ -34,20 +34,16 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'PiTrash',
       theme: ThemeData(
-        backgroundColor: whiteColor,
-        colorScheme: ThemeData().colorScheme.copyWith(primary: primaryColor),
-        inputDecorationTheme: InputDecorationTheme(
-          filled: true,
-          fillColor: whiteColor,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5),
-            borderSide: const BorderSide(
-              width: 5,
-              color: primaryColor
+          backgroundColor: whiteColor,
+          colorScheme: ThemeData().colorScheme.copyWith(primary: primaryColor),
+          inputDecorationTheme: InputDecorationTheme(
+            filled: true,
+            fillColor: whiteColor,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+              borderSide: const BorderSide(width: 5, color: primaryColor),
             ),
-          )
-        )
-      ),
+          )),
       getPages: [
         GetPage(name: '/', page: () => const SplashScreen()),
         GetPage(name: '/onboarding', page: () => const OnBoardingScreen()),
@@ -56,9 +52,12 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/bottomnavbar', page: () => const BottomNavBar()),
         GetPage(name: '/home', page: () => const HomeScreen()),
         GetPage(name: '/education', page: () => const EducationScreen()),
-        GetPage(name: '/detaileducation', page: () => const EducationDetailScreen()),
+        GetPage(
+            name: '/detaileducation',
+            page: () => const EducationDetailScreen()),
         GetPage(name: '/history', page: () => const HistoryScreen()),
-        GetPage(name: '/historydetail', page: () => const HistoryDetailScreen()),
+        GetPage(
+            name: '/historydetail', page: () => const HistoryDetailScreen()),
         GetPage(name: '/notification', page: () => const NotificationScreen()),
         GetPage(name: '/profile', page: () => const ProfileScreen()),
         GetPage(name: '/editprofile', page: () => const EditProfileScreen()),

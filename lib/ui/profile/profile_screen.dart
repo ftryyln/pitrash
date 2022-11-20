@@ -49,10 +49,10 @@ class ProfileScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(color: primaryColor, width: 3),
-                              color: primaryColor,
                               image: DecorationImage(
-                                  image: AssetImage("assets/image/image.jpg"),
-                                  fit: BoxFit.cover)),
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(
+                                      controller.imageProfile))),
                         ),
                         SizedBox(
                           height: 15,

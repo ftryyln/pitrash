@@ -8,13 +8,12 @@ import 'package:get/get.dart';
 
 class ProfileController extends BaseController {
   String? token = StorageCore().getAccessToken();
-
+  String imageProfile = "";
   ProfileModel? profileModel;
 
   @override
   void onInit() {
     fetchProfile();
-    // update();
     super.onInit();
   }
 
@@ -22,11 +21,11 @@ class ProfileController extends BaseController {
     try {
       var response = await repository.getProfile();
       profileModel = response;
+      imageProfile = response.data?.userDetail?.image ?? "https://";
       update();
-    } on DioError catch(e) {
+    } on DioError catch (e) {
       print(e.response?.data.toString());
     }
-
   }
 
   void logout(String username, String password) async {

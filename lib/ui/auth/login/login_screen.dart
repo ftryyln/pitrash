@@ -44,6 +44,7 @@ class LoginScreen extends StatelessWidget {
                                 height: 50,
                                 child: TextField(
                                   controller: controller.emailController,
+                                  autofocus: true,
                                   decoration: InputDecoration(
                                       hintText: "pengguna@mail.com",
                                       hintStyle:
@@ -78,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                               SizedBox(
                                   height: 50,
-                                  width: 330,
+                                  width: Get.width,
                                   child: ElevatedButton(
                                       onPressed: () {
                                         if (controller.formKey.currentState

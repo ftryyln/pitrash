@@ -1,26 +1,30 @@
 import 'package:final_project/base/base_controller.dart';
 import 'package:final_project/data/model/auth/register_model.dart';
 import 'package:final_project/data/storage_core.dart';
-import 'package:final_project/ui/auth/login/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends BaseController {
   StorageCore storage = StorageCore();
 
   RegisterModel? registerModel = RegisterModel();
-  final isObscured = false.obs;
-  final TextEditingController nameController = TextEditingController(text: '');
-  final TextEditingController phoneNumberController =
-      TextEditingController(text: '');
-  final TextEditingController emailController = TextEditingController(text: '');
-  final TextEditingController passwordController =
-      TextEditingController(text: '');
-  final TextEditingController confirmPasswordController =
-      TextEditingController(text: '');
-  final TextEditingController addreessController =
-      TextEditingController(text: '');
+
+  bool isVisibleName = false;
+  bool isVisiblePhone = false;
+  bool isVisibleEmail = false;
+  bool isVisiblePass = false;
+  bool isVisibleConfirmPass = false;
+  bool isVisibleAddress = false;
+  bool isNotMatch = false;
+  bool isObscuredPass = false;
+  bool isObscuredConfirmPass = false;
+
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController addreessController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -45,21 +49,45 @@ class RegisterController extends BaseController {
     addreessController.text;
   }
 
-  void doRegister(String name, String phoneNumber, String email,
-      String password, String confirmPasword, String address) async {
+  // void doRegister(String name, String phoneNumber, String email,
+  //     String password, String confirmPasword, String address) async {
+  //   try {
+  //     await repository
+  //         .postRegister(name, phoneNumber, email, password, address)
+  //         .then(
+  //             (_) => Fluttertoast.showToast(msg: registerModel!.meta!.message!))
+  //         .then((_) => Get.offAll(() => const LoginScreen()));
+  //   } catch (e) {
+  //     Fluttertoast.showToast(msg: 'Data Tidak Lengkap');
+  //     if (e == "Error") {
+  //       Fluttertoast.showToast(msg: 'Data Tidak Lengkap');
+  //     }
+  //     return null;
+  //   }
+  // }
+  Future doRegister({
+    required String name,
+    required String phoneNumber,
+    required String email,
+    required String password,
+    required String address,
+  }) async {
     try {
-      var response =
-          await repository.postRegister(name, phoneNumber, email, password, address);
-      registerModel = response;
-      if (registerModel?.meta?.status == "Success") {
-        Fluttertoast.showToast(msg: registerModel!.meta!.message!);
-        update();
-        Get.offAll(() => const LoginScreen());
-      } else if (registerModel?.meta?.status == "Error") {
-        Fluttertoast.showToast(msg: 'Data Tidak Lengkap');
-      }
+      await repository
+          .postRegister(
+              name, phoneNumber, email, password, address)
+          .then((_) => Get.showSnackbar(
+                const GetSnackBar(
+                  message: 'Pendaftaran Berhasil',
+                  isDismissible: true,
+                  duration: Duration(seconds: 3),
+                  backgroundColor: Colors.green,
+                ),
+              ))
+          .then((_) => Get.back());
     } catch (e) {
-      return null;
+      return e;
+      // }
     }
   }
 }
