@@ -4,6 +4,7 @@ import 'package:final_project/const/text_style.dart';
 import 'package:final_project/ui/auth/register/register_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -335,7 +336,14 @@ class RegisterScreen extends StatelessWidget {
                                     email: controller.emailController.text,
                                     password: controller.passwordController.text,
                                     address: controller.addreessController.text,
-                                  );
+                                  ).then((value) {
+                                    if(value?.meta?.code == 201) {
+                                      Fluttertoast.showToast(msg: value?.meta?.code == 201 ? 'Pendaftaran Berhasil' : "Pendaftaran Gagal");
+                                      Get.back();
+                                    } else {
+                                      Fluttertoast.showToast(msg: value?.meta?.code == 201 ? 'Pendaftaran Berhasil' : "Pendaftaran Gagal");
+                                    }
+                                  });
                                 }
                                 controller.update();
                               },

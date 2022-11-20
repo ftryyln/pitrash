@@ -9,7 +9,7 @@ import 'package:final_project/data/model/transaction/history_transaction_model.d
 abstract class Repository {
   FutureOr<LoginModel> postLogin(String email, String password);
 
-  Future postRegister(
+  Future<RegisterModel?> postRegister(
       String name, String phone, String email, String password, String address);
 
   FutureOr<LogoutModel> postLogout(String email, String password);

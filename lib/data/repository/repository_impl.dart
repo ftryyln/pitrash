@@ -28,8 +28,8 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  Future postRegister(String name, String email,
-      String password, String phone, String address) async {
+  Future<RegisterModel?> postRegister(String name, String email, String password, String phone,
+      String address) async {
     try {
       var response = await network.dio.post("/register",
           data: {
@@ -40,7 +40,6 @@ class RepositoryImpl implements Repository {
             "address": address,
           },
           options: Options(headers: {"Accept": "application/json"}));
-
       return RegisterModel.fromJson(response.data);
     } on DioError catch (e) {
       return RegisterModel.fromJson(e.response?.data);
@@ -76,11 +75,12 @@ class RepositoryImpl implements Repository {
   @override
   FutureOr<ProfileModel> getProfile() async {
     try {
-      var response = await network.dio.get("/user/${storage.getCurrentUserId()}",
-          options: Options(headers: {
-            "Accept": "application/json",
-            "Authorization": "Bearer ${storage.getAccessToken()}"
-          }));
+      var response =
+          await network.dio.get("/user/${storage.getCurrentUserId()}",
+              options: Options(headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer ${storage.getAccessToken()}"
+              }));
       return ProfileModel.fromJson(response.data);
     } on DioError catch (e) {
       return ProfileModel.fromJson(e.response?.data);
@@ -90,58 +90,59 @@ class RepositoryImpl implements Repository {
   @override
   FutureOr<EducationModel> getEducation() async {
     try {
-      var response = await network.dio.get("/user/${storage.getCurrentUserId()}",
-          options: Options(headers: {
-            "Accept": "application/json",
-            "Authorization": "Bearer ${storage.getAccessToken()}"
-          }));
+      var response =
+          await network.dio.get("/user/${storage.getCurrentUserId()}",
+              options: Options(headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer ${storage.getAccessToken()}"
+              }));
       return EducationModel.fromJson(response.data);
     } on DioError catch (e) {
       return EducationModel.fromJson(e.response?.data);
     }
   }
 
-  // @override
-  // FutureOr<ScheduleModel> getSchedule() async {
-  //   try {
-  //     var response = await network.dio.get("/user/${storage.getCurrentUserId()}",
-  //         options: Options(headers: {
-  //           "Accept": "application/json",
-  //           "Authorization": "Bearer ${storage.getAccessToken()}"
-  //         }));
-  //     return ScheduleModel.fromJson(response.data);
-  //   } on DioError catch (e) {
-  //     return ScheduleModel.fromJson(e.response?.data);
-  //   }
-  // }
+// @override
+// FutureOr<ScheduleModel> getSchedule() async {
+//   try {
+//     var response = await network.dio.get("/user/${storage.getCurrentUserId()}",
+//         options: Options(headers: {
+//           "Accept": "application/json",
+//           "Authorization": "Bearer ${storage.getAccessToken()}"
+//         }));
+//     return ScheduleModel.fromJson(response.data);
+//   } on DioError catch (e) {
+//     return ScheduleModel.fromJson(e.response?.data);
+//   }
+// }
 
-  // @override
-  // Future<FutureOr> postUpdateProfile(String id, String name, String email, String phone, String password, String address, File image, String token) async {
-  //   try {
-  //     var formData = FormData.fromMap({
-  //       "id": id,
-  //       "name": name,
-  //       "email": email,
-  //       "phone": phone,
-  //       "password": password,
-  //       "address": address,
-  //     });
-  //
-  //     if (image != null) {
-  //       formData.files.addAll(
-  //       [MapEntry("image", await MultipartFile.fromFile(image.path))]);
-  //   }
-  //
-  //   var response = await network.dio.post("/post",
-  //   data: formData,
-  //   options: Options(headers: {
-  //   "Authorization": "Bearer $token",
-  //   "Accept": "application/json",
-  //   "Content-Type": "multipart/form-data"
-  //   }));
-  //   return PostUpdatProfileModel.fromJson(response.data);
-  //   } on DioError {
-  //   return null;
-  //   }
-  // }
+// @override
+// Future<FutureOr> postUpdateProfile(String id, String name, String email, String phone, String password, String address, File image, String token) async {
+//   try {
+//     var formData = FormData.fromMap({
+//       "id": id,
+//       "name": name,
+//       "email": email,
+//       "phone": phone,
+//       "password": password,
+//       "address": address,
+//     });
+//
+//     if (image != null) {
+//       formData.files.addAll(
+//       [MapEntry("image", await MultipartFile.fromFile(image.path))]);
+//   }
+//
+//   var response = await network.dio.post("/post",
+//   data: formData,
+//   options: Options(headers: {
+//   "Authorization": "Bearer $token",
+//   "Accept": "application/json",
+//   "Content-Type": "multipart/form-data"
+//   }));
+//   return PostUpdatProfileModel.fromJson(response.data);
+//   } on DioError {
+//   return null;
+//   }
+// }
 }

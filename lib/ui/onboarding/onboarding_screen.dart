@@ -95,7 +95,7 @@ class OnBoardingScreen extends StatelessWidget {
                             child: Stack(
                               children: [
                                 SvgPicture.asset("assets/vector/buttonnext.svg"),
-                                Positioned(bottom: 30, top: 30, left: 30, right: 20,
+                                Positioned(bottom: 30, top: 30, left: 25, right: 20,
                                     child: Text("Next", style: heading.copyWith(fontWeight: bold)))
                               ],
                             )),

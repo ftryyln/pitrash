@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:final_project/base/base_controller.dart';
 import 'package:final_project/data/model/auth/register_model.dart';
 import 'package:final_project/data/storage_core.dart';
@@ -5,9 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends BaseController {
-  StorageCore storage = StorageCore();
-
-  RegisterModel? registerModel = RegisterModel();
+  RegisterModel? registerModel;
 
   bool isVisibleName = false;
   bool isVisiblePhone = false;
@@ -23,7 +22,8 @@ class RegisterController extends BaseController {
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
   final TextEditingController addreessController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
@@ -65,29 +65,34 @@ class RegisterController extends BaseController {
   //     return null;
   //   }
   // }
-  Future doRegister({
+  Future<RegisterModel?> doRegister({
     required String name,
     required String phoneNumber,
     required String email,
     required String password,
     required String address,
   }) async {
-    try {
-      await repository
-          .postRegister(
-              name, phoneNumber, email, password, address)
-          .then((_) => Get.showSnackbar(
-                const GetSnackBar(
-                  message: 'Pendaftaran Berhasil',
-                  isDismissible: true,
-                  duration: Duration(seconds: 3),
-                  backgroundColor: Colors.green,
-                ),
-              ))
-          .then((_) => Get.back());
-    } catch (e) {
-      return e;
-      // }
-    }
+    var response = await repository.postRegister(
+        name, phoneNumber, email, password, address);
+    registerModel = response;
+    update();
+    return response;
+    // repository
+    //     .postRegister(name, phoneNumber, email, password, address)
+    //     .then((response) {
+    //   print(response?.toJson().toString());
+    //   if (response?.meta?.code == 201) {
+    //     Get.showSnackbar(
+    //       const GetSnackBar(
+    //         snackPosition: SnackPosition.TOP,
+    //         message: 'Pendaftaran Berhasil',
+    //         isDismissible: true,
+    //         duration: Duration(seconds: 3),
+    //         backgroundColor: Colors.black,
+    //       ),
+    //     );
+    //     Get.back();
+    //   }
+    // });
   }
 }
