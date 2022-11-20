@@ -92,7 +92,7 @@ class RepositoryImpl implements Repository {
   FutureOr<EducationModel> getEducation() async {
     try {
       var response =
-          await network.dio.get("/user/${storage.getCurrentUserId()}",
+          await network.dio.get("/education",
               options: Options(headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer ${storage.getAccessToken()}"
