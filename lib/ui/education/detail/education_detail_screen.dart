@@ -30,7 +30,7 @@ class EducationDetailScreen extends StatelessWidget {
                       color: whiteColor),
                 ),
               ),
-              title: Text("Author", style: title),
+              title: Text(controller.data.userId?.name ?? "", style: title),
               centerTitle: true,
             ),
             body: Column(
@@ -43,7 +43,7 @@ class EducationDetailScreen extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return Container(
-                          padding: EdgeInsets.all(15),
+                          padding: const EdgeInsets.all(15),
                           decoration: const BoxDecoration(
                               borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(20),
@@ -53,29 +53,35 @@ class EducationDetailScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               SvgPicture.asset("assets/vector/line.svg"),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
                               Container(
                                   width: 230,
                                   height: 20,
-                                  padding: const EdgeInsets.only(left: 20, right: 20),
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20),
                                   decoration: BoxDecoration(
                                       color: whiteColor,
                                       borderRadius: BorderRadius.circular(20)),
                                   child: Center(
-                                      child: Text(DateFormat("dd MMMM yyyy, HH:mm").format(DateFormat("yyyy-MM-ddTHH:mm:ss.000000Z").parse(controller.data.createdAt!)) ,
+                                      child: Text(
+                                          DateFormat("dd MMMM yyyy, HH:mm")
+                                              .format(DateFormat(
+                                                      "yyyy-MM-ddTHH:mm:ss.000000Z")
+                                                  .parse(controller
+                                                      .data.createdAt!)),
                                           style: tiny.copyWith(
-                                              color: secondaryColor, fontWeight: bold)))),
-                              SizedBox(
+                                              color: secondaryColor,
+                                              fontWeight: bold)))),
+                              const SizedBox(
                                 height: 15,
                               ),
                               Expanded(
                                 child: SingleChildScrollView(
                                   child: Text(
-                                      // "Jumlah sampah terus bertembah seiring dengan berjalannya waktu. Jika tidak ditanggulangi, maka bukan hal yang tak mungkin jika sampah memenuhi seluruh permukaan Bumi. Oleh karena itu manusia mulai melaukan pengelolaan sampah."
-                                      //     "Dalam pengelolaan sampah dikenal prinsip 3R yaitu reduce, reuse, dan recycle. Apakah pengertian sesungguhnya dari prinsip 3R dan apa manfaatnya bagi kehidupan?",
-                                      controller.data.content ?? "No Description",
+                                      controller.data.content ??
+                                          "No Description",
                                       style: body,
                                       textAlign: TextAlign.justify),
                                 ),
@@ -95,24 +101,21 @@ class EducationDetailScreen extends StatelessWidget {
                         child: Stack(children: [
                           Image.network(
                             controller.data.image ?? "https://",
-                            // "assets/image/image.jpg",
-                            height: Get.height-131,
+                            height: Get.height - 131,
                             fit: BoxFit.cover,
                           ),
                           Positioned(
-                            top: 8,
-                            left: 8,
-                            right: 100,
-                            // bottom: 8,
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
                             child: Container(
                               padding: const EdgeInsets.only(left: 8, right: 8),
                               decoration: BoxDecoration(
                                   color: blackColor.withOpacity(0.5),
                                   borderRadius: BorderRadius.circular(10)),
                               child: Center(
-                                child: Text(
-                                    // "Pengelolaan Sampah di Kota Banjar",
-                                    controller.data.title ?? "No Title",
+                                child: Text(controller.data.title ?? "No Title",
                                     style: titleArticle,
                                     maxLines: 2,
                                     overflow: TextOverflow.visible),

@@ -1,26 +1,26 @@
 import 'dart:convert';
-/// meta : {"code":"200","status":"success","message":"list:"}
-/// data : {"history":null,"latest":{"id":2,"created_at":"2022-11-21T12:07:55.000000Z","updated_at":"2022-11-21T12:07:55.000000Z","user_id":2,"price":"15000.00","image":null,"status":"Belum Dibayar"}}
+/// meta : {"code":202,"status":"success","message":"user berhasil disunting"}
+/// data : {"id":5,"created_at":"2022-11-18T06:31:43.000000Z","updated_at":"2022-11-21T16:17:01.000000Z","user_id":5,"address":"Kota Banjar","image":"http://pitrash.masuk.web.id/images/user/202211212317015.jpg"}
 
-TransactionModel transactionModelFromJson(String str) => TransactionModel.fromJson(json.decode(str));
-String transactionModelToJson(TransactionModel data) => json.encode(data.toJson());
-class TransactionModel {
-  TransactionModel({
+EditProfileModel editProfileModelFromJson(String str) => EditProfileModel.fromJson(json.decode(str));
+String editProfileModelToJson(EditProfileModel data) => json.encode(data.toJson());
+class EditProfileModel {
+  EditProfileModel({
       Meta? meta, 
       Data? data,}){
     _meta = meta;
     _data = data;
 }
 
-  TransactionModel.fromJson(dynamic json) {
+  EditProfileModel.fromJson(dynamic json) {
     _meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
     _data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
   Meta? _meta;
   Data? _data;
-TransactionModel copyWith({  Meta? meta,
+EditProfileModel copyWith({  Meta? meta,
   Data? data,
-}) => TransactionModel(  meta: meta ?? _meta,
+}) => EditProfileModel(  meta: meta ?? _meta,
   data: data ?? _data,
 );
   Meta? get meta => _meta;
@@ -39,110 +39,64 @@ TransactionModel copyWith({  Meta? meta,
 
 }
 
-/// history : null
-/// latest : {"id":2,"created_at":"2022-11-21T12:07:55.000000Z","updated_at":"2022-11-21T12:07:55.000000Z","user_id":2,"price":"15000.00","image":null,"status":"Belum Dibayar"}
+/// id : 5
+/// created_at : "2022-11-18T06:31:43.000000Z"
+/// updated_at : "2022-11-21T16:17:01.000000Z"
+/// user_id : 5
+/// address : "Kota Banjar"
+/// image : "http://pitrash.masuk.web.id/images/user/202211212317015.jpg"
 
 Data dataFromJson(String str) => Data.fromJson(json.decode(str));
 String dataToJson(Data data) => json.encode(data.toJson());
 class Data {
   Data({
-      dynamic history, 
-      Latest? latest,}){
-    _history = history;
-    _latest = latest;
-}
-
-  Data.fromJson(dynamic json) {
-    _history = json['history'];
-    _latest = json['latest'] != null ? Latest.fromJson(json['latest']) : null;
-  }
-  dynamic _history;
-  Latest? _latest;
-Data copyWith({  dynamic history,
-  Latest? latest,
-}) => Data(  history: history ?? _history,
-  latest: latest ?? _latest,
-);
-  dynamic get history => _history;
-  Latest? get latest => _latest;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['history'] = _history;
-    if (_latest != null) {
-      map['latest'] = _latest?.toJson();
-    }
-    return map;
-  }
-
-}
-
-/// id : 2
-/// created_at : "2022-11-21T12:07:55.000000Z"
-/// updated_at : "2022-11-21T12:07:55.000000Z"
-/// user_id : 2
-/// price : "15000.00"
-/// image : null
-/// status : "Belum Dibayar"
-
-Latest latestFromJson(String str) => Latest.fromJson(json.decode(str));
-String latestToJson(Latest data) => json.encode(data.toJson());
-class Latest {
-  Latest({
       int? id, 
       String? createdAt, 
       String? updatedAt, 
       int? userId, 
-      String? price, 
-      dynamic image, 
-      String? status,}){
+      String? address, 
+      String? image,}){
     _id = id;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
     _userId = userId;
-    _price = price;
+    _address = address;
     _image = image;
-    _status = status;
 }
 
-  Latest.fromJson(dynamic json) {
+  Data.fromJson(dynamic json) {
     _id = json['id'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
     _userId = json['user_id'];
-    _price = json['price'];
+    _address = json['address'];
     _image = json['image'];
-    _status = json['status'];
   }
   int? _id;
   String? _createdAt;
   String? _updatedAt;
   int? _userId;
-  String? _price;
-  dynamic _image;
-  String? _status;
-Latest copyWith({  int? id,
+  String? _address;
+  String? _image;
+Data copyWith({  int? id,
   String? createdAt,
   String? updatedAt,
   int? userId,
-  String? price,
-  dynamic image,
-  String? status,
-}) => Latest(  id: id ?? _id,
+  String? address,
+  String? image,
+}) => Data(  id: id ?? _id,
   createdAt: createdAt ?? _createdAt,
   updatedAt: updatedAt ?? _updatedAt,
   userId: userId ?? _userId,
-  price: price ?? _price,
+  address: address ?? _address,
   image: image ?? _image,
-  status: status ?? _status,
 );
   int? get id => _id;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
   int? get userId => _userId;
-  String? get price => _price;
-  dynamic get image => _image;
-  String? get status => _status;
+  String? get address => _address;
+  String? get image => _image;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -150,23 +104,22 @@ Latest copyWith({  int? id,
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
     map['user_id'] = _userId;
-    map['price'] = _price;
+    map['address'] = _address;
     map['image'] = _image;
-    map['status'] = _status;
     return map;
   }
 
 }
 
-/// code : "200"
+/// code : 202
 /// status : "success"
-/// message : "list:"
+/// message : "user berhasil disunting"
 
 Meta metaFromJson(String str) => Meta.fromJson(json.decode(str));
 String metaToJson(Meta data) => json.encode(data.toJson());
 class Meta {
   Meta({
-      String? code, 
+      int? code, 
       String? status, 
       String? message,}){
     _code = code;
@@ -179,17 +132,17 @@ class Meta {
     _status = json['status'];
     _message = json['message'];
   }
-  String? _code;
+  int? _code;
   String? _status;
   String? _message;
-Meta copyWith({  String? code,
+Meta copyWith({  int? code,
   String? status,
   String? message,
 }) => Meta(  code: code ?? _code,
   status: status ?? _status,
   message: message ?? _message,
 );
-  String? get code => _code;
+  int? get code => _code;
   String? get status => _status;
   String? get message => _message;
 

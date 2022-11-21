@@ -1,35 +1,30 @@
 import 'dart:convert';
 /// meta : {"code":"200","status":"success","message":"list:"}
-/// data : [{"id":1,"created_at":"2022-11-19T09:04:53.000000Z","updated_at":"2022-11-19T17:34:14.000000Z","user_id":1,"price":"300000.00","image":"http://pitrash.masuk.web.id/images/transaction/202211192239241.jpg","status":"cpanel gblg"},{"id":2,"created_at":"2022-11-19T09:04:53.000000Z","updated_at":"2022-11-19T09:04:53.000000Z","user_id":2,"price":"300000.00","image":"http://pitrash.masuk.web.id/images/transaction/","status":"Belum bayar"},{"id":3,"created_at":"2022-11-19T09:04:53.000000Z","updated_at":"2022-11-19T09:04:53.000000Z","user_id":3,"price":"300000.00","image":"http://pitrash.masuk.web.id/images/transaction/","status":"Belum bayar"},{"id":4,"created_at":"2022-11-19T09:04:53.000000Z","updated_at":"2022-11-19T09:04:53.000000Z","user_id":4,"price":"300000.00","image":"http://pitrash.masuk.web.id/images/transaction/","status":"Belum bayar"},{"id":5,"created_at":"2022-11-19T09:04:53.000000Z","updated_at":"2022-11-19T09:04:53.000000Z","user_id":5,"price":"300000.00","image":"http://pitrash.masuk.web.id/images/transaction/","status":"Belum bayar"},{"id":6,"created_at":"2022-11-19T09:04:53.000000Z","updated_at":"2022-11-19T09:04:53.000000Z","user_id":6,"price":"300000.00","image":"http://pitrash.masuk.web.id/images/transaction/","status":"Belum bayar"}]
+/// data : {"history":[{"id":1,"created_at":"2022-11-21T12:07:54.000000Z","updated_at":"2022-11-21T15:19:10.000000Z","user_id":1,"price":"15000.00","image":"http://pitrash.masuk.web.id/public/images/transaction/202211212219101.jpg","status":"Sudah Dibayar"}],"latest":null}
 
-HistoryTransactionModel historyTransactionModelFromJson(String str) => HistoryTransactionModel.fromJson(json.decode(str));
-String historyTransactionModelToJson(HistoryTransactionModel data) => json.encode(data.toJson());
-class HistoryTransactionModel {
-  HistoryTransactionModel({
+HistoryModel historyModelFromJson(String str) => HistoryModel.fromJson(json.decode(str));
+String historyModelToJson(HistoryModel data) => json.encode(data.toJson());
+class HistoryModel {
+  HistoryModel({
       Meta? meta, 
-      List<Data>? data,}){
+      Data? data,}){
     _meta = meta;
     _data = data;
 }
 
-  HistoryTransactionModel.fromJson(dynamic json) {
+  HistoryModel.fromJson(dynamic json) {
     _meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
-    if (json['data'] != null) {
-      _data = [];
-      json['data'].forEach((v) {
-        _data?.add(Data.fromJson(v));
-      });
-    }
+    _data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
   Meta? _meta;
-  List<Data>? _data;
-HistoryTransactionModel copyWith({  Meta? meta,
-  List<Data>? data,
-}) => HistoryTransactionModel(  meta: meta ?? _meta,
+  Data? _data;
+HistoryModel copyWith({  Meta? meta,
+  Data? data,
+}) => HistoryModel(  meta: meta ?? _meta,
   data: data ?? _data,
 );
   Meta? get meta => _meta;
-  List<Data>? get data => _data;
+  Data? get data => _data;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -37,25 +32,68 @@ HistoryTransactionModel copyWith({  Meta? meta,
       map['meta'] = _meta?.toJson();
     }
     if (_data != null) {
-      map['data'] = _data?.map((v) => v.toJson()).toList();
+      map['data'] = _data?.toJson();
     }
     return map;
   }
 
 }
 
-/// id : 1
-/// created_at : "2022-11-19T09:04:53.000000Z"
-/// updated_at : "2022-11-19T17:34:14.000000Z"
-/// user_id : 1
-/// price : "300000.00"
-/// image : "http://pitrash.masuk.web.id/images/transaction/202211192239241.jpg"
-/// status : "cpanel gblg"
+/// history : [{"id":1,"created_at":"2022-11-21T12:07:54.000000Z","updated_at":"2022-11-21T15:19:10.000000Z","user_id":1,"price":"15000.00","image":"http://pitrash.masuk.web.id/public/images/transaction/202211212219101.jpg","status":"Sudah Dibayar"}]
+/// latest : null
 
 Data dataFromJson(String str) => Data.fromJson(json.decode(str));
 String dataToJson(Data data) => json.encode(data.toJson());
 class Data {
   Data({
+      List<History>? history, 
+      dynamic latest,}){
+    _history = history;
+    _latest = latest;
+}
+
+  Data.fromJson(dynamic json) {
+    if (json['history'] != null) {
+      _history = [];
+      json['history'].forEach((v) {
+        _history?.add(History.fromJson(v));
+      });
+    }
+    _latest = json['latest'];
+  }
+  List<History>? _history;
+  dynamic _latest;
+Data copyWith({  List<History>? history,
+  dynamic latest,
+}) => Data(  history: history ?? _history,
+  latest: latest ?? _latest,
+);
+  List<History>? get history => _history;
+  dynamic get latest => _latest;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    if (_history != null) {
+      map['history'] = _history?.map((v) => v.toJson()).toList();
+    }
+    map['latest'] = _latest;
+    return map;
+  }
+
+}
+
+/// id : 1
+/// created_at : "2022-11-21T12:07:54.000000Z"
+/// updated_at : "2022-11-21T15:19:10.000000Z"
+/// user_id : 1
+/// price : "15000.00"
+/// image : "http://pitrash.masuk.web.id/public/images/transaction/202211212219101.jpg"
+/// status : "Sudah Dibayar"
+
+History historyFromJson(String str) => History.fromJson(json.decode(str));
+String historyToJson(History data) => json.encode(data.toJson());
+class History {
+  History({
       int? id, 
       String? createdAt, 
       String? updatedAt, 
@@ -72,7 +110,7 @@ class Data {
     _status = status;
 }
 
-  Data.fromJson(dynamic json) {
+  History.fromJson(dynamic json) {
     _id = json['id'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
@@ -88,14 +126,14 @@ class Data {
   String? _price;
   String? _image;
   String? _status;
-Data copyWith({  int? id,
+History copyWith({  int? id,
   String? createdAt,
   String? updatedAt,
   int? userId,
   String? price,
   String? image,
   String? status,
-}) => Data(  id: id ?? _id,
+}) => History(  id: id ?? _id,
   createdAt: createdAt ?? _createdAt,
   updatedAt: updatedAt ?? _updatedAt,
   userId: userId ?? _userId,

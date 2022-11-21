@@ -1,10 +1,7 @@
 import 'dart:io';
-
 import 'package:final_project/base/base_controller.dart';
 import 'package:final_project/data/storage_core.dart';
-import 'package:final_project/ui/profile/account/edit_profile/edit_profile_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -18,16 +15,13 @@ class EditProfileController extends BaseController {
   String? token = StorageCore().getAccessToken();
   File? gettedFile;
 
-  //RegisterModel? registerModel = RegisterModel();
   final isObscured = false.obs;
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController phoneNumberController =
-      TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
-  final TextEditingController addreessController =
-      TextEditingController();
+  final TextEditingController addreessController = TextEditingController();
 
   @override
   void onInit() {

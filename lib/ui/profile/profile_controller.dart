@@ -6,7 +6,16 @@ import 'package:final_project/ui/auth/login/login_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
+enum ProfileViewState {
+  none,
+  loading,
+  error,
+}
+
 class ProfileController extends BaseController {
+  ProfileViewState _state = ProfileViewState.none;
+
+  ProfileViewState get state => _state;
   String? token = StorageCore().getAccessToken();
   String imageProfile = "";
   ProfileModel? profileModel;
@@ -17,12 +26,19 @@ class ProfileController extends BaseController {
     super.onInit();
   }
 
+  changeState(ProfileViewState s) {
+    _state = s;
+    update();
+  }
+
   fetchProfile() async {
+    changeState(ProfileViewState.loading);
     try {
       var response = await repository.getProfile();
       profileModel = response;
       imageProfile = response.data?.userDetail?.image ?? "https://";
       update();
+      changeState(ProfileViewState.none);
     } on DioError catch (e) {
       print(e.response?.data.toString());
     }

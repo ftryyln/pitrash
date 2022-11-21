@@ -1,11 +1,15 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:final_project/data/model/auth/login_model.dart';
 import 'package:final_project/data/model/auth/logout_model.dart';
 import 'package:final_project/data/model/auth/register_model.dart';
+import 'package:final_project/data/model/carousel/carousel_model.dart';
 import 'package:final_project/data/model/education/education_model.dart';
 import 'package:final_project/data/model/notification/list_notif_model.dart';
+import 'package:final_project/data/model/profile/edit_profile_model.dart';
 import 'package:final_project/data/model/profile/profile_model.dart';
-import 'package:final_project/data/model/transaction/history_transaction_model.dart';
+import 'package:final_project/data/model/schedule/schedule_pickup_model.dart';
+import 'package:final_project/data/model/transaction/transaction_model.dart';
 
 abstract class Repository {
   FutureOr<LoginModel> postLogin(String email, String password);
@@ -15,16 +19,19 @@ abstract class Repository {
 
   FutureOr<LogoutModel> postLogout(String email, String password);
 
-  FutureOr<HistoryTransactionModel> getHistoryTransaction();
+  FutureOr<TransactionModel> getTransaction();
 
   FutureOr<ProfileModel> getProfile();
 
-  // FutureOr<UpdateProfileModel?> postUpdateProfile(String id,
-  //     String name, String email, String phone, String password, String address, File? image, String token);
+  FutureOr<EditProfileModel?> postEditProfile(String id, String name,
+      String email, String phone, String password, String address, File image,
+      String token);
 
   FutureOr<ListNotifModel> getNotificationList();
 
   FutureOr<EducationModel> getEducation();
 
-  // FutureOr<EducationModel> getSchedule();
+  FutureOr<List<CarouselModel>> getCarousel();
+
+  FutureOr<SchedulePickupModel> getSchedule();
 }

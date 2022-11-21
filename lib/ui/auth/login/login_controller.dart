@@ -12,7 +12,7 @@ class LoginController extends BaseController {
   LoginModel loginModel = LoginModel();
   final isObscured = false.obs;
   final TextEditingController emailController =
-      TextEditingController(text: 'admin@admin.com');
+      TextEditingController(text: 'fit@mail.com');
   final TextEditingController passwordController =
       TextEditingController(text: '12345678');
   final formKey = GlobalKey<FormState>();

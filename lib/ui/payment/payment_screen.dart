@@ -1,7 +1,6 @@
 import 'package:final_project/const/color.dart';
 import 'package:final_project/const/font_weight.dart';
 import 'package:final_project/const/text_style.dart';
-import 'package:final_project/ui/home/home_screen.dart';
 import 'package:final_project/ui/payment/payment_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -36,8 +35,8 @@ class PaymentScreen extends StatelessWidget {
                 children: [
                   SvgPicture.asset("assets/vector/bgappbar.svg",
                       fit: BoxFit.cover),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
+                  SizedBox(
+                    width: Get.width,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -58,24 +57,35 @@ class PaymentScreen extends StatelessWidget {
                                   Text("Tagihan Anda",
                                       style:
                                           title.copyWith(color: primaryColor)),
-                                  Container(
-                                    padding: EdgeInsets.only(
-                                        right: 15, left: 15, top: 5, bottom: 5),
-                                    width: 80,
-                                    height: 33,
-                                    decoration: BoxDecoration(
-                                        color: primaryColor,
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    child: Center(
-                                      child: Text("Status",
-                                          style:
-                                              body.copyWith(fontWeight: bold)),
-                                    ),
-                                  )
+                                  // Container(
+                                  //   padding: const EdgeInsets.only(
+                                  //       right: 7,
+                                  //       left: 7,
+                                  //       top: 5,
+                                  //       bottom: 5),
+                                  //   width: 125,
+                                  //   height: 33,
+                                  //   decoration: BoxDecoration(
+                                  //       color: primaryColor,
+                                  //       borderRadius:
+                                  //       BorderRadius.circular(
+                                  //           20)),
+                                  //   child: Center(
+                                  //     child: Text(
+                                  //         controller
+                                  //             .transactionModel
+                                  //             ?.data!
+                                  //             .latest!
+                                  //             .status ??
+                                  //             "",
+                                  //         style: tiny.copyWith(
+                                  //             color: whiteColor,
+                                  //             fontWeight: bold)),
+                                  //   ),
+                                  // )
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
                               Row(

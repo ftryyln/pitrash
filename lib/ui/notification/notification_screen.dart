@@ -1,7 +1,6 @@
 import 'package:final_project/const/color.dart';
 import 'package:final_project/const/font_weight.dart';
 import 'package:final_project/const/text_style.dart';
-import 'package:final_project/ui/home/home_screen.dart';
 import 'package:final_project/ui/notification/notification_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +48,7 @@ class NotificationScreen extends StatelessWidget {
                       ),
                       child: const Padding(
                         padding: EdgeInsets.all(12),
-                        child: Text("Pickup Schedule"),
+                        child: Text("Pickup Schedule", style: TextStyle(color: Colors.white)),
                       ),
                     ),
                     1: Container(
@@ -58,7 +57,7 @@ class NotificationScreen extends StatelessWidget {
                       ),
                       child: const Padding(
                         padding: EdgeInsets.all(12),
-                        child: Text("Payment"),
+                        child: Text("Payment", style: TextStyle(color: Colors.white)),
                       ),
                     ),
                   },

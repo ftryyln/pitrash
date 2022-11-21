@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:final_project/base/base_controller.dart';
-import 'package:final_project/data/model/transaction/history_transaction_model.dart';
+import 'package:final_project/data/model/transaction/transaction_model.dart';
 import 'package:intl/intl.dart';
 
 class HistoryController extends BaseController{
 
-  HistoryTransactionModel? historyModel;
+  TransactionModel? transactionModel;
 
   DateFormat formatter = DateFormat("yyyy-MM-ddTHH:mm:ss.000000Z");
   DateFormat toFormat = DateFormat("MMMM yyyy");
@@ -17,20 +17,17 @@ class HistoryController extends BaseController{
 
   @override
   onInit() {
-    fetchHistory();
+    getTransaction();
     super.onInit();
   }
 
-  fetchHistory() async {
+  getTransaction() async {
     try {
-      var response = await repository.getHistoryTransaction();
-      historyModel = response;
+      var response = await repository.getTransaction();
+      transactionModel = response;
       update();
     } on DioError catch(e) {
       print(e.response?.data.toString());
     }
   }
-
-
-
 }

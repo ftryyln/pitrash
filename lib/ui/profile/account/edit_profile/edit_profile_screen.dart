@@ -36,7 +36,7 @@ class EditProfileScreen extends StatelessWidget {
                 child: Stack(children: [
                   SvgPicture.asset("assets/vector/bgappbar.svg",
                       fit: BoxFit.cover),
-                  Container(
+                  SizedBox(
                     width: Get.width,
                     child: Column(
                       children: [
@@ -55,7 +55,7 @@ class EditProfileScreen extends StatelessWidget {
                                       : FileImage(controller.gettedFile!),
                                   fit: BoxFit.cover)),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         GestureDetector(
@@ -66,7 +66,7 @@ class EditProfileScreen extends StatelessWidget {
                               style: heading.copyWith(
                                   color: tertiaryColor, fontWeight: bold)),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Padding(
@@ -91,7 +91,7 @@ class EditProfileScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                               Row(
@@ -108,45 +108,11 @@ class EditProfileScreen extends StatelessWidget {
                                     child: TextFormField(
                                         controller:
                                             controller.phoneNumberController,
-                                        decoration: InputDecoration(
-                                          prefixIcon: SizedBox(
-                                            width: 78,
-                                            child: Row(children: [
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 15,
-                                                    bottom: 9,
-                                                    top: 5),
-                                                child: Text(
-                                                  "+62",
-                                                  style: heading1.copyWith(
-                                                      color: greyColor
-                                                          .withOpacity(0.6)),
-                                                ),
-                                              ),
-                                              SizedBox(width: 15),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    bottom: 5,
-                                                    top: 5,
-                                                    right: 15),
-                                                child: VerticalDivider(
-                                                  width: 5,
-                                                  color: greyColor,
-                                                  thickness: 1,
-                                                ),
-                                              )
-                                            ]),
-                                          ),
-                                          hintText: "81234567890",
-                                          hintStyle: heading1.copyWith(
-                                              color:
-                                                  greyColor.withOpacity(0.6)),
-                                        )),
+                                        decoration: const InputDecoration()),
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                               Row(
@@ -166,7 +132,7 @@ class EditProfileScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                               Row(
@@ -188,7 +154,7 @@ class EditProfileScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 35,
                               ),
                               GestureDetector(
@@ -207,8 +173,8 @@ class EditProfileScreen extends StatelessWidget {
                                         color: primaryColor,
                                         gradient: LinearGradient(
                                             colors: [
-                                              Color(0xff4CAE31),
-                                              Color(0xff4BCC28).withOpacity(0.5)
+                                              const Color(0xff4CAE31),
+                                              const Color(0xff4BCC28).withOpacity(0.5)
                                             ],
                                             begin: Alignment.topCenter,
                                             end: Alignment.bottomCenter),

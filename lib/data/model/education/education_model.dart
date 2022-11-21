@@ -1,6 +1,6 @@
 import 'dart:convert';
 /// meta : {"code":200,"status":"success","message":"List Edukasi"}
-/// data : [{"id":7,"created_at":"2022-11-20T06:21:43.000000Z","updated_at":null,"user_id":1,"title":"Shop wisely","content":"Buy less plastic and bring a reusable shopping bag.","image":"http://pitrash.masuk.web.id/images/Register/1668925303.jpg"},{"id":9,"created_at":"2022-11-20T13:36:20.000000Z","updated_at":null,"user_id":1,"title":"5 Cara Pembuatan Pupuk Kompos dari Sampah Bekas yang Mudah","content":"Salah satu pengolahan limbah yang sering dilakukan oleh masyarakat adalah pembuatan pupuk kompos. Sampah yang tadinya tidak berguna bisa diubah menjadi pupuk kompos yang lebih berguna. Tahapnya adalah sebagai berikut: 1. Mengumpulkan Sampah Cara pembuatan pupuk kompos dari sampah bekas yang pertama adalah mengumpulkan sampah. Sampah yang Anda kumpulkan harus dipisah antara yang organik maupun yang non organik. Sampah yang bisa digunakan dan di daur ulang menjadi pupuk kompos adalah sampah yang organik. Anda bisa mendapatkannya dari sisa sayur segar yang tidak dimasak. Ketika Anda memasak sayur tentu ada bagian sayur yang tidak Anda masak misalnya saja adalah pada batang akar sayuran dan daun sayuran yang sudah tua. 2. Proses Pencacahan Setelah Anda mengumpulkan semua sampah organik tersebut langkah selanjutnya adalah melakukan pencacahan yang bertujuan agar sampah organik tersebut menjadi lebih lembut. Buatlah sampah sayur organik menjadi berukuran 1 sampai dengan 2 cm. 3. Proses Pendiaman Agar bisa menjadi pupuk kompos, Anda harus mendiamkan sampah organik yang sudah di cincang tersebut. Fungsi mendiamkan sampah organik tersebut agar terjadi pembusukan. Mempercepat proses pembusukan Anda bisa menggunakan larutan EM4 atau bisa juga menunggu sampah tersebut membusuk sendiri namun prosesnya lumayan lama. 4. Tutup Rapat Mendiamkan sampah organik tersebut harus di tempat yang tertutup rapat dan kedap udara. Udara bisa membuat proses pembusukan tidak berjalan dengan sempurna. Akan lebih efektif jika Anda mendiamkan sampah organik tersebut di ember yang memiliki tutup rapat. Ketika Anda ingin menambahkan sampah harus ditambahkan larutan EM4 agar pembusukan bisa lebih sempurna dan merata. 5. Tunggu Sampai 2 Minggu Diamkan pupuk tersebut selama 2 minggu lamanya agar pembusukan sempurna. Selama 2 minggu tersebut Anda harus mengaduk pupuk di dalam ember selama 3 hari sekali. Jangan terlalu sering mengaduk dan jangan terlalu jarang. Waktu maksimal untuk pengadukan adalah 3 hari sekali. Selama 2 minggu tersebut akan dua jenis pupuk kompos yang dihasilkan yaitu padat dan cair.lakukan oleh masyarakat adalah pembuatan pupuk kompos. Sampah yang tadinya tidak berguna bisa diubah menjadi pupuk kompos yang lebih berguna.","image":"http://pitrash.masuk.web.id/images/Register/1668951380.jpg"},{"id":11,"created_at":"2022-11-20T13:37:33.000000Z","updated_at":null,"user_id":1,"title":"Reduce, Reuse, Recycle","content":"Penerapan sistem ini juga sangat baik untuk mengelola sampah dari berbagai jenis plastik dari yang aman hingga beracun. Pengelolaan sampah dengan sistem 3R mampu dilakukan oleh hampir semua orang serta tidak jarang hal-hal yang diproduksi mampu menghasilkan nilai ekonomis. Dilansir dari laman Waste4Change, Reduce, Reuse, dan Recycle merupakan konsep dan urutan langkah untuk mengelola sampah dengan baik. 1. Reduce Reduce sendiri memiliki arti mengurangi sampah. Maksud dari langkah ini adalah mengurangi penggunaan produk yang nantinya berpotensi menjadi sampah. Langkah ini bisa dilakukan dan diterapkan untuk sampah atau produk sekali pakai, seperti kantong plastik belanja yang sudah dilarang di berbagai lokasi seperti DKI Jakarta. Produk yang jadi target utama untuk reduce adalah produk berbahan plastik. 2. Reuse Langkah atau tahap kedua adalah Reuse yang berarti menggunakan kembali. Tahap ini mengajak untuk menggunakan kembali produk yang sudah terpakai. Dengan menggunakannya kembali maka sampah yang timbul dari produk-produk tersebut dapat berkurang [3]. Salah satu cara atau langkahnya adalah penggunaan botol bekas air minum sebagai pot tanaman kecil. Atau penggunaan kaleng biskuit hingga snack sebagai kotak penyimpanan di rumah. 3. Recycle Tahap terakhir dari konsep 3R adalah Recycle yang berarti mendaur ulang. Langkah ini paling banyak dilakukan mengingat sudah banyaknya sampah yang tersebar di berbagai lokasi seperti laut, tanah, dan udara. Produk bekas atau daur ulang sendiri sebenarnya lebih fleksibel, bahkan kerap memiliki nilai ekonomis. Pemanfaatan sampah yang tidak terpakai hingga memiliki nilai tanpa mencemari lingkungan mampu mengurangi penyebaran sampah plastik secara drastis.","image":"http://pitrash.masuk.web.id/images/Register/1668951453.jpg"},{"id":12,"created_at":"2022-11-20T13:38:33.000000Z","updated_at":null,"user_id":1,"title":"Pengelolaan Sampah","content":"Pengelolaan sampah dapat memberikan manfaat dengan cara mengubah sampah menjadi material yang memiliki nilai ekonomis atau dapat mengubah sampah agar menjadi material atau barang yang tidak membahayakan bagi lingkungan hidup. Sebagai contoh, disebut sebagai metode “pencegahan sampah”. Metode ini seperti penggunaan kembali barang bekas pakai, memperbaiki barang yang rusak, mendesain produk agar dapat diisi ulang atau digunakan kembali. Seperti tas belanja katun yang menggantikan tas plastik, mengganti pembelian minuman kemasan dengan membawa tempat minum sendiri. Ada 3 tahapan mudah dalam pengelolaan sampah. Pertama, pemisahan jenis sampah antara organik dan anorganik. Kedua, kumpulkan dan berikan kepada pusat daur ulang karena sampah yang berbahaya seperti elektronik bekas yang dapat membahayakan lingkungan. Dan ke Tiga diet sampah plastik atau barang sekali pakai. Edukasi yang berjalan lancar dapat mengajak masyarakat atau konsumen untuk menghindari penggunaan barang sekali pakai, contohnya kertas, tisu dan lain-lain. Edukasi yang cukup tentang pengelolaan sampah juga dapat menyadarkan masyarakat tentang keadaan lingkungan saat ini dan pasti ingin membantu merubahnya. Semakin banyak yang sadar akan keadaan lingkungan, semakin efektif juga dalam memperbaiki keadaan lingkungan hidup sekarang ini dan dapat membantu dalam menjaga keadaan lingkungan pada masa yang akan datang.","image":"http://pitrash.masuk.web.id/images/Register/1668951513.png"},{"id":13,"created_at":"2022-11-20T13:41:09.000000Z","updated_at":null,"user_id":1,"title":"Pemilahan Sampah","content":"Pemilahan sampah suatu proses kegiatan penanganan sampah sejak dari sumbernya dengan memanfaatkan penggunaan sumber daya secara efektif yang diawali dari pewadahan, pengumpulan, pengangkutan, pengolahan hingga pembuangan melalui pengendalian pengelolaan organisasi yang berwawasan lingkungan. Tujuan dari pemilahan sampah itu sendiri adalah: untuk memudahkan pembuangan dan pengolahan kembai, untuk memisahkan pembuangan sampah organik, non-organik dan B3 dan untuk membuat sampah menjadi ramah lingkungan. Manfaat dari melakukan pemilahan sampah itu sendiri adalah agar sampah kering dan sampah basah tidak tercampur karena jika keduanya tercampur bisa menjadi sarang bakteri dan menimbulkan bau tak sedap yang membuat suasana lingkungan menjadi kurang nyaman. Selain itu, juga bermanfaat untuk mengurangi tumpukan sampah serta mengurangi polusi udara. Kelompok pemilahan sampah rumah tangga terbagi menjadi 3, yaitu; 1. Sampah Organik Sampah organik adalah sampah yang bisa diuraikan secara alami oleh lingkungan karena berasal dari sisa-sisa makhluk hidup. Sebagai contohnya: sisa makanan, sayuran busuk, kulit buah-buahan, cangkang telur, dedaunan dan lain sebagainya. 2. Sampah Anorganik Sampah anorganik adalah sampah yang sulit diuraikan secara alami hingga membutuhkan waktu yang lama sekitar ratusan tahun hingga tidak bisa terurai sama sekali. Contohnya: plastik, kaca, besi, karet, sterofoam dan lain-lain. 3. Sampah B3 Sampah B3 adalah sampah-sampah dari bahan kimia berbahaya dan beracun. Contohnya: elektronik, baterai, obat-obatan, kaleng bekas cat dan lain sebagainya.","image":"http://pitrash.masuk.web.id/images/Register/1668951669.jpg"},{"id":14,"created_at":"2022-11-20T13:42:48.000000Z","updated_at":null,"user_id":1,"title":"Edukasi Peduli Lingkungan Dan Sampah Plastik Bagi Anak – Anak","content":"Membuang sampah pada tempatnya merupakan kegiatan baik yang terlihat sepele, namun tidak semua orang terbiasa untuk melakukan. Sering kita lihat orang membuang sampah sembarangan, termasuk ketika berada di sekolahan, di jalan, tempat wisata, di sungai bahkan dari dalam mobil. Padahal kita semua tahu betapa besar akibat buruk membuang sampah sembarangan mulai dari lingkungan sekitar yang kotor dan bau, sehingga timbulnya beragam penyakit serta banjir. Anak-anak bahkan orang dewasa banyak membuang sampah disembarang tempat maka kesadaran agar anak membuang sampah pada tempatnya harus ditumbuhkan sejak usia dini. Dengan adanya kegiatan edukasi peduli lingkungan diharapakan kesadaran anak – anak sejak dini sudah mulai untuk menjaga dan melindungi lingkungannya agar terhindar dari pencemaran lingkungan dan kerusakan lingkungan akibat sampah platik. Permasalahan sampah plastik menjadi krusial dan genting sejak beberapa tahun terakhir, terlebih setelah ditemukannya sejumlah sampah plastik dalam tubuh ikan hiu paus yang mati pada 9 Februari 2019 lalu, di perairan laut Tanjung Aru, di pantai Menumbok, Kota Kinabalu, Malaysia. Kantong plastik dalam perutnya berukuran 46 cm dan 36 cm. Sementara di Filipina, seorang ahli biologi menemukan hiu paus mati di perairan laut Kota Tagum, Davao. Setelah dibedah, dalam perutnya terdapat berbagai sampah plastik. Hal ini menjadi sorotan, mengingat hiu paus masuk kedalam spesies prioritas di kawasan Taman Nasional Teluk Cenderawasih. Setiap individu seharusnya mempunyai kewajiban untuk menjaga dan melindungi lingkungannya, salah satu kegiatan yang dapat dilakukan adalah dengan tidak membuang sampah plastik tidak pada tempatnya. Pada Pasal 29 ayat (1) UU 18/2008 tentang pengelolaan sampah, menyebutkan bahwa setiap orang dilarang: mengelola sampah yang menyebabkan pencemaran dan/atau perusakan lingkungan, membuang sampah tidak pada tempat yang telah ditentukan dan disediakan.","image":"http://pitrash.masuk.web.id/images/Register/1668951768.jpg"}]
+/// data : [{"id":21,"created_at":"2022-11-21T10:56:15.000000Z","updated_at":null,"user_id":{"id":1,"name":"admin","email":"admin@admin.com","email_verified_at":null,"role":1,"phone":"12345678","created_at":"2022-11-21T12:03:16.000000Z","updated_at":null},"title":"Daur Ulang Sampah","content":"Apa yang Dimaksud dengan Daur Ulang Sampah?\r\nJika diartikan secara sederhana, daur ulang adalah upaya yang dilakukan manusia untuk mengelola sampah yang dihasilkannya. Sebenarnya, daur ulang (recycle) memang bukan solusi terbaik untuk mengatasi masalah sampah yang kian melimpah. Kendati demikian, daur ulang sampah plastik dan sampah jenis lainnya dapat membantu mengurangi limbah yang mencemari lingkungan.\r\n\r\nDefinisi lain yang dipaparkan dalam Kamus Besar Bahasa Indonesia Dalam Jaringan (KBBI Daring) menyatakan bahwa daur ulang adalah pemrosesan kembali bahan yang pernah dipakai, misalnya serat, kertas, dan air untuk mendapatkan produk baru. Bahkan, cara pengolahan yang tepat bisa menyulap sampah menjadi suatu produk bernilai ekonomi tinggi.\r\n\r\nProses daur ulang sampah adalah kegiatan bermanfaat yang bisa dilakukan secara individu maupun berkelompok. Jika daur ulang semakin gencar dilakukan, maka jumlah sampah yang berada di lingkungan akan semakin berkurang. Namun, jangan lupa bahwa daur ulang sampah adalah tingkatan terakhir piramida 6R dalam konsep zero waste. Ada 6 langkah yang patut dilakukan agar terbebas dari masalah sampah berdasarkan konsep tersebut, yaitu sebagai berikut.\r\n\r\nRethink: mempertimbangkan secara matang sebelum membeli barang. Usahakan untuk membeli barang berdasarkan kebutuhan, bukan keinginan. Alangkah lebih baik lagi jika Anda memprioritaskan produk daur ulang.\r\n\r\nRefuse: menolak penggunaan barang-barang sekali pakai, misalnya air dalam botol plastik, styrofoam, dan kantong plastik.\r\n\r\nReduce: mengurangi pemakaian barang-barang yang berisiko menyebabkan pencemaran lingkungan, misalnya mengonsumsi air minum dalam kemasan botol plastik atau menggunakan kantong plastik saat berbelanja.\r\n\r\nReuse: memakai kembali barang-barang yang masih bermanfaat, misalnya menggunakan tas kain untuk berbelanja atau mencoba padu padan pakaian lama supaya tidak terlalu sering membeli pakaian baru.\r\n\r\nRepair: memperbaiki barang yang rusak sebelum memutuskan menggantinya dengan yang baru.\r\n\r\nRecycle: melakukan daur ulang sebagai upaya mengurangi sampah sekaligus meningkatkan nilai pakai dan atau nilai ekonomi suatu barang.","image":"http://pitrash.masuk.web.id/images/Register/1669028175.png"},{"id":22,"created_at":"2022-11-21T10:57:17.000000Z","updated_at":null,"user_id":{"id":1,"name":"admin","email":"admin@admin.com","email_verified_at":null,"role":1,"phone":"12345678","created_at":"2022-11-21T12:03:16.000000Z","updated_at":null},"title":"Go Green","content":"Ngomong-ngomong soal Go Green, kalian tahu ngga apa yang dimaksud dengan Go Green itu sendiri? Go Green berarti mengubah gaya hidup menjadi lebih eco-friendly atau ramah lingkungan. Menjadi lebih sadar akan lingkungan sekitar dengan mengubah gaya hidup kita dapat mengurangi tingkat polusi dan sampah yang kita buang.\r\n\r\nKalau temen-temen pingin ikutan aksi Go Green, sebenernya gampang banget loh! Kita selalu bisa mulai dari hal-hal kecil. Ngga percaya? Nih, contoh sederhana yang kalian pasti bisa lakukan adalah menghemat penggunaan tisu. Biasakan gunakan tisu cukup sehelai sehabis mencuci tangan. Kemudian, jangan lupa menggunakan kotak bekal untuk makan siang kalian. Kotak bekal dapat digunakan berkali-kali kan? Jadi sangat ramah lingkungan! Kalian semua apakah selalu mematikan komputer, Xbox, Nintendo atau iPad sehabis digunakan? Nah, ini penting banget loh kalian lakukan dan menjadi bentuk aksi cinta lingkungan. Terakhir, kalau sekolah kalian dekat dengan rumah, coba deh gunakan sepeda atau berjalan kaki. Selain bisa menyelamatkan bumi, kalian juga bisa menyelamatkan diri kalian dari serangan penyakit.","image":"http://pitrash.masuk.web.id/images/Register/1669028237.png"},{"id":23,"created_at":"2022-11-21T10:58:12.000000Z","updated_at":null,"user_id":{"id":1,"name":"admin","email":"admin@admin.com","email_verified_at":null,"role":1,"phone":"12345678","created_at":"2022-11-21T12:03:16.000000Z","updated_at":null},"title":"Zero Waste","content":"Kita hidup di society dengan barang-barang yang sekali pakai dan seakan-akan kita terpisah dari sampah kita. Marketing dan pasar pun mendorong bahwa manusia perlu terus-menerus membutuhkan banyak barang untuk menjadi bahagia. Tanpa kita sadari, tempat pembuangan sampah mulai meluap, lautan tercemar, dan landfill ditinggalkan dengan miliaran ton sampah yang tidak dapat terurai selama ratusan tahun dan tidak dapat didaur ulang. Kita telah mencapai titik di mana gerakan zero waste benar-benar dperlukan untuk menjaga masa depan ekosistem kita.\r\n\r\nSaat orang pertama kali mendengar ‘zero waste’, reaksi yang paling sering terdengar adalah “mana mungkin, nggak akan bisa hidup tanpa membuat sampah”. Dan memang benar, di society kita memang tidak mudah untuk tidak membuat sampah. Tidak mudah menemukan makanan tanpa plastik di supermarket walaupun itu sayur dan buah. Kita semua adalah bagian dari aliran limbah ekonomi. Banyak miskonsepsi yang terjadi mengenai zero waste lifestyle yang membuat orang yang mendengar kata itu bertanya-tanya dan bahkan berubah menjadi pesimis.\r\n\r\nZero waste adalah filosofi yang dijadikan sebagai gaya hidup demi mendorong kita untuk bijak dalam mengkonsumsi dan memakismalkan siklus hidup sumber daya sehingga produk-produk bisa digunakan kembali. Zero waste juga soal menjauhi single use plastic atau plastik yang hanya digunakan sekali. Tujuannya adalah agar sampah tidak dikirim ke landfill. Jadi zerowaste itu tidak hanya mengenai recycle atau mendaur ulang. Ini miskonsepsi yang umumnya terjadi. Padahal sebenernya zero waste itu dimulai dari Refuse, Reduce, and Reuse. Saat benar-benar sudah tidak memungkinkan untuk 3 hal tadi, baru dilakukan Recycle dan Rot.\r\n\r\nIntinya zero waste menantang kita semua untuk mengevaluasi gaya hidup kita dan melihat bagaimana sesuatu yang kita konsumsi bisa berdampak negatif terhadap lingkungan. Kenyamanan yang berbentuk dengan produk murah, material yang tidak bisa didaur ulang merusak kesehatan planet kita dan berkembangnya manusia dan spesies hewan di seluruh dunia. Bea Johnson dari Zero Waste Home mempopulerkan 6 R ini: “Rethink, Refuse, Reduce, Reuse, Recycle, Rot” atau di dalam bahasa indonesia “Menolak, Mengurangi, Menggunakan Kembali, Daur Ulang, Membusukkan.”. 5R ini menjadi pegangan untuk mengarah kepada gaya hidup tanpa limbah sehingga dapat menciptakan lebih sedikit limbah dan menggunakan sumber daya alam secara bijaksana.\r\n\r\nTidak ada kata sempurna dari zero waste lifestlye dan ketidaksempurnaan ini jangan dijadikan alasan untuk tidak memulainya. Jangan juga saling menjudge satu sama lain saat mereka mengklaim berhidup zero waste tapi masih menggunakan plastik, mungkin mereka sedang mencoba. Zero waste bukanlah tujuan, tapi proses. Dan mari kita bersama-sama menjalani proses ini.\r\n\r\nPada akhirnya, gaya hidup sampah zero waste dimulai dengan keinginan untuk mengubah kebiasaan konsumsi dan berinvestasi di masyarakat demi masa bumi dan anak cucu kita. Jika kalian ingin menjadi bagian dari gerakan ini, cari tahu cara memulainya disini! Atau kalian bisa mengikuti 30 Days Zero Waste Challenge disini.","image":"http://pitrash.masuk.web.id/images/Register/1669028292.png"},{"id":24,"created_at":"2022-11-21T11:00:11.000000Z","updated_at":null,"user_id":{"id":1,"name":"admin","email":"admin@admin.com","email_verified_at":null,"role":1,"phone":"12345678","created_at":"2022-11-21T12:03:16.000000Z","updated_at":null},"title":"Plastic Pollution","content":"Kementerian Lingkungan Hidup dan Kehutanan (KLHK), dalam rangkaian Hari Peduli Sampah Nasional Tahun 2022 menggelar webinar yang bertajuk “Plastic Credit, Gagasan Baru Solusi Pengurangan Sampah Plastik?”, Kamis (24/02).\r\n\r\nSecara ringkas, plastic credit adalah kredit yang bernilai 1 ton sampah plastik yang sebelumnya belum terkumpul atau terdaur ulang, kemudian dapat dikumpulkan atau didaur ulang oleh pihak tertentu yang terdaftar dalam platform khusus. Sampah plastik yang berhasil dikumpulkan dan dicegah bocor ke lingkungan akan mendapat Waste Collection Credits (WCCs) dan sampah plastik yang berhasil didaur ulang akan mendapat Waste Recyling Credits (WRCs).\r\n\r\nPlastic Credit yang sudah diterbitkan kemudian dijual kepada pihak industri, baik industri hulu penghasil bijih atau produk plastik maupun industri hilir pengguna plastik, sebagai bagian dari tanggung jawab mereka dalam pencegahan dan pengendalian plastic pollution. Plastic credit yang dibeli oleh pihak industri kemudian dicairkan dananya dan diserahkan kepada pemilik Project atau pihak produsen untuk “mengganti” seluruh atau sebagian biaya investasi dan operasional pengumpulan dan/atau pendauran ulang yang sudah dilaksanakan.\r\n\r\n“Dengan munculnya gagasan-gagasan baru untuk mendukung pengurangan sampah oleh produsen, akan semakin banyak produsen yang melaksanakan kewajiban untuk mengurangi sampah kemasannya melalui pelaksanaan peta jalan. Sebagai sebuah gagasan baru saya berharap plastic credit dapat menjadi pilihan solusi pengurangan sampah plastik tidak sebatas “fantasy”,” kata Direktur Jenderal Pengelolaan Limbah, Sampah, dan Bahan Beracun Berbahaya (PSLB3), KLHK, Rosa Vivien Ratnawati,\r\ndalam sambutannya.\r\n\r\nPemerintah juga dalam hal ini membuat kebijakan yang luar biasa dengan mewajibkan produsen untuk mengurangi sampah plastik yang berasal dari produk dan kemasan produk yang mereka hasilkan.\r\n\r\nBentuk pengaturan tanggung jawab produsen secara konkrit tercantum dalam peraturan Menteri LHK No.75 Tahun 2019 yaitu mewajibkan produsen untuk membatasi timbunan sampah dan mendaur ulang sampah melalui penarikan kembali dan memanfaatkan kembali sampah.","image":"http://pitrash.masuk.web.id/images/Register/1669028411.png"},{"id":25,"created_at":"2022-11-21T14:21:39.000000Z","updated_at":null,"user_id":{"id":1,"name":"admin","email":"admin@admin.com","email_verified_at":null,"role":1,"phone":"12345678","created_at":"2022-11-21T12:03:16.000000Z","updated_at":null},"title":"Menjaga Lingkungan","content":"Kebersihan lingkungan merupakan hal yang tak terpisahkan dari kehidupan manusia dan merupakan unsur yang fundamental dalam ilmu kesehatan dan pencegahan","image":"http://pitrash.masuk.web.id/images/Register/1669040499.jpg"},{"id":26,"created_at":"2022-11-21T14:23:05.000000Z","updated_at":null,"user_id":{"id":1,"name":"admin","email":"admin@admin.com","email_verified_at":null,"role":1,"phone":"12345678","created_at":"2022-11-21T12:03:16.000000Z","updated_at":null},"title":"Menjaga Lingkungan","content":"Kebersihan lingkungan merupakan hal yang tak terpisahkan dari kehidupan manusia dan merupakan unsur yang fundamental dalam ilmu kesehatan dan pencegahan","image":"http://pitrash.masuk.web.id/images/Register/1669040585.jpg"},{"id":27,"created_at":"2022-11-21T14:23:09.000000Z","updated_at":null,"user_id":{"id":1,"name":"admin","email":"admin@admin.com","email_verified_at":null,"role":1,"phone":"12345678","created_at":"2022-11-21T12:03:16.000000Z","updated_at":null},"title":"Menjaga Lingkungan","content":"Kebersihan lingkungan merupakan hal yang tak terpisahkan dari kehidupan manusia dan merupakan unsur yang fundamental dalam ilmu kesehatan dan pencegahan","image":"http://pitrash.masuk.web.id/images/Register/1669040589.jpg"},{"id":28,"created_at":"2022-11-21T14:23:10.000000Z","updated_at":null,"user_id":{"id":1,"name":"admin","email":"admin@admin.com","email_verified_at":null,"role":1,"phone":"12345678","created_at":"2022-11-21T12:03:16.000000Z","updated_at":null},"title":"Menjaga Lingkungan","content":"Kebersihan lingkungan merupakan hal yang tak terpisahkan dari kehidupan manusia dan merupakan unsur yang fundamental dalam ilmu kesehatan dan pencegahan","image":"http://pitrash.masuk.web.id/images/Register/1669040590.jpg"},{"id":29,"created_at":"2022-11-21T14:23:10.000000Z","updated_at":null,"user_id":{"id":1,"name":"admin","email":"admin@admin.com","email_verified_at":null,"role":1,"phone":"12345678","created_at":"2022-11-21T12:03:16.000000Z","updated_at":null},"title":"Menjaga Lingkungan","content":"Kebersihan lingkungan merupakan hal yang tak terpisahkan dari kehidupan manusia dan merupakan unsur yang fundamental dalam ilmu kesehatan dan pencegahan","image":"http://pitrash.masuk.web.id/images/Register/1669040590.jpg"}]
 
 EducationModel educationModelFromJson(String str) => EducationModel.fromJson(json.decode(str));
 String educationModelToJson(EducationModel data) => json.encode(data.toJson());
@@ -44,13 +44,13 @@ EducationModel copyWith({  Meta? meta,
 
 }
 
-/// id : 7
-/// created_at : "2022-11-20T06:21:43.000000Z"
+/// id : 21
+/// created_at : "2022-11-21T10:56:15.000000Z"
 /// updated_at : null
-/// user_id : 1
-/// title : "Shop wisely"
-/// content : "Buy less plastic and bring a reusable shopping bag."
-/// image : "http://pitrash.masuk.web.id/images/Register/1668925303.jpg"
+/// user_id : {"id":1,"name":"admin","email":"admin@admin.com","email_verified_at":null,"role":1,"phone":"12345678","created_at":"2022-11-21T12:03:16.000000Z","updated_at":null}
+/// title : "Daur Ulang Sampah"
+/// content : "Apa yang Dimaksud dengan Daur Ulang Sampah?\r\nJika diartikan secara sederhana, daur ulang adalah upaya yang dilakukan manusia untuk mengelola sampah yang dihasilkannya. Sebenarnya, daur ulang (recycle) memang bukan solusi terbaik untuk mengatasi masalah sampah yang kian melimpah. Kendati demikian, daur ulang sampah plastik dan sampah jenis lainnya dapat membantu mengurangi limbah yang mencemari lingkungan.\r\n\r\nDefinisi lain yang dipaparkan dalam Kamus Besar Bahasa Indonesia Dalam Jaringan (KBBI Daring) menyatakan bahwa daur ulang adalah pemrosesan kembali bahan yang pernah dipakai, misalnya serat, kertas, dan air untuk mendapatkan produk baru. Bahkan, cara pengolahan yang tepat bisa menyulap sampah menjadi suatu produk bernilai ekonomi tinggi.\r\n\r\nProses daur ulang sampah adalah kegiatan bermanfaat yang bisa dilakukan secara individu maupun berkelompok. Jika daur ulang semakin gencar dilakukan, maka jumlah sampah yang berada di lingkungan akan semakin berkurang. Namun, jangan lupa bahwa daur ulang sampah adalah tingkatan terakhir piramida 6R dalam konsep zero waste. Ada 6 langkah yang patut dilakukan agar terbebas dari masalah sampah berdasarkan konsep tersebut, yaitu sebagai berikut.\r\n\r\nRethink: mempertimbangkan secara matang sebelum membeli barang. Usahakan untuk membeli barang berdasarkan kebutuhan, bukan keinginan. Alangkah lebih baik lagi jika Anda memprioritaskan produk daur ulang.\r\n\r\nRefuse: menolak penggunaan barang-barang sekali pakai, misalnya air dalam botol plastik, styrofoam, dan kantong plastik.\r\n\r\nReduce: mengurangi pemakaian barang-barang yang berisiko menyebabkan pencemaran lingkungan, misalnya mengonsumsi air minum dalam kemasan botol plastik atau menggunakan kantong plastik saat berbelanja.\r\n\r\nReuse: memakai kembali barang-barang yang masih bermanfaat, misalnya menggunakan tas kain untuk berbelanja atau mencoba padu padan pakaian lama supaya tidak terlalu sering membeli pakaian baru.\r\n\r\nRepair: memperbaiki barang yang rusak sebelum memutuskan menggantinya dengan yang baru.\r\n\r\nRecycle: melakukan daur ulang sebagai upaya mengurangi sampah sekaligus meningkatkan nilai pakai dan atau nilai ekonomi suatu barang."
+/// image : "http://pitrash.masuk.web.id/images/Register/1669028175.png"
 
 Data dataFromJson(String str) => Data.fromJson(json.decode(str));
 String dataToJson(Data data) => json.encode(data.toJson());
@@ -59,7 +59,7 @@ class Data {
       int? id, 
       String? createdAt, 
       dynamic updatedAt, 
-      int? userId, 
+      UserId? userId, 
       String? title, 
       String? content, 
       String? image,}){
@@ -76,7 +76,7 @@ class Data {
     _id = json['id'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _userId = json['user_id'];
+    _userId = json['user_id'] != null ? UserId.fromJson(json['user_id']) : null;
     _title = json['title'];
     _content = json['content'];
     _image = json['image'];
@@ -84,14 +84,14 @@ class Data {
   int? _id;
   String? _createdAt;
   dynamic _updatedAt;
-  int? _userId;
+  UserId? _userId;
   String? _title;
   String? _content;
   String? _image;
 Data copyWith({  int? id,
   String? createdAt,
   dynamic updatedAt,
-  int? userId,
+  UserId? userId,
   String? title,
   String? content,
   String? image,
@@ -106,7 +106,7 @@ Data copyWith({  int? id,
   int? get id => _id;
   String? get createdAt => _createdAt;
   dynamic get updatedAt => _updatedAt;
-  int? get userId => _userId;
+  UserId? get userId => _userId;
   String? get title => _title;
   String? get content => _content;
   String? get image => _image;
@@ -116,10 +116,102 @@ Data copyWith({  int? id,
     map['id'] = _id;
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
-    map['user_id'] = _userId;
+    if (_userId != null) {
+      map['user_id'] = _userId?.toJson();
+    }
     map['title'] = _title;
     map['content'] = _content;
     map['image'] = _image;
+    return map;
+  }
+
+}
+
+/// id : 1
+/// name : "admin"
+/// email : "admin@admin.com"
+/// email_verified_at : null
+/// role : 1
+/// phone : "12345678"
+/// created_at : "2022-11-21T12:03:16.000000Z"
+/// updated_at : null
+
+UserId userIdFromJson(String str) => UserId.fromJson(json.decode(str));
+String userIdToJson(UserId data) => json.encode(data.toJson());
+class UserId {
+  UserId({
+      int? id, 
+      String? name, 
+      String? email, 
+      dynamic emailVerifiedAt, 
+      int? role, 
+      String? phone, 
+      String? createdAt, 
+      dynamic updatedAt,}){
+    _id = id;
+    _name = name;
+    _email = email;
+    _emailVerifiedAt = emailVerifiedAt;
+    _role = role;
+    _phone = phone;
+    _createdAt = createdAt;
+    _updatedAt = updatedAt;
+}
+
+  UserId.fromJson(dynamic json) {
+    _id = json['id'];
+    _name = json['name'];
+    _email = json['email'];
+    _emailVerifiedAt = json['email_verified_at'];
+    _role = json['role'];
+    _phone = json['phone'];
+    _createdAt = json['created_at'];
+    _updatedAt = json['updated_at'];
+  }
+  int? _id;
+  String? _name;
+  String? _email;
+  dynamic _emailVerifiedAt;
+  int? _role;
+  String? _phone;
+  String? _createdAt;
+  dynamic _updatedAt;
+UserId copyWith({  int? id,
+  String? name,
+  String? email,
+  dynamic emailVerifiedAt,
+  int? role,
+  String? phone,
+  String? createdAt,
+  dynamic updatedAt,
+}) => UserId(  id: id ?? _id,
+  name: name ?? _name,
+  email: email ?? _email,
+  emailVerifiedAt: emailVerifiedAt ?? _emailVerifiedAt,
+  role: role ?? _role,
+  phone: phone ?? _phone,
+  createdAt: createdAt ?? _createdAt,
+  updatedAt: updatedAt ?? _updatedAt,
+);
+  int? get id => _id;
+  String? get name => _name;
+  String? get email => _email;
+  dynamic get emailVerifiedAt => _emailVerifiedAt;
+  int? get role => _role;
+  String? get phone => _phone;
+  String? get createdAt => _createdAt;
+  dynamic get updatedAt => _updatedAt;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['id'] = _id;
+    map['name'] = _name;
+    map['email'] = _email;
+    map['email_verified_at'] = _emailVerifiedAt;
+    map['role'] = _role;
+    map['phone'] = _phone;
+    map['created_at'] = _createdAt;
+    map['updated_at'] = _updatedAt;
     return map;
   }
 

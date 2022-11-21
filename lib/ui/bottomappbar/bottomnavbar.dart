@@ -65,7 +65,7 @@ class BottomNavBar extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: whiteColor,
                           borderRadius: BorderRadius.circular(10)),
-                      child: Icon(Icons.history_rounded, shadows: [
+                      child: Icon(Icons.person_rounded, shadows: [
                         Shadow(color: secondaryColor, blurRadius: 5)
                       ])),
                   title: Text("Profil",

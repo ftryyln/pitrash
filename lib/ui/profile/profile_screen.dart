@@ -10,6 +10,7 @@ import 'package:final_project/ui/profile/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -19,6 +20,16 @@ class ProfileScreen extends StatelessWidget {
     return GetBuilder<ProfileController>(
         init: ProfileController(),
         builder: (controller) {
+          if (controller.state == ProfileViewState.loading) {
+            return Scaffold(
+              body: Container(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                      height: 150,
+                      width: 150,
+                      child: Lottie.asset("assets/lottie/loading.json"))),
+            );
+          }
           return Scaffold(
             backgroundColor: whiteColor,
             body: SingleChildScrollView(
@@ -38,7 +49,7 @@ class ProfileScreen extends StatelessWidget {
                       )
                     ],
                   ),
-                  Container(
+                  SizedBox(
                     width: Get.width,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,10 +62,10 @@ class ProfileScreen extends StatelessWidget {
                               border: Border.all(color: primaryColor, width: 3),
                               image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: NetworkImage(
-                                      controller.imageProfile))),
+                                  image:
+                                      NetworkImage(controller.imageProfile))),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Text(controller.profileModel?.data?.name ?? "-",
@@ -74,65 +85,71 @@ class ProfileScreen extends StatelessWidget {
                       children: [
                         Text("Akun",
                             style: heading1.copyWith(color: greyColor)),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         GestureDetector(
-                          onTap: () =>
-                              {Get.to(() => const EditProfileScreen(), arguments: [
-                                controller.profileModel?.data?.name,
-                                controller.profileModel?.data?.email,
-                                controller.profileModel?.data?.phone,
-                                controller.profileModel?.data?.userDetail?.address,
-                                controller.profileModel?.data?.userDetail?.image
-                              ])},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Text("Ubah Profil",
-                                    style:
-                                        heading1.copyWith(color: blackColor)),
-                              ),
-                              const Icon(Icons.arrow_forward_ios_rounded,
-                                  color: primaryColor, size: 14),
-                            ],
+                          onTap: () => {
+                            Get.to(() => const EditProfileScreen(), arguments: [
+                              controller.profileModel?.data?.name,
+                              controller.profileModel?.data?.email,
+                              controller.profileModel?.data?.phone,
+                              controller
+                                  .profileModel?.data?.userDetail?.address,
+                              controller.profileModel?.data?.userDetail?.image
+                            ])
+                          },
+                          child: SizedBox(
+                            width: Get.width,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                  child: Text("Ubah Profil",
+                                      style:
+                                          heading1.copyWith(color: blackColor)),
+                                ),
+                                const Icon(Icons.arrow_forward_ios_rounded,
+                                    color: primaryColor, size: 14),
+                              ],
+                            ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Divider(
                             height: 1,
                             color: greyColor.withOpacity(0.5),
                             thickness: 1),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         GestureDetector(
                           onTap: () =>
                               {Get.to(() => const ChangePasswordScreen())},
-                          child: Container(
+                          child: SizedBox(
+                            width: Get.width,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text("Ubah Kata Sandi",
                                     style:
                                         heading1.copyWith(color: blackColor)),
-                                Icon(Icons.arrow_forward_ios_rounded,
+                                const Icon(Icons.arrow_forward_ios_rounded,
                                     color: primaryColor, size: 14),
                               ],
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Divider(
                             height: 1,
                             color: greyColor.withOpacity(0.5),
                             thickness: 1),
-                        SizedBox(
+                        const SizedBox(
                           height: 35,
                         ),
                         Column(
@@ -140,13 +157,14 @@ class ProfileScreen extends StatelessWidget {
                           children: [
                             Text("Tentang Kami",
                                 style: heading1.copyWith(color: greyColor)),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             GestureDetector(
                               onTap: () =>
                                   {Get.to(() => const OurTeamScreen())},
-                              child: Container(
+                              child: SizedBox(
+                                width: Get.width,
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -154,26 +172,27 @@ class ProfileScreen extends StatelessWidget {
                                     Text("Tim Kami",
                                         style: heading1.copyWith(
                                             color: blackColor)),
-                                    Icon(Icons.arrow_forward_ios_rounded,
+                                    const Icon(Icons.arrow_forward_ios_rounded,
                                         color: primaryColor, size: 14),
                                   ],
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             Divider(
                                 height: 1,
                                 color: greyColor.withOpacity(0.5),
                                 thickness: 1),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             GestureDetector(
                               onTap: () =>
                                   {Get.to(() => const PiTrashScreen())},
-                              child: Container(
+                              child: SizedBox(
+                                width: Get.width,
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -181,31 +200,31 @@ class ProfileScreen extends StatelessWidget {
                                     Text("PiTrash",
                                         style: heading1.copyWith(
                                             color: blackColor)),
-                                    Icon(Icons.arrow_forward_ios_rounded,
+                                    const Icon(Icons.arrow_forward_ios_rounded,
                                         color: primaryColor, size: 14),
                                   ],
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             Divider(
                                 height: 1,
                                 color: greyColor.withOpacity(0.5),
                                 thickness: 1),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: 30,
+                        const SizedBox(
+                          height: 15,
                         ),
                         GestureDetector(
                           onTap: () {
                             controller.storage.deleteAuthResponse();
-                            Get.offAll(() => LoginScreen());
+                            Get.offAll(() => const LoginScreen());
                             controller.logout(
                                 controller.storage.getCurrentUserId()!,
                                 Get.arguments);

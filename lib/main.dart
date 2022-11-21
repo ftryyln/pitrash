@@ -52,12 +52,9 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/bottomnavbar', page: () => const BottomNavBar()),
         GetPage(name: '/home', page: () => const HomeScreen()),
         GetPage(name: '/education', page: () => const EducationScreen()),
-        GetPage(
-            name: '/detaileducation',
-            page: () => const EducationDetailScreen()),
+        GetPage(name: '/detaileducation', page: () => const EducationDetailScreen()),
         GetPage(name: '/history', page: () => const HistoryScreen()),
-        GetPage(
-            name: '/historydetail', page: () => const HistoryDetailScreen()),
+        GetPage(name: '/historydetail', page: () => const HistoryDetailScreen()),
         GetPage(name: '/notification', page: () => const NotificationScreen()),
         GetPage(name: '/profile', page: () => const ProfileScreen()),
         GetPage(name: '/editprofile', page: () => const EditProfileScreen()),

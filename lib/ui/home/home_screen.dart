@@ -11,6 +11,7 @@ import 'package:final_project/ui/notification/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,6 +21,16 @@ class HomeScreen extends StatelessWidget {
     return GetBuilder<HomeController>(
         init: HomeController(),
         builder: (controller) {
+          if (controller.state == HomeViewState.loading) {
+            return Scaffold(
+              body: Container(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                      height: 150,
+                      width: 150,
+                      child: Lottie.asset("assets/lottie/loading.json"))),
+            );
+          }
           return Scaffold(
             backgroundColor: whiteColor,
             body: RefreshIndicator(
@@ -31,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Stack(children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 225,
                         width: 300,
                       ),
@@ -41,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            left: 20, right: 20, top: 30, bottom: 20),
+                            left: 20, right: 20, top: 48, bottom: 20),
                         child: Column(
                           children: [
                             Row(
@@ -95,7 +106,8 @@ class HomeScreen extends StatelessWidget {
                                 shadowColor: primaryColor,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20)),
-                                child: Container(
+                                child: SizedBox(
+                                  width: Get.width,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -104,6 +116,8 @@ class HomeScreen extends StatelessWidget {
                                         padding: const EdgeInsets.only(
                                             top: 10, left: 10, right: 10),
                                         child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
@@ -111,13 +125,42 @@ class HomeScreen extends StatelessWidget {
                                                 style: heading1.copyWith(
                                                     color: greyColor,
                                                     fontWeight: bold)),
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                  right: 7,
+                                                  left: 7,
+                                                  top: 5,
+                                                  bottom: 5),
+                                              width: 125,
+                                              height: 33,
+                                              decoration: BoxDecoration(
+                                                  color: primaryColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20)),
+                                              child: Center(
+                                                child: Text(
+                                                    controller
+                                                            .transactionModel
+                                                            ?.data!
+                                                            .latest!
+                                                            .status ??
+                                                        "",
+                                                    style: tiny.copyWith(
+                                                        color: whiteColor,
+                                                        fontWeight: bold)),
+                                              ),
+                                            )
                                           ],
                                         ),
                                       ),
                                       Padding(
                                         padding:
                                             const EdgeInsets.only(left: 10),
-                                        child: Text("Rp 15.000",
+                                        child: Text(
+                                            controller.transactionModel?.data!
+                                                    .latest!.price ??
+                                                "-",
                                             style: title.copyWith(
                                                 color: blackColor,
                                                 fontWeight: bold)),
@@ -126,11 +169,11 @@ class HomeScreen extends StatelessWidget {
                                         height: 10,
                                       ),
                                       Container(
-                                        padding: EdgeInsets.only(
+                                        padding: const EdgeInsets.only(
                                             left: 10, right: 10),
                                         height: 40,
                                         width: 400,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(20),
                                               bottomRight: Radius.circular(20)),
@@ -146,7 +189,14 @@ class HomeScreen extends StatelessWidget {
                                             const SizedBox(
                                               height: 10,
                                             ),
-                                            Text("01 Desember 2022",
+                                            Text(
+                                                controller.toFormat.format(
+                                                    controller.formatter.parse(
+                                                        controller
+                                                            .transactionModel
+                                                            ?.data
+                                                            ?.latest
+                                                            ?.createdAt ?? "2022-11-21T12:07:55.000000Z")),
                                                 style: body.copyWith(
                                                     fontWeight: bold)),
                                           ],
@@ -171,7 +221,7 @@ class HomeScreen extends StatelessWidget {
                                   child: Container(
                                     height: 180,
                                     width: 170,
-                                    padding: EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                         color: primaryColor,
                                         borderRadius:
@@ -179,7 +229,7 @@ class HomeScreen extends StatelessWidget {
                                     child: Container(
                                       height: 160,
                                       width: 150,
-                                      padding: EdgeInsets.all(10),
+                                      padding: const EdgeInsets.all(10),
                                       decoration: BoxDecoration(
                                           color: whiteColor,
                                           borderRadius:
@@ -218,7 +268,7 @@ class HomeScreen extends StatelessWidget {
                                     child: Container(
                                       height: 180,
                                       width: 170,
-                                      padding: EdgeInsets.all(10),
+                                      padding: const EdgeInsets.all(10),
                                       decoration: BoxDecoration(
                                           color: primaryColor,
                                           borderRadius:
@@ -234,7 +284,7 @@ class HomeScreen extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            Icon(Icons.calendar_month,
+                                            const Icon(Icons.calendar_month,
                                                 color: primaryColor, size: 50),
                                             Text("Jadwal",
                                                 style: heading.copyWith(
@@ -249,26 +299,6 @@ class HomeScreen extends StatelessWidget {
                                             const SizedBox(
                                               height: 10,
                                             ),
-                                            Container(
-                                              padding: EdgeInsets.only(
-                                                  right: 15,
-                                                  left: 15,
-                                                  top: 5,
-                                                  bottom: 5),
-                                              width: 130,
-                                              height: 33,
-                                              decoration: BoxDecoration(
-                                                  color: primaryColor,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20)),
-                                              child: Center(
-                                                child: Text("Belum Diambil",
-                                                    style: tiny.copyWith(
-                                                        color: whiteColor,
-                                                        fontWeight: bold)),
-                                              ),
-                                            )
                                           ],
                                         ),
                                       ),
@@ -281,18 +311,43 @@ class HomeScreen extends StatelessWidget {
                         ),
                       )
                     ]),
-                    Column(
+                    controller.listCarousel.isNotEmpty == true ? Column(
                       children: [
-                        CarouselSlider(
-                          items: controller.image,
+                        CarouselSlider.builder(
+                          itemBuilder: (context, index, realIndex) {
+                            return AspectRatio(
+                              aspectRatio: 16 / 9,
+                              child: Image.network(
+                                controller.listCarousel[index].image ?? "https://",
+                                loadingBuilder: (BuildContext context,
+                                    Widget child,
+                                    ImageChunkEvent? loadingProgress) {
+                                  if (loadingProgress == null) return child;
+                                  return Center(
+                                    child: CircularProgressIndicator(
+                                      color: secondaryColor,
+                                      value:
+                                          loadingProgress.expectedTotalBytes !=
+                                                  null
+                                              ? loadingProgress
+                                                      .cumulativeBytesLoaded /
+                                                  loadingProgress
+                                                      .expectedTotalBytes!
+                                              : null,
+                                    ),
+                                  );
+                                },
+                              ),
+                            );
+                          },
                           options: CarouselOptions(
                               viewportFraction: 0.9,
-                              //autoPlayCurve: Curves.bounceOut,
                               height: 200,
                               autoPlay: true,
                               onPageChanged: (index, reason) {
                                 controller.currentIndex.value = index;
                               }),
+                          itemCount: controller.listCarousel.length,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(20),
@@ -306,7 +361,8 @@ class HomeScreen extends StatelessWidget {
                                       style: heading1.copyWith(
                                           color: blackColor, fontWeight: bold)),
                                   GestureDetector(
-                                    onTap: () => Get.to(EducationScreen()),
+                                    onTap: () =>
+                                        Get.to(const EducationScreen()),
                                     child: Text("Lihat Semua",
                                         style: heading1.copyWith(
                                             color: primaryColor,
@@ -314,161 +370,175 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  children: controller.educationModel?.data
-                                          ?.map((e) => Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  GestureDetector(
-                                                    onTap: () => Get.to(() =>
-                                                        const EducationDetailScreen(), arguments: e),
-                                                    child: Container(
-                                                      width: 180,
-                                                      height: 160,
-                                                      child: Column(
-                                                        children: [
-                                                          Card(
-                                                            elevation: 5,
-                                                            shape: const RoundedRectangleBorder(
-                                                                borderRadius: BorderRadius.only(
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            25),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            25),
-                                                                    bottomLeft:
-                                                                        Radius.circular(
-                                                                            10),
-                                                                    bottomRight:
-                                                                        Radius.circular(
-                                                                            10))),
-                                                            child: Container(
-                                                              height: 30,
-                                                              width: 180,
-                                                              padding: EdgeInsets
-                                                                  .only(
-                                                                      right: 13,
-                                                                      left: 13,
-                                                                      top: 7,
-                                                                      bottom:
-                                                                          7),
-                                                              decoration: const BoxDecoration(
-                                                                  color:
-                                                                      primaryColor,
-                                                                  borderRadius: BorderRadius.only(
-                                                                      topLeft:
-                                                                          Radius.circular(
-                                                                              25),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              25),
-                                                                      bottomLeft:
-                                                                          Radius.circular(
-                                                                              10),
-                                                                      bottomRight:
-                                                                          Radius.circular(
-                                                                              10))),
-                                                              child: Center(
-                                                                child: Text(
-                                                                    e.title ??
-                                                                        "-",
-                                                                    // "Pengelolaan Sampah",
-                                                                    style: tiny.copyWith(
-                                                                        color:
-                                                                            whiteColor,
-                                                                        fontWeight:
-                                                                            medium),
-                                                                    maxLines: 1,
-                                                                    overflow:
-                                                                        TextOverflow
-                                                                            .visible),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Card(
-                                                            elevation: 5,
-                                                            shape: const RoundedRectangleBorder(
-                                                                borderRadius: BorderRadius.only(
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            10),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            10),
-                                                                    bottomLeft:
-                                                                        Radius.circular(
-                                                                            25),
-                                                                    bottomRight:
-                                                                        Radius.circular(
-                                                                            25))),
-                                                            child: Container(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(8),
-                                                              height: 110,
-                                                              width: 180,
-                                                              decoration: const BoxDecoration(
-                                                                  color:
-                                                                      primaryColor,
-                                                                  borderRadius: BorderRadius.only(
-                                                                      topLeft:
-                                                                          Radius.circular(
-                                                                              10),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              10),
-                                                                      bottomLeft:
-                                                                          Radius.circular(
-                                                                              25),
-                                                                      bottomRight:
-                                                                          Radius.circular(
-                                                                              25))),
-                                                              child: ClipRRect(
-                                                                borderRadius: const BorderRadius.only(
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            10),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            10),
-                                                                    bottomLeft:
-                                                                        Radius.circular(
-                                                                            25),
-                                                                    bottomRight:
-                                                                        Radius.circular(
-                                                                            25)),
-                                                                child: Image
-                                                                    .network(
-                                                                  e.image ??
-                                                                      "https://",
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          )
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ))
-                                          .toList() ??
-                                      [],
-                                ),
-                              ),
                             ],
                           ),
                         ),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: controller.educationModel?.data
+                                    ?.map((e) => Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () => Get.to(
+                                                  () =>
+                                                      const EducationDetailScreen(),
+                                                  arguments: e),
+                                              child: SizedBox(
+                                                width: 180,
+                                                height: 160,
+                                                child: Column(
+                                                  children: [
+                                                    Card(
+                                                      elevation: 5,
+                                                      shape: const RoundedRectangleBorder(
+                                                          borderRadius: BorderRadius.only(
+                                                              topLeft: Radius
+                                                                  .circular(25),
+                                                              topRight: Radius
+                                                                  .circular(25),
+                                                              bottomLeft: Radius
+                                                                  .circular(10),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          10))),
+                                                      child: Container(
+                                                        height: 30,
+                                                        width: 180,
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                right: 13,
+                                                                left: 13,
+                                                                top: 7,
+                                                                bottom: 7),
+                                                        decoration: const BoxDecoration(
+                                                            color: primaryColor,
+                                                            borderRadius: BorderRadius.only(
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        25),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        25),
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        10),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        10))),
+                                                        child: Center(
+                                                          child: Text(
+                                                              e.title ?? "-",
+                                                              style: tiny.copyWith(
+                                                                  color:
+                                                                      whiteColor,
+                                                                  fontWeight:
+                                                                      medium),
+                                                              maxLines: 1,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .visible),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Card(
+                                                      elevation: 5,
+                                                      shape: const RoundedRectangleBorder(
+                                                          borderRadius: BorderRadius.only(
+                                                              topLeft: Radius
+                                                                  .circular(10),
+                                                              topRight: Radius
+                                                                  .circular(10),
+                                                              bottomLeft: Radius
+                                                                  .circular(25),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          25))),
+                                                      child: Container(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(8),
+                                                        height: 110,
+                                                        width: 180,
+                                                        decoration: const BoxDecoration(
+                                                            color: primaryColor,
+                                                            borderRadius: BorderRadius.only(
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        10),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        10),
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        25),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        25))),
+                                                        child: ClipRRect(
+                                                          borderRadius: const BorderRadius
+                                                                  .only(
+                                                              topLeft: Radius
+                                                                  .circular(10),
+                                                              topRight: Radius
+                                                                  .circular(10),
+                                                              bottomLeft: Radius
+                                                                  .circular(25),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          25)),
+                                                          child: Image.network(
+                                                              e.image ??
+                                                                  "https://",
+                                                              fit: BoxFit.cover,
+                                                              loadingBuilder:
+                                                                  (BuildContext
+                                                                          context,
+                                                                      Widget
+                                                                          child,
+                                                                      ImageChunkEvent?
+                                                                          loadingProgress) {
+                                                            if (loadingProgress ==
+                                                                null) {
+                                                              return child;
+                                                            }
+                                                            return Center(
+                                                              child:
+                                                                  CircularProgressIndicator(
+                                                                color:
+                                                                    secondaryColor,
+                                                                value: loadingProgress
+                                                                            .expectedTotalBytes !=
+                                                                        null
+                                                                    ? loadingProgress
+                                                                            .cumulativeBytesLoaded /
+                                                                        loadingProgress
+                                                                            .expectedTotalBytes!
+                                                                    : null,
+                                                              ),
+                                                            );
+                                                          }),
+                                                        ),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ))
+                                    .toList() ??
+                                [],
+                          ),
+                        ),
                       ],
-                    ),
+                    ) : const SizedBox.shrink(),
                   ],
                 ),
               ),
