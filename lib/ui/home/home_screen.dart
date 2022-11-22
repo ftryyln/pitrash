@@ -134,7 +134,7 @@ class HomeScreen extends StatelessWidget {
                                               width: 125,
                                               height: 33,
                                               decoration: BoxDecoration(
-                                                  color: redColor,
+                                                  color: controller.transactionModel?.data?.latest?.status?.toLowerCase() == "belum dibayar" ? redColor : primaryColor,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           20)),
@@ -214,7 +214,7 @@ class HomeScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(20)),
                                   child: Container(
                                     height: 180,
-                                    width: 170,
+                                    // width: 170,
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                         color: primaryColor,
@@ -222,7 +222,7 @@ class HomeScreen extends StatelessWidget {
                                             BorderRadius.circular(20)),
                                     child: Container(
                                       height: 160,
-                                      width: 150,
+                                      width: 140,
                                       padding: const EdgeInsets.all(10),
                                       decoration: BoxDecoration(
                                           color: whiteColor,
@@ -261,7 +261,7 @@ class HomeScreen extends StatelessWidget {
                                             BorderRadius.circular(20)),
                                     child: Container(
                                       height: 180,
-                                      width: 170,
+                                      width: 160,
                                       padding: const EdgeInsets.all(10),
                                       decoration: BoxDecoration(
                                           color: primaryColor,
@@ -269,7 +269,8 @@ class HomeScreen extends StatelessWidget {
                                               BorderRadius.circular(20)),
                                       child: Container(
                                         height: 160,
-                                        width: 150,
+                                        // width: 150,
+                                        padding: const EdgeInsets.all(12),
                                         decoration: BoxDecoration(
                                             color: whiteColor,
                                             borderRadius:
@@ -280,12 +281,8 @@ class HomeScreen extends StatelessWidget {
                                           children: [
                                             const Icon(Icons.calendar_month,
                                                 color: primaryColor, size: 50),
-                                            Text("Jadwal",
-                                                style: heading.copyWith(
-                                                    color: primaryColor,
-                                                    fontSize: 18,
-                                                    fontWeight: bold)),
-                                            Text("Pengambilan",
+                                            Text("Jadwal \nPengambilan",
+                                                textAlign: TextAlign.center,
                                                 style: heading.copyWith(
                                                     color: primaryColor,
                                                     fontSize: 18,
@@ -309,32 +306,36 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         CarouselSlider.builder(
                           itemBuilder: (context, index, realIndex) {
-                            return AspectRatio(
-                              aspectRatio: 16 / 9,
-                              child: Image.network(
-                                controller.listCarousel[index].image ?? "https://",
-                                loadingBuilder: (BuildContext context,
-                                    Widget child,
-                                    ImageChunkEvent? loadingProgress) {
-                                  if (loadingProgress == null) return child;
-                                  return Center(
-                                    child: CircularProgressIndicator(
-                                      color: secondaryColor,
-                                      value:
-                                          loadingProgress.expectedTotalBytes !=
-                                                  null
-                                              ? loadingProgress
-                                                      .cumulativeBytesLoaded /
-                                                  loadingProgress
-                                                      .expectedTotalBytes!
-                                              : null,
-                                    ),
-                                  );
-                                },
+                            return Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: AspectRatio(
+                                aspectRatio: 16 / 9,
+                                child: Image.network(
+                                  controller.listCarousel[index].image ?? "https://",
+                                  loadingBuilder: (BuildContext context,
+                                      Widget child,
+                                      ImageChunkEvent? loadingProgress) {
+                                    if (loadingProgress == null) return child;
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        color: secondaryColor,
+                                        value:
+                                            loadingProgress.expectedTotalBytes !=
+                                                    null
+                                                ? loadingProgress
+                                                        .cumulativeBytesLoaded /
+                                                    loadingProgress
+                                                        .expectedTotalBytes!
+                                                : null,
+                                      ),
+                                    );
+                                  },
+                                ),
                               ),
                             );
                           },
                           options: CarouselOptions(
+                              // viewportFraction: 0.9,
                               viewportFraction: 0.9,
                               height: 200,
                               autoPlay: true,

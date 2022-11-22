@@ -78,13 +78,15 @@ class EditProfileScreen extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Nama Lengkap",
-                                      style: body.copyWith(
-                                          color: greyColor,
-                                          fontWeight: medium)),
-                                  SizedBox(
-                                    width: 230,
-                                    height: 40,
+                                  Flexible(
+                                    flex: 3,
+                                    child: Text("Nama",
+                                        style: body.copyWith(
+                                            color: greyColor,
+                                            fontWeight: medium)),
+                                  ),
+                                  Flexible(
+                                    flex: 6,
                                     child: TextFormField(
                                       controller: controller.nameController,
                                     ),
@@ -98,13 +100,15 @@ class EditProfileScreen extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Nomor Ponsel",
-                                      style: body.copyWith(
-                                          color: greyColor,
-                                          fontWeight: medium)),
-                                  SizedBox(
-                                    width: 230,
-                                    height: 50,
+                                  Flexible(
+                                    flex: 3,
+                                    child: Text("Nomor Ponsel",
+                                        style: body.copyWith(
+                                            color: greyColor,
+                                            fontWeight: medium)),
+                                  ),
+                                  Flexible(
+                                    flex: 6,
                                     child: TextFormField(
                                         controller:
                                             controller.phoneNumberController,
@@ -119,13 +123,15 @@ class EditProfileScreen extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Email",
-                                      style: body.copyWith(
-                                          color: greyColor,
-                                          fontWeight: medium)),
-                                  SizedBox(
-                                    width: 230,
-                                    height: 40,
+                                  Flexible(
+                                    flex: 3,
+                                    child: Text("Email",
+                                        style: body.copyWith(
+                                            color: greyColor,
+                                            fontWeight: medium)),
+                                  ),
+                                  Flexible(
+                                    flex: 6,
                                     child: TextFormField(
                                       controller: controller.emailController,
                                     ),
@@ -139,13 +145,15 @@ class EditProfileScreen extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Alamat Lengkap",
-                                      style: body.copyWith(
-                                          color: greyColor,
-                                          fontWeight: medium)),
-                                  SizedBox(
-                                    width: 230,
-                                    height: 100,
+                                  Flexible(
+                                    flex: 3,
+                                    child: Text("Alamat",
+                                        style: body.copyWith(
+                                            color: greyColor,
+                                            fontWeight: medium)),
+                                  ),
+                                  Flexible(
+                                    flex: 6,
                                     child: TextFormField(
                                         controller:
                                             controller.addreessController,
@@ -159,7 +167,7 @@ class EditProfileScreen extends StatelessWidget {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  // controller.postUpdateProfile();
+                                  controller.postUpdateProfile();
                                 },
                                 child: Card(
                                   elevation: 5,
