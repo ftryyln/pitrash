@@ -1,9 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:final_project/base/base_controller.dart';
 import 'package:final_project/data/model/auth/register_model.dart';
-import 'package:final_project/data/storage_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class RegisterController extends BaseController {
   RegisterModel? registerModel;

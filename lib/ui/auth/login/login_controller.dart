@@ -10,12 +10,13 @@ import 'package:get/get.dart';
 class LoginController extends BaseController {
   final storage = StorageCore();
   LoginModel loginModel = LoginModel();
-  final isObscured = false.obs;
   final TextEditingController emailController =
-      TextEditingController(text: 'fit@mail.com');
+      TextEditingController(text: 'boing2@admin.com');
   final TextEditingController passwordController =
       TextEditingController(text: '12345678');
   final formKey = GlobalKey<FormState>();
+
+  bool isObscured = false;
 
   @override
   void onInit() {

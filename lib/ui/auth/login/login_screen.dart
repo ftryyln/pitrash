@@ -47,8 +47,8 @@ class LoginScreen extends StatelessWidget {
                                   autofocus: true,
                                   decoration: InputDecoration(
                                       hintText: "pengguna@mail.com",
-                                      hintStyle:
-                                          heading1.copyWith(color: greyColor.withOpacity(0.6))),
+                                      hintStyle: heading1.copyWith(
+                                          color: greyColor.withOpacity(0.6))),
                                 ),
                               ),
                               const SizedBox(height: 25),
@@ -56,24 +56,24 @@ class LoginScreen extends StatelessWidget {
                                   style: heading1.copyWith(
                                       color: blackColor, fontWeight: semiBold)),
                               SizedBox(
-                                height: 50,
-                                child: TextFormField(
-                                  controller: controller.passwordController,
-                                  obscureText: controller.isObscured.isFalse,
-                                  decoration: InputDecoration(
-                                    suffixIcon: IconButton(
-                                        onPressed: () {
-                                          controller.isObscured.toggle();
-                                        },
-                                        icon: Icon(
-                                          controller.isObscured.isTrue
-                                              ? Icons.visibility_off_rounded
-                                              : Icons.visibility_rounded,
-                                          color: Colors.grey,
-                                        )),
-                                  ),
-                                ),
-                              ),
+                                  height: 50,
+                                  child: TextFormField(
+                                    controller: controller.passwordController,
+                                    obscureText: controller.isObscured,
+                                    decoration: InputDecoration(
+                                        suffixIcon: GestureDetector(
+                                      onTap: () {
+                                        controller.isObscured =
+                                            !controller.isObscured;
+                                        controller.update();
+                                      },
+                                      child: Icon(
+                                        controller.isObscured
+                                            ? Icons.visibility_off_rounded
+                                            : Icons.visibility_rounded,
+                                      ),
+                                    )),
+                                  )),
                               const SizedBox(
                                 height: 35,
                               ),
@@ -87,12 +87,13 @@ class LoginScreen extends StatelessWidget {
                                             true) {
                                           controller.doLogin(
                                               controller.emailController.text,
-                                              controller.passwordController.text);
+                                              controller
+                                                  .passwordController.text);
                                         }
                                       },
                                       child: Text("Masuk",
-                                          style:
-                                              heading.copyWith(fontWeight: bold)),
+                                          style: heading.copyWith(
+                                              fontWeight: bold)),
                                       style: ElevatedButton.styleFrom(
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
@@ -100,7 +101,8 @@ class LoginScreen extends StatelessWidget {
                               SizedBox(
                                 height: 100,
                               ),
-                              Divider(height: 1, color: greyColor, thickness: 1),
+                              Divider(
+                                  height: 1, color: greyColor, thickness: 1),
                               SizedBox(
                                 height: 15,
                               ),
@@ -109,7 +111,8 @@ class LoginScreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       "Belum memiliki akun?",
-                                      style: heading1.copyWith(color: blackColor),
+                                      style:
+                                          heading1.copyWith(color: blackColor),
                                     ),
                                     SizedBox(
                                       width: 10,
