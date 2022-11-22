@@ -143,9 +143,19 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  FutureOr<ScheduleModel> getSchedule() {
-    // TODO: implement getSchedule
-    throw UnimplementedError();
+  FutureOr<ScheduleModel> getSchedule() async {
+    try {
+      var response =
+          await network.dio.get("/schedule/pickup",
+          options: Options(headers: {
+            "content-type": "application/json",
+            "Authorization": "Bearer ${storage.getAccessToken()}"
+          }));
+      return ScheduleModel.fromJson(response.data);
+    } on DioError catch (e) {
+      // throw Exception(e.message);
+      return ScheduleModel.fromJson(e.response?.data);
+    }
   }
 
   @override
@@ -156,7 +166,7 @@ class RepositoryImpl implements Repository {
       var formData = FormData.fromMap({
         "name": name,
         "email": email,
-        "password": password,
+        // "password": password,
         "address": address,
         "phone": phone,
       });

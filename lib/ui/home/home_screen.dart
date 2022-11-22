@@ -238,7 +238,7 @@ class HomeScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(20)),
                                   child: Container(
                                     height: 180,
-                                    width: 170,
+                                    width: 150,
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                         color: primaryColor,
@@ -307,7 +307,7 @@ class HomeScreen extends StatelessWidget {
                                             BorderRadius.circular(20)),
                                     child: Container(
                                       height: 180,
-                                      width: 170,
+                                      width: 150,
                                       padding: const EdgeInsets.all(10),
                                       decoration: BoxDecoration(
                                           color: primaryColor,
@@ -364,8 +364,9 @@ class HomeScreen extends StatelessWidget {
                                       loadingBuilder: (BuildContext context,
                                           Widget child,
                                           ImageChunkEvent? loadingProgress) {
-                                        if (loadingProgress == null)
+                                        if (loadingProgress == null) {
                                           return child;
+                                        }
                                         return Center(
                                           child: CircularProgressIndicator(
                                             color: secondaryColor,

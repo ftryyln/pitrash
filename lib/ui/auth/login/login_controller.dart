@@ -8,10 +8,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 class LoginController extends BaseController {
-  final storage = StorageCore();
   LoginModel loginModel = LoginModel();
   final TextEditingController emailController =
-      TextEditingController(text: 'boing2@admin.com');
+      TextEditingController(text: 'fit@mail.com');
   final TextEditingController passwordController =
       TextEditingController(text: '12345678');
   final formKey = GlobalKey<FormState>();
