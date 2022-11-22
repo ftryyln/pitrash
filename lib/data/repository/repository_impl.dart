@@ -150,22 +150,24 @@ class RepositoryImpl implements Repository {
 
   @override
   FutureOr<EditProfileModel?> postEditProfile(String id, String name,
-      String email, String phone, String password, String address, File image,
+      String email, String phone, String password, String address, File? image,
       String token) async {
     try {
       var formData = FormData.fromMap({
         "name": name,
-        "phone": phone,
         "email": email,
         "password": password,
         "address": address,
+        "phone": phone,
       });
 
-      formData.files.addAll(
-          [MapEntry("image", await MultipartFile.fromFile(image.path))]
-      );
+      if(image != null) {
+        formData.files.addAll(
+            [MapEntry("image", await MultipartFile.fromFile(image.path))]
+        );
+      }
 
-      var response = await network.dio.post("/post/$id",
+      var response = await network.dio.post("/user/edit",
           data: formData,
           options: Options(headers: {
             "Authorization": "Bearer $token",
@@ -173,8 +175,8 @@ class RepositoryImpl implements Repository {
             "Content-Type": "multipart/form-data"
           }));
       return EditProfileModel.fromJson(response.data);
-    } on DioError {
-      return null;
+    } on DioError catch(e) {
+      return EditProfileModel.fromJson(e.response?.data);
     }
   }
 
@@ -191,6 +193,7 @@ class RepositoryImpl implements Repository {
       return HistoryModel.fromJson(e.response?.data);
     }
   }
+
 }
 
 // @override

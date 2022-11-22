@@ -94,9 +94,9 @@ class ProfileScreen extends StatelessWidget {
                               controller.profileModel?.data?.name,
                               controller.profileModel?.data?.email,
                               controller.profileModel?.data?.phone,
-                              controller
-                                  .profileModel?.data?.userDetail?.address,
-                              controller.profileModel?.data?.userDetail?.image
+                              controller.profileModel?.data?.userDetail?.address,
+                              controller.profileModel?.data?.userDetail?.image,
+                              controller.profileModel?.data?.userDetail?.id
                             ])
                           },
                           child: SizedBox(
