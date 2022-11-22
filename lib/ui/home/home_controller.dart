@@ -29,6 +29,7 @@ class HomeController extends BaseController {
 
   DateFormat formatter = DateFormat("yyyy-MM-ddTHH:mm:ss.000000Z");
   DateFormat toFormat = DateFormat("MMMM yyyy");
+  DateFormat pickupFormatter = DateFormat('EEE, MMM dd, yyyy');
   DateFormat toDayFormat = DateFormat("dd");
   DateFormat toMonthFormat = DateFormat("MMMM");
   DateFormat toYearFormat = DateFormat("yyyy");
@@ -49,6 +50,7 @@ class HomeController extends BaseController {
     getProfile();
     getEducation();
     getTransaction();
+    getSchedule();
   }
 
   changeState(HomeViewState s) {

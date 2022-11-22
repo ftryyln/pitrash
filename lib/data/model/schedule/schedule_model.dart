@@ -1,6 +1,6 @@
 import 'dart:convert';
 /// meta : {"code":"200","status":"success","message":"list:"}
-/// data : {"history":[{"id":5,"created_at":"2022-11-22T02:42:45.000000Z","updated_at":null,"user_id":1,"Date":"Tue, Nov 1, 2022","Due_Date":"Fri, Nov 25, 2022","Category":"Pembayaran"},{"id":4,"created_at":"2022-11-22T02:42:10.000000Z","updated_at":null,"user_id":1,"Date":"Sun, Nov 20, 2022","Due_Date":"Sun, Nov 20, 2022","Category":"Pickup"}],"incoming":[{"id":3,"created_at":"2022-11-22T02:41:19.000000Z","updated_at":null,"user_id":1,"Date":"Sun, Dec 4, 2022","Due_Date":"Sun, Dec 4, 2022","Category":"Pickup"},{"id":2,"created_at":"2022-11-22T02:40:57.000000Z","updated_at":null,"user_id":1,"Date":"Sun, Nov 27, 2022","Due_Date":"Sun, Nov 27, 2022","Category":"Pickup"},{"id":1,"created_at":"2022-11-22T02:40:22.000000Z","updated_at":null,"user_id":1,"Date":"Thu, Dec 1, 2022","Due_Date":"Sun, Dec 25, 2022","Category":"Pembayaran"}]}
+/// data : {"history":[{"id":8,"created_at":"2022-11-22T14:44:34.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Sat, Jan 1, 2022","Due_Date":"Sun, Nov 27, 2022","Category":"Pickup"},{"id":6,"created_at":"2022-11-22T14:25:32.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Tue, Nov 22, 2022","Due_Date":"Sun, Nov 27, 2022","Category":"Pickup"},{"id":4,"created_at":"2022-11-22T02:42:10.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Sun, Nov 20, 2022","Due_Date":"Sun, Nov 20, 2022","Category":"Pickup"}],"incoming":[{"id":7,"created_at":"2022-11-22T14:26:23.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Mon, Nov 28, 2022","Due_Date":"Sun, Nov 27, 2022","Category":"Pickup"},{"id":3,"created_at":"2022-11-22T02:41:19.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Sun, Dec 4, 2022","Due_Date":"Sun, Dec 4, 2022","Category":"Pickup"},{"id":2,"created_at":"2022-11-22T02:40:57.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Sun, Nov 27, 2022","Due_Date":"Sun, Nov 27, 2022","Category":"Pickup"}]}
 
 ScheduleModel scheduleModelFromJson(String str) => ScheduleModel.fromJson(json.decode(str));
 String scheduleModelToJson(ScheduleModel data) => json.encode(data.toJson());
@@ -39,8 +39,8 @@ ScheduleModel copyWith({  Meta? meta,
 
 }
 
-/// history : [{"id":5,"created_at":"2022-11-22T02:42:45.000000Z","updated_at":null,"user_id":1,"Date":"Tue, Nov 1, 2022","Due_Date":"Fri, Nov 25, 2022","Category":"Pembayaran"},{"id":4,"created_at":"2022-11-22T02:42:10.000000Z","updated_at":null,"user_id":1,"Date":"Sun, Nov 20, 2022","Due_Date":"Sun, Nov 20, 2022","Category":"Pickup"}]
-/// incoming : [{"id":3,"created_at":"2022-11-22T02:41:19.000000Z","updated_at":null,"user_id":1,"Date":"Sun, Dec 4, 2022","Due_Date":"Sun, Dec 4, 2022","Category":"Pickup"},{"id":2,"created_at":"2022-11-22T02:40:57.000000Z","updated_at":null,"user_id":1,"Date":"Sun, Nov 27, 2022","Due_Date":"Sun, Nov 27, 2022","Category":"Pickup"},{"id":1,"created_at":"2022-11-22T02:40:22.000000Z","updated_at":null,"user_id":1,"Date":"Thu, Dec 1, 2022","Due_Date":"Sun, Dec 25, 2022","Category":"Pembayaran"}]
+/// history : [{"id":8,"created_at":"2022-11-22T14:44:34.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Sat, Jan 1, 2022","Due_Date":"Sun, Nov 27, 2022","Category":"Pickup"},{"id":6,"created_at":"2022-11-22T14:25:32.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Tue, Nov 22, 2022","Due_Date":"Sun, Nov 27, 2022","Category":"Pickup"},{"id":4,"created_at":"2022-11-22T02:42:10.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Sun, Nov 20, 2022","Due_Date":"Sun, Nov 20, 2022","Category":"Pickup"}]
+/// incoming : [{"id":7,"created_at":"2022-11-22T14:26:23.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Mon, Nov 28, 2022","Due_Date":"Sun, Nov 27, 2022","Category":"Pickup"},{"id":3,"created_at":"2022-11-22T02:41:19.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Sun, Dec 4, 2022","Due_Date":"Sun, Dec 4, 2022","Category":"Pickup"},{"id":2,"created_at":"2022-11-22T02:40:57.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Sun, Nov 27, 2022","Due_Date":"Sun, Nov 27, 2022","Category":"Pickup"}]
 
 Data dataFromJson(String str) => Data.fromJson(json.decode(str));
 String dataToJson(Data data) => json.encode(data.toJson());
@@ -89,12 +89,12 @@ Data copyWith({  List<History>? history,
 
 }
 
-/// id : 3
-/// created_at : "2022-11-22T02:41:19.000000Z"
+/// id : 7
+/// created_at : "2022-11-22T14:26:23.000000Z"
 /// updated_at : null
 /// user_id : 1
-/// Date : "Sun, Dec 4, 2022"
-/// Due_Date : "Sun, Dec 4, 2022"
+/// Begin_Date : "Mon, Nov 28, 2022"
+/// Due_Date : "Sun, Nov 27, 2022"
 /// Category : "Pickup"
 
 Incoming incomingFromJson(String str) => Incoming.fromJson(json.decode(str));
@@ -105,14 +105,14 @@ class Incoming {
       String? createdAt, 
       dynamic updatedAt, 
       int? userId, 
-      String? date, 
+      String? beginDate, 
       String? dueDate, 
       String? category,}){
     _id = id;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
     _userId = userId;
-    _date = date;
+    _beginDate = beginDate;
     _dueDate = dueDate;
     _category = category;
 }
@@ -122,7 +122,7 @@ class Incoming {
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
     _userId = json['user_id'];
-    _date = json['Date'];
+    _beginDate = json['Begin_Date'];
     _dueDate = json['Due_Date'];
     _category = json['Category'];
   }
@@ -130,21 +130,21 @@ class Incoming {
   String? _createdAt;
   dynamic _updatedAt;
   int? _userId;
-  String? _date;
+  String? _beginDate;
   String? _dueDate;
   String? _category;
 Incoming copyWith({  int? id,
   String? createdAt,
   dynamic updatedAt,
   int? userId,
-  String? date,
+  String? beginDate,
   String? dueDate,
   String? category,
 }) => Incoming(  id: id ?? _id,
   createdAt: createdAt ?? _createdAt,
   updatedAt: updatedAt ?? _updatedAt,
   userId: userId ?? _userId,
-  date: date ?? _date,
+  beginDate: beginDate ?? _beginDate,
   dueDate: dueDate ?? _dueDate,
   category: category ?? _category,
 );
@@ -152,7 +152,7 @@ Incoming copyWith({  int? id,
   String? get createdAt => _createdAt;
   dynamic get updatedAt => _updatedAt;
   int? get userId => _userId;
-  String? get date => _date;
+  String? get beginDate => _beginDate;
   String? get dueDate => _dueDate;
   String? get category => _category;
 
@@ -162,7 +162,7 @@ Incoming copyWith({  int? id,
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
     map['user_id'] = _userId;
-    map['Date'] = _date;
+    map['Begin_Date'] = _beginDate;
     map['Due_Date'] = _dueDate;
     map['Category'] = _category;
     return map;
@@ -170,13 +170,13 @@ Incoming copyWith({  int? id,
 
 }
 
-/// id : 5
-/// created_at : "2022-11-22T02:42:45.000000Z"
+/// id : 8
+/// created_at : "2022-11-22T14:44:34.000000Z"
 /// updated_at : null
 /// user_id : 1
-/// Date : "Tue, Nov 1, 2022"
-/// Due_Date : "Fri, Nov 25, 2022"
-/// Category : "Pembayaran"
+/// Begin_Date : "Sat, Jan 1, 2022"
+/// Due_Date : "Sun, Nov 27, 2022"
+/// Category : "Pickup"
 
 History historyFromJson(String str) => History.fromJson(json.decode(str));
 String historyToJson(History data) => json.encode(data.toJson());
@@ -186,14 +186,14 @@ class History {
       String? createdAt, 
       dynamic updatedAt, 
       int? userId, 
-      String? date, 
+      String? beginDate, 
       String? dueDate, 
       String? category,}){
     _id = id;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
     _userId = userId;
-    _date = date;
+    _beginDate = beginDate;
     _dueDate = dueDate;
     _category = category;
 }
@@ -203,7 +203,7 @@ class History {
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
     _userId = json['user_id'];
-    _date = json['Date'];
+    _beginDate = json['Begin_Date'];
     _dueDate = json['Due_Date'];
     _category = json['Category'];
   }
@@ -211,21 +211,21 @@ class History {
   String? _createdAt;
   dynamic _updatedAt;
   int? _userId;
-  String? _date;
+  String? _beginDate;
   String? _dueDate;
   String? _category;
 History copyWith({  int? id,
   String? createdAt,
   dynamic updatedAt,
   int? userId,
-  String? date,
+  String? beginDate,
   String? dueDate,
   String? category,
 }) => History(  id: id ?? _id,
   createdAt: createdAt ?? _createdAt,
   updatedAt: updatedAt ?? _updatedAt,
   userId: userId ?? _userId,
-  date: date ?? _date,
+  beginDate: beginDate ?? _beginDate,
   dueDate: dueDate ?? _dueDate,
   category: category ?? _category,
 );
@@ -233,7 +233,7 @@ History copyWith({  int? id,
   String? get createdAt => _createdAt;
   dynamic get updatedAt => _updatedAt;
   int? get userId => _userId;
-  String? get date => _date;
+  String? get beginDate => _beginDate;
   String? get dueDate => _dueDate;
   String? get category => _category;
 
@@ -243,7 +243,7 @@ History copyWith({  int? id,
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
     map['user_id'] = _userId;
-    map['Date'] = _date;
+    map['Begin_Date'] = _beginDate;
     map['Due_Date'] = _dueDate;
     map['Category'] = _category;
     return map;

@@ -98,109 +98,133 @@ class HomeScreen extends StatelessWidget {
                             const SizedBox(
                               height: 20,
                             ),
-                            controller.transactionModel != null ? GestureDetector(
-                              onTap: () =>
-                                  {Get.to(() => const PaymentScreen())},
-                              child: Card(
-                                elevation: 5,
-                                shadowColor: primaryColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: SizedBox(
-                                  width: Get.width,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 10, left: 10, right: 10),
-                                        child: Row(
+                            controller.transactionModel != null
+                                ? GestureDetector(
+                                    onTap: () =>
+                                        {Get.to(() => const PaymentScreen())},
+                                    child: Card(
+                                      elevation: 5,
+                                      shadowColor: primaryColor,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      child: SizedBox(
+                                        width: Get.width,
+                                        child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text("Total Tagihan Anda",
-                                                style: heading1.copyWith(
-                                                    color: greyColor,
-                                                    fontWeight: bold)),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 10, left: 10, right: 10),
+                                              child: Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text("Total Tagihan Anda",
+                                                      style: heading1.copyWith(
+                                                          color: greyColor,
+                                                          fontWeight: bold)),
+                                                  Container(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            right: 7,
+                                                            left: 7,
+                                                            top: 5,
+                                                            bottom: 5),
+                                                    width: 125,
+                                                    height: 33,
+                                                    decoration: BoxDecoration(
+                                                        color: redColor,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20)),
+                                                    child: Center(
+                                                      child: Text(
+                                                          controller
+                                                                  .transactionModel
+                                                                  ?.data
+                                                                  ?.latest
+                                                                  ?.status ??
+                                                              "-",
+                                                          style: tiny.copyWith(
+                                                              color: whiteColor,
+                                                              fontWeight:
+                                                                  bold)),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10),
+                                              child: Text(
+                                                  controller.numberFormat
+                                                      .format(int.parse(
+                                                          controller
+                                                              .transactionModel!
+                                                              .data!
+                                                              .latest!
+                                                              .price!
+                                                              .split('.')
+                                                              .first)),
+                                                  style: title.copyWith(
+                                                      color: blackColor,
+                                                      fontWeight: bold)),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
                                             Container(
                                               padding: const EdgeInsets.only(
-                                                  right: 7,
-                                                  left: 7,
-                                                  top: 5,
-                                                  bottom: 5),
-                                              width: 125,
-                                              height: 33,
-                                              decoration: BoxDecoration(
-                                                  color: redColor,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20)),
-                                              child: Center(
-                                                child: Text(
-                                                    controller.transactionModel?.data?.latest?.status ?? "-",
-                                                    style: tiny.copyWith(
-                                                        color: whiteColor,
-                                                        fontWeight: bold)),
+                                                  left: 10, right: 10),
+                                              height: 40,
+                                              width: 400,
+                                              decoration: const BoxDecoration(
+                                                borderRadius: BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(20),
+                                                    bottomRight:
+                                                        Radius.circular(20)),
+                                                color: primaryColor,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text("Tagihan Berikutnya",
+                                                      style: body.copyWith(
+                                                          fontWeight: bold)),
+                                                  const SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  Text(
+                                                      controller.toFormat.format(controller
+                                                          .formatter
+                                                          .parse(controller
+                                                                  .transactionModel
+                                                                  ?.data
+                                                                  ?.latest
+                                                                  ?.createdAt ??
+                                                              "2022-11-21T12:07:55.000000Z")),
+                                                      style: body.copyWith(
+                                                          fontWeight: bold)),
+                                                ],
                                               ),
                                             )
                                           ],
                                         ),
                                       ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 10),
-                                        child: Text(
-                                            controller.numberFormat.format(int.parse(controller.transactionModel!.data!
-                                                .latest!.price!.split('.').first)),
-                                            style: title.copyWith(
-                                                color: blackColor,
-                                                fontWeight: bold)),
-                                      ),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.only(
-                                            left: 10, right: 10),
-                                        height: 40,
-                                        width: 400,
-                                        decoration: const BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                              bottomLeft: Radius.circular(20),
-                                              bottomRight: Radius.circular(20)),
-                                          color: primaryColor,
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text("Tagihan Berikutnya",
-                                                style: body.copyWith(
-                                                    fontWeight: bold)),
-                                            const SizedBox(
-                                              height: 10,
-                                            ),
-                                            Text(
-                                                controller.toFormat.format(
-                                                    controller.formatter.parse(
-                                                        controller
-                                                            .transactionModel
-                                                            ?.data
-                                                            ?.latest
-                                                            ?.createdAt ?? "2022-11-21T12:07:55.000000Z")),
-                                                style: body.copyWith(
-                                                    fontWeight: bold)),
-                                          ],
-                                        ),
-                                      )
-                                    ],
+                                    ),
+                                  )
+                                : const Center(
+                                    child: CircularProgressIndicator.adaptive(),
                                   ),
-                                ),
-                              ),
-                            ) : const Center(child: CircularProgressIndicator.adaptive(),),
                             const SizedBox(
                               height: 20,
                             ),
@@ -230,17 +254,39 @@ class HomeScreen extends StatelessWidget {
                                               BorderRadius.circular(20)),
                                       child: Column(
                                         children: [
-                                          Text("04",
+                                          Text(
+                                              controller.toDayFormat.format(
+                                                  controller.pickupFormatter.parse(
+                                                      controller
+                                                              .scheduleModel
+                                                              ?.data
+                                                              ?.incoming?.last
+                                                              .beginDate ??
+                                                          "Mon, Nov 28, 2022")),
                                               style: title.copyWith(
                                                   color: secondaryColor,
                                                   fontSize: 60,
                                                   fontWeight: bold)),
-                                          Text("Desember",
+                                          Text(controller.toMonthFormat.format(
+                                            controller.pickupFormatter.parse(
+                                                controller
+                                                    .scheduleModel
+                                                    ?.data
+                                                    ?.incoming?.last
+                                                    .beginDate ??
+                                                    "Mon, Nov 28, 2022")),
                                               style: heading.copyWith(
                                                   color: primaryColor,
                                                   fontSize: 16,
                                                   fontWeight: medium)),
-                                          Text("2022",
+                                          Text(controller.toYearFormat.format(
+                                              controller.pickupFormatter.parse(
+                                                  controller
+                                                      .scheduleModel
+                                                      ?.data
+                                                      ?.incoming?.last
+                                                      .beginDate ??
+                                                      "Mon, Nov 28, 2022")),
                                               style: title.copyWith(
                                                   color: primaryColor,
                                                   fontSize: 30,
@@ -305,237 +351,255 @@ class HomeScreen extends StatelessWidget {
                         ),
                       )
                     ]),
-                    controller.listCarousel.isNotEmpty == true ? Column(
-                      children: [
-                        CarouselSlider.builder(
-                          itemBuilder: (context, index, realIndex) {
-                            return AspectRatio(
-                              aspectRatio: 16 / 9,
-                              child: Image.network(
-                                controller.listCarousel[index].image ?? "https://",
-                                loadingBuilder: (BuildContext context,
-                                    Widget child,
-                                    ImageChunkEvent? loadingProgress) {
-                                  if (loadingProgress == null) return child;
-                                  return Center(
-                                    child: CircularProgressIndicator(
-                                      color: secondaryColor,
-                                      value:
-                                          loadingProgress.expectedTotalBytes !=
-                                                  null
-                                              ? loadingProgress
-                                                      .cumulativeBytesLoaded /
-                                                  loadingProgress
-                                                      .expectedTotalBytes!
-                                              : null,
+                    controller.listCarousel.isNotEmpty == true
+                        ? Column(
+                            children: [
+                              CarouselSlider.builder(
+                                itemBuilder: (context, index, realIndex) {
+                                  return AspectRatio(
+                                    aspectRatio: 16 / 9,
+                                    child: Image.network(
+                                      controller.listCarousel[index].image ??
+                                          "https://",
+                                      loadingBuilder: (BuildContext context,
+                                          Widget child,
+                                          ImageChunkEvent? loadingProgress) {
+                                        if (loadingProgress == null)
+                                          return child;
+                                        return Center(
+                                          child: CircularProgressIndicator(
+                                            color: secondaryColor,
+                                            value: loadingProgress
+                                                        .expectedTotalBytes !=
+                                                    null
+                                                ? loadingProgress
+                                                        .cumulativeBytesLoaded /
+                                                    loadingProgress
+                                                        .expectedTotalBytes!
+                                                : null,
+                                          ),
+                                        );
+                                      },
                                     ),
                                   );
                                 },
+                                options: CarouselOptions(
+                                    viewportFraction: 0.9,
+                                    height: 200,
+                                    autoPlay: true,
+                                    onPageChanged: (index, reason) {
+                                      controller.currentIndex.value = index;
+                                    }),
+                                itemCount: controller.listCarousel.length,
                               ),
-                            );
-                          },
-                          options: CarouselOptions(
-                              viewportFraction: 0.9,
-                              height: 200,
-                              autoPlay: true,
-                              onPageChanged: (index, reason) {
-                                controller.currentIndex.value = index;
-                              }),
-                          itemCount: controller.listCarousel.length,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text("Pengetahuan",
-                                      style: heading1.copyWith(
-                                          color: blackColor, fontWeight: bold)),
-                                  GestureDetector(
-                                    onTap: () =>
-                                        Get.to(const EducationScreen()),
-                                    child: Text("Lihat Semua",
-                                        style: heading1.copyWith(
-                                            color: primaryColor,
-                                            fontWeight: bold)),
-                                  ),
-                                ],
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 20, left: 20, top: 20),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text("Pengetahuan",
+                                            style: heading1.copyWith(
+                                                color: blackColor,
+                                                fontWeight: bold)),
+                                        GestureDetector(
+                                          onTap: () =>
+                                              Get.to(const EducationScreen()),
+                                          child: Text("Lihat Semua",
+                                              style: heading1.copyWith(
+                                                  color: primaryColor,
+                                                  fontWeight: bold)),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ],
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: controller.educationModel?.data
-                                    ?.map((e) => Padding(
-                                      padding: const EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 20),
-                                      child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              GestureDetector(
-                                                onTap: () => Get.to(
-                                                    () =>
-                                                        const EducationDetailScreen(),
-                                                    arguments: e),
-                                                child: SizedBox(
-                                                  width: 180,
-                                                  height: 160,
-                                                  child: Column(
-                                                    children: [
-                                                      Card(
-                                                        elevation: 5,
-                                                        shape: const RoundedRectangleBorder(
-                                                            borderRadius: BorderRadius.only(
-                                                                topLeft: Radius
-                                                                    .circular(25),
-                                                                topRight: Radius
-                                                                    .circular(25),
-                                                                bottomLeft: Radius
-                                                                    .circular(10),
-                                                                bottomRight:
-                                                                    Radius
-                                                                        .circular(
-                                                                            10))),
-                                                        child: Container(
-                                                          height: 30,
-                                                          width: 180,
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  right: 13,
-                                                                  left: 13,
-                                                                  top: 7,
-                                                                  bottom: 7),
-                                                          decoration: const BoxDecoration(
-                                                              color: primaryColor,
-                                                              borderRadius: BorderRadius.only(
-                                                                  topLeft: Radius
-                                                                      .circular(
-                                                                          25),
-                                                                  topRight: Radius
-                                                                      .circular(
-                                                                          25),
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10))),
-                                                          child: Center(
-                                                            child: Text(
-                                                                e.title ?? "-",
-                                                                style: tiny.copyWith(
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: controller.educationModel?.data
+                                          ?.map((e) => Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 8,
+                                                    right: 8,
+                                                    top: 8,
+                                                    bottom: 20),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    GestureDetector(
+                                                      onTap: () => Get.to(
+                                                          () =>
+                                                              const EducationDetailScreen(),
+                                                          arguments: e),
+                                                      child: SizedBox(
+                                                        width: 180,
+                                                        height: 160,
+                                                        child: Column(
+                                                          children: [
+                                                            Card(
+                                                              elevation: 5,
+                                                              shape: const RoundedRectangleBorder(
+                                                                  borderRadius: BorderRadius.only(
+                                                                      topLeft:
+                                                                          Radius.circular(
+                                                                              25),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              25),
+                                                                      bottomLeft:
+                                                                          Radius.circular(
+                                                                              10),
+                                                                      bottomRight:
+                                                                          Radius.circular(
+                                                                              10))),
+                                                              child: Container(
+                                                                height: 30,
+                                                                width: 180,
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .only(
+                                                                        right:
+                                                                            13,
+                                                                        left:
+                                                                            13,
+                                                                        top: 7,
+                                                                        bottom:
+                                                                            7),
+                                                                decoration: const BoxDecoration(
                                                                     color:
-                                                                        whiteColor,
-                                                                    fontWeight:
-                                                                        medium),
-                                                                maxLines: 1,
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .visible),
-                                                          ),
+                                                                        primaryColor,
+                                                                    borderRadius: BorderRadius.only(
+                                                                        topLeft:
+                                                                            Radius.circular(
+                                                                                25),
+                                                                        topRight:
+                                                                            Radius.circular(
+                                                                                25),
+                                                                        bottomLeft:
+                                                                            Radius.circular(
+                                                                                10),
+                                                                        bottomRight:
+                                                                            Radius.circular(10))),
+                                                                child: Center(
+                                                                  child: Text(
+                                                                      e.title ??
+                                                                          "-",
+                                                                      style: tiny.copyWith(
+                                                                          color:
+                                                                              whiteColor,
+                                                                          fontWeight:
+                                                                              medium),
+                                                                      maxLines:
+                                                                          1,
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .visible),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Card(
+                                                              elevation: 5,
+                                                              shape: const RoundedRectangleBorder(
+                                                                  borderRadius: BorderRadius.only(
+                                                                      topLeft:
+                                                                          Radius.circular(
+                                                                              10),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              10),
+                                                                      bottomLeft:
+                                                                          Radius.circular(
+                                                                              25),
+                                                                      bottomRight:
+                                                                          Radius.circular(
+                                                                              25))),
+                                                              child: Container(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                        .all(8),
+                                                                height: 110,
+                                                                width: 180,
+                                                                decoration: const BoxDecoration(
+                                                                    color:
+                                                                        primaryColor,
+                                                                    borderRadius: BorderRadius.only(
+                                                                        topLeft:
+                                                                            Radius.circular(
+                                                                                10),
+                                                                        topRight:
+                                                                            Radius.circular(
+                                                                                10),
+                                                                        bottomLeft:
+                                                                            Radius.circular(
+                                                                                25),
+                                                                        bottomRight:
+                                                                            Radius.circular(25))),
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius: const BorderRadius
+                                                                          .only(
+                                                                      topLeft:
+                                                                          Radius.circular(
+                                                                              10),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              10),
+                                                                      bottomLeft:
+                                                                          Radius.circular(
+                                                                              25),
+                                                                      bottomRight:
+                                                                          Radius.circular(
+                                                                              25)),
+                                                                  child: Image.network(
+                                                                      e.image ??
+                                                                          "https://",
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                      loadingBuilder: (BuildContext context,
+                                                                          Widget
+                                                                              child,
+                                                                          ImageChunkEvent?
+                                                                              loadingProgress) {
+                                                                    if (loadingProgress ==
+                                                                        null) {
+                                                                      return child;
+                                                                    }
+                                                                    return Center(
+                                                                      child:
+                                                                          CircularProgressIndicator(
+                                                                        color:
+                                                                            secondaryColor,
+                                                                        value: loadingProgress.expectedTotalBytes !=
+                                                                                null
+                                                                            ? loadingProgress.cumulativeBytesLoaded /
+                                                                                loadingProgress.expectedTotalBytes!
+                                                                            : null,
+                                                                      ),
+                                                                    );
+                                                                  }),
+                                                                ),
+                                                              ),
+                                                            )
+                                                          ],
                                                         ),
                                                       ),
-                                                      Card(
-                                                        elevation: 5,
-                                                        shape: const RoundedRectangleBorder(
-                                                            borderRadius: BorderRadius.only(
-                                                                topLeft: Radius
-                                                                    .circular(10),
-                                                                topRight: Radius
-                                                                    .circular(10),
-                                                                bottomLeft: Radius
-                                                                    .circular(25),
-                                                                bottomRight:
-                                                                    Radius
-                                                                        .circular(
-                                                                            25))),
-                                                        child: Container(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8),
-                                                          height: 110,
-                                                          width: 180,
-                                                          decoration: const BoxDecoration(
-                                                              color: primaryColor,
-                                                              borderRadius: BorderRadius.only(
-                                                                  topLeft: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                  topRight: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          25),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          25))),
-                                                          child: ClipRRect(
-                                                            borderRadius: const BorderRadius
-                                                                    .only(
-                                                                topLeft: Radius
-                                                                    .circular(10),
-                                                                topRight: Radius
-                                                                    .circular(10),
-                                                                bottomLeft: Radius
-                                                                    .circular(25),
-                                                                bottomRight:
-                                                                    Radius
-                                                                        .circular(
-                                                                            25)),
-                                                            child: Image.network(
-                                                                e.image ??
-                                                                    "https://",
-                                                                fit: BoxFit.cover,
-                                                                loadingBuilder:
-                                                                    (BuildContext
-                                                                            context,
-                                                                        Widget
-                                                                            child,
-                                                                        ImageChunkEvent?
-                                                                            loadingProgress) {
-                                                              if (loadingProgress ==
-                                                                  null) {
-                                                                return child;
-                                                              }
-                                                              return Center(
-                                                                child:
-                                                                    CircularProgressIndicator(
-                                                                  color:
-                                                                      secondaryColor,
-                                                                  value: loadingProgress
-                                                                              .expectedTotalBytes !=
-                                                                          null
-                                                                      ? loadingProgress
-                                                                              .cumulativeBytesLoaded /
-                                                                          loadingProgress
-                                                                              .expectedTotalBytes!
-                                                                      : null,
-                                                                ),
-                                                              );
-                                                            }),
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                    ))
-                                    .toList() ??
-                                [],
-                          ),
-                        ),
-                      ],
-                    ) : const SizedBox.shrink()
+                                              ))
+                                          .toList() ??
+                                      [],
+                                ),
+                              ),
+                            ],
+                          )
+                        : const SizedBox.shrink()
                   ],
                 ),
               ),
