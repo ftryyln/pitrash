@@ -9,7 +9,8 @@ import 'package:final_project/data/model/education/education_model.dart';
 import 'package:final_project/data/model/notification/list_notif_model.dart';
 import 'package:final_project/data/model/profile/edit_profile_model.dart';
 import 'package:final_project/data/model/profile/profile_model.dart';
-import 'package:final_project/data/model/schedule/schedule_pickup_model.dart';
+import 'package:final_project/data/model/schedule/schedule_model.dart';
+import 'package:final_project/data/model/transaction/history_model.dart';
 import 'package:final_project/data/model/transaction/transaction_model.dart';
 import 'package:final_project/data/network_core.dart';
 import 'package:final_project/data/repository/repository.dart';
@@ -67,7 +68,7 @@ class RepositoryImpl implements Repository {
   @override
   FutureOr<TransactionModel> getTransaction() async {
     try {
-      var response = await network.dio.get("/transaction",
+      var response = await network.dio.get("/transaction/user",
           options: Options(headers: {
             "Accept": "application/json",
             "Authorization": "Bearer ${storage.getAccessToken()}"
@@ -97,7 +98,7 @@ class RepositoryImpl implements Repository {
   FutureOr<EducationModel> getEducation() async {
     try {
       var response =
-      await network.dio.get("/education",
+      await network.dio.get("/education/",
           options: Options(headers: {
             "Accept": "application/json",
             "Authorization": "Bearer ${storage.getAccessToken()}"
@@ -142,7 +143,7 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  FutureOr<SchedulePickupModel> getSchedule() {
+  FutureOr<ScheduleModel> getSchedule() {
     // TODO: implement getSchedule
     throw UnimplementedError();
   }
@@ -174,6 +175,20 @@ class RepositoryImpl implements Repository {
       return EditProfileModel.fromJson(response.data);
     } on DioError {
       return null;
+    }
+  }
+
+  @override
+  FutureOr<HistoryModel> getHistory() async {
+    try {
+      var response = await network.dio.get("/transaction/user",
+          options: Options(headers: {
+            "Accept": "application/json",
+            "Authorization": "Bearer ${storage.getAccessToken()}"
+          }));
+      return HistoryModel.fromJson(response.data);
+    } on DioError catch (e) {
+      return HistoryModel.fromJson(e.response?.data);
     }
   }
 }

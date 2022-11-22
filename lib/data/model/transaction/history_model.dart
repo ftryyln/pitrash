@@ -1,6 +1,6 @@
 import 'dart:convert';
 /// meta : {"code":"200","status":"success","message":"list:"}
-/// data : {"history":[{"id":1,"created_at":"2022-11-21T12:07:54.000000Z","updated_at":"2022-11-21T15:19:10.000000Z","user_id":1,"price":"15000.00","image":"http://pitrash.masuk.web.id/public/images/transaction/202211212219101.jpg","status":"Sudah Dibayar"}],"latest":null}
+/// data : {"history":[{"id":5,"created_at":"2022-11-22T14:17:17.000000Z","updated_at":"2022-11-22T14:35:44.000000Z","user_id":5,"price":"15000.00","image":"http://pitrash.masuk.web.id/images/transaction/202211222135445.jpg","status":"Sudah Dibayar"}],"latest":{"id":10,"created_at":"2022-11-22T14:36:59.000000Z","updated_at":"2022-11-22T14:36:59.000000Z","user_id":5,"price":"15000.00","image":null,"status":"Belum Dibayar"}}
 
 HistoryModel historyModelFromJson(String str) => HistoryModel.fromJson(json.decode(str));
 String historyModelToJson(HistoryModel data) => json.encode(data.toJson());
@@ -39,15 +39,15 @@ HistoryModel copyWith({  Meta? meta,
 
 }
 
-/// history : [{"id":1,"created_at":"2022-11-21T12:07:54.000000Z","updated_at":"2022-11-21T15:19:10.000000Z","user_id":1,"price":"15000.00","image":"http://pitrash.masuk.web.id/public/images/transaction/202211212219101.jpg","status":"Sudah Dibayar"}]
-/// latest : null
+/// history : [{"id":5,"created_at":"2022-11-22T14:17:17.000000Z","updated_at":"2022-11-22T14:35:44.000000Z","user_id":5,"price":"15000.00","image":"http://pitrash.masuk.web.id/images/transaction/202211222135445.jpg","status":"Sudah Dibayar"}]
+/// latest : {"id":10,"created_at":"2022-11-22T14:36:59.000000Z","updated_at":"2022-11-22T14:36:59.000000Z","user_id":5,"price":"15000.00","image":null,"status":"Belum Dibayar"}
 
 Data dataFromJson(String str) => Data.fromJson(json.decode(str));
 String dataToJson(Data data) => json.encode(data.toJson());
 class Data {
   Data({
       List<History>? history, 
-      dynamic latest,}){
+      Latest? latest,}){
     _history = history;
     _latest = latest;
 }
@@ -59,35 +59,118 @@ class Data {
         _history?.add(History.fromJson(v));
       });
     }
-    _latest = json['latest'];
+    _latest = json['latest'] != null ? Latest.fromJson(json['latest']) : null;
   }
   List<History>? _history;
-  dynamic _latest;
+  Latest? _latest;
 Data copyWith({  List<History>? history,
-  dynamic latest,
+  Latest? latest,
 }) => Data(  history: history ?? _history,
   latest: latest ?? _latest,
 );
   List<History>? get history => _history;
-  dynamic get latest => _latest;
+  Latest? get latest => _latest;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     if (_history != null) {
       map['history'] = _history?.map((v) => v.toJson()).toList();
     }
-    map['latest'] = _latest;
+    if (_latest != null) {
+      map['latest'] = _latest?.toJson();
+    }
     return map;
   }
 
 }
 
-/// id : 1
-/// created_at : "2022-11-21T12:07:54.000000Z"
-/// updated_at : "2022-11-21T15:19:10.000000Z"
-/// user_id : 1
+/// id : 10
+/// created_at : "2022-11-22T14:36:59.000000Z"
+/// updated_at : "2022-11-22T14:36:59.000000Z"
+/// user_id : 5
 /// price : "15000.00"
-/// image : "http://pitrash.masuk.web.id/public/images/transaction/202211212219101.jpg"
+/// image : null
+/// status : "Belum Dibayar"
+
+Latest latestFromJson(String str) => Latest.fromJson(json.decode(str));
+String latestToJson(Latest data) => json.encode(data.toJson());
+class Latest {
+  Latest({
+      int? id, 
+      String? createdAt, 
+      String? updatedAt, 
+      int? userId, 
+      String? price, 
+      dynamic image, 
+      String? status,}){
+    _id = id;
+    _createdAt = createdAt;
+    _updatedAt = updatedAt;
+    _userId = userId;
+    _price = price;
+    _image = image;
+    _status = status;
+}
+
+  Latest.fromJson(dynamic json) {
+    _id = json['id'];
+    _createdAt = json['created_at'];
+    _updatedAt = json['updated_at'];
+    _userId = json['user_id'];
+    _price = json['price'];
+    _image = json['image'];
+    _status = json['status'];
+  }
+  int? _id;
+  String? _createdAt;
+  String? _updatedAt;
+  int? _userId;
+  String? _price;
+  dynamic _image;
+  String? _status;
+Latest copyWith({  int? id,
+  String? createdAt,
+  String? updatedAt,
+  int? userId,
+  String? price,
+  dynamic image,
+  String? status,
+}) => Latest(  id: id ?? _id,
+  createdAt: createdAt ?? _createdAt,
+  updatedAt: updatedAt ?? _updatedAt,
+  userId: userId ?? _userId,
+  price: price ?? _price,
+  image: image ?? _image,
+  status: status ?? _status,
+);
+  int? get id => _id;
+  String? get createdAt => _createdAt;
+  String? get updatedAt => _updatedAt;
+  int? get userId => _userId;
+  String? get price => _price;
+  dynamic get image => _image;
+  String? get status => _status;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['id'] = _id;
+    map['created_at'] = _createdAt;
+    map['updated_at'] = _updatedAt;
+    map['user_id'] = _userId;
+    map['price'] = _price;
+    map['image'] = _image;
+    map['status'] = _status;
+    return map;
+  }
+
+}
+
+/// id : 5
+/// created_at : "2022-11-22T14:17:17.000000Z"
+/// updated_at : "2022-11-22T14:35:44.000000Z"
+/// user_id : 5
+/// price : "15000.00"
+/// image : "http://pitrash.masuk.web.id/images/transaction/202211222135445.jpg"
 /// status : "Sudah Dibayar"
 
 History historyFromJson(String str) => History.fromJson(json.decode(str));

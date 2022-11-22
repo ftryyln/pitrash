@@ -42,8 +42,8 @@ class HistoryDetailScreen extends StatelessWidget {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Image.asset(
-                                "assets/image/historydetail/transaction.png",
+                            Image.network(
+                                "",
                                 fit: BoxFit.contain),
                             const SizedBox(
                               height: 20,

@@ -98,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                             const SizedBox(
                               height: 20,
                             ),
-                            GestureDetector(
+                            controller.transactionModel != null ? GestureDetector(
                               onTap: () =>
                                   {Get.to(() => const PaymentScreen())},
                               child: Card(
@@ -134,18 +134,13 @@ class HomeScreen extends StatelessWidget {
                                               width: 125,
                                               height: 33,
                                               decoration: BoxDecoration(
-                                                  color: primaryColor,
+                                                  color: redColor,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           20)),
                                               child: Center(
                                                 child: Text(
-                                                    controller
-                                                            .transactionModel
-                                                            ?.data!
-                                                            .latest!
-                                                            .status ??
-                                                        "",
+                                                    controller.transactionModel?.data?.latest?.status ?? "-",
                                                     style: tiny.copyWith(
                                                         color: whiteColor,
                                                         fontWeight: bold)),
@@ -158,9 +153,8 @@ class HomeScreen extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 10),
                                         child: Text(
-                                            controller.transactionModel?.data!
-                                                    .latest!.price ??
-                                                "-",
+                                            controller.numberFormat.format(int.parse(controller.transactionModel!.data!
+                                                .latest!.price!.split('.').first)),
                                             style: title.copyWith(
                                                 color: blackColor,
                                                 fontWeight: bold)),
@@ -206,7 +200,7 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                            ),
+                            ) : const Center(child: CircularProgressIndicator.adaptive(),),
                             const SizedBox(
                               height: 20,
                             ),
@@ -350,7 +344,7 @@ class HomeScreen extends StatelessWidget {
                           itemCount: controller.listCarousel.length,
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(20),
+                          padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
                           child: Column(
                             children: [
                               Row(
@@ -377,168 +371,171 @@ class HomeScreen extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children: controller.educationModel?.data
-                                    ?.map((e) => Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            GestureDetector(
-                                              onTap: () => Get.to(
-                                                  () =>
-                                                      const EducationDetailScreen(),
-                                                  arguments: e),
-                                              child: SizedBox(
-                                                width: 180,
-                                                height: 160,
-                                                child: Column(
-                                                  children: [
-                                                    Card(
-                                                      elevation: 5,
-                                                      shape: const RoundedRectangleBorder(
-                                                          borderRadius: BorderRadius.only(
-                                                              topLeft: Radius
-                                                                  .circular(25),
-                                                              topRight: Radius
-                                                                  .circular(25),
-                                                              bottomLeft: Radius
-                                                                  .circular(10),
-                                                              bottomRight:
-                                                                  Radius
+                                    ?.map((e) => Padding(
+                                      padding: const EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 20),
+                                      child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () => Get.to(
+                                                    () =>
+                                                        const EducationDetailScreen(),
+                                                    arguments: e),
+                                                child: SizedBox(
+                                                  width: 180,
+                                                  height: 160,
+                                                  child: Column(
+                                                    children: [
+                                                      Card(
+                                                        elevation: 5,
+                                                        shape: const RoundedRectangleBorder(
+                                                            borderRadius: BorderRadius.only(
+                                                                topLeft: Radius
+                                                                    .circular(25),
+                                                                topRight: Radius
+                                                                    .circular(25),
+                                                                bottomLeft: Radius
+                                                                    .circular(10),
+                                                                bottomRight:
+                                                                    Radius
+                                                                        .circular(
+                                                                            10))),
+                                                        child: Container(
+                                                          height: 30,
+                                                          width: 180,
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  right: 13,
+                                                                  left: 13,
+                                                                  top: 7,
+                                                                  bottom: 7),
+                                                          decoration: const BoxDecoration(
+                                                              color: primaryColor,
+                                                              borderRadius: BorderRadius.only(
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          25),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          25),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10))),
-                                                      child: Container(
-                                                        height: 30,
-                                                        width: 180,
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                right: 13,
-                                                                left: 13,
-                                                                top: 7,
-                                                                bottom: 7),
-                                                        decoration: const BoxDecoration(
-                                                            color: primaryColor,
-                                                            borderRadius: BorderRadius.only(
-                                                                topLeft: Radius
-                                                                    .circular(
-                                                                        25),
-                                                                topRight: Radius
-                                                                    .circular(
-                                                                        25),
-                                                                bottomLeft: Radius
-                                                                    .circular(
-                                                                        10),
-                                                                bottomRight: Radius
-                                                                    .circular(
-                                                                        10))),
-                                                        child: Center(
-                                                          child: Text(
-                                                              e.title ?? "-",
-                                                              style: tiny.copyWith(
-                                                                  color:
-                                                                      whiteColor,
-                                                                  fontWeight:
-                                                                      medium),
-                                                              maxLines: 1,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .visible),
+                                                          child: Center(
+                                                            child: Text(
+                                                                e.title ?? "-",
+                                                                style: tiny.copyWith(
+                                                                    color:
+                                                                        whiteColor,
+                                                                    fontWeight:
+                                                                        medium),
+                                                                maxLines: 1,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .visible),
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                    Card(
-                                                      elevation: 5,
-                                                      shape: const RoundedRectangleBorder(
-                                                          borderRadius: BorderRadius.only(
-                                                              topLeft: Radius
-                                                                  .circular(10),
-                                                              topRight: Radius
-                                                                  .circular(10),
-                                                              bottomLeft: Radius
-                                                                  .circular(25),
-                                                              bottomRight:
-                                                                  Radius
+                                                      Card(
+                                                        elevation: 5,
+                                                        shape: const RoundedRectangleBorder(
+                                                            borderRadius: BorderRadius.only(
+                                                                topLeft: Radius
+                                                                    .circular(10),
+                                                                topRight: Radius
+                                                                    .circular(10),
+                                                                bottomLeft: Radius
+                                                                    .circular(25),
+                                                                bottomRight:
+                                                                    Radius
+                                                                        .circular(
+                                                                            25))),
+                                                        child: Container(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8),
+                                                          height: 110,
+                                                          width: 180,
+                                                          decoration: const BoxDecoration(
+                                                              color: primaryColor,
+                                                              borderRadius: BorderRadius.only(
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          10),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          10),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          25),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           25))),
-                                                      child: Container(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(8),
-                                                        height: 110,
-                                                        width: 180,
-                                                        decoration: const BoxDecoration(
-                                                            color: primaryColor,
-                                                            borderRadius: BorderRadius.only(
+                                                          child: ClipRRect(
+                                                            borderRadius: const BorderRadius
+                                                                    .only(
                                                                 topLeft: Radius
-                                                                    .circular(
-                                                                        10),
+                                                                    .circular(10),
                                                                 topRight: Radius
-                                                                    .circular(
-                                                                        10),
+                                                                    .circular(10),
                                                                 bottomLeft: Radius
-                                                                    .circular(
-                                                                        25),
-                                                                bottomRight: Radius
-                                                                    .circular(
-                                                                        25))),
-                                                        child: ClipRRect(
-                                                          borderRadius: const BorderRadius
-                                                                  .only(
-                                                              topLeft: Radius
-                                                                  .circular(10),
-                                                              topRight: Radius
-                                                                  .circular(10),
-                                                              bottomLeft: Radius
-                                                                  .circular(25),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          25)),
-                                                          child: Image.network(
-                                                              e.image ??
-                                                                  "https://",
-                                                              fit: BoxFit.cover,
-                                                              loadingBuilder:
-                                                                  (BuildContext
-                                                                          context,
-                                                                      Widget
-                                                                          child,
-                                                                      ImageChunkEvent?
-                                                                          loadingProgress) {
-                                                            if (loadingProgress ==
-                                                                null) {
-                                                              return child;
-                                                            }
-                                                            return Center(
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                color:
-                                                                    secondaryColor,
-                                                                value: loadingProgress
-                                                                            .expectedTotalBytes !=
-                                                                        null
-                                                                    ? loadingProgress
-                                                                            .cumulativeBytesLoaded /
-                                                                        loadingProgress
-                                                                            .expectedTotalBytes!
-                                                                    : null,
-                                                              ),
-                                                            );
-                                                          }),
+                                                                    .circular(25),
+                                                                bottomRight:
+                                                                    Radius
+                                                                        .circular(
+                                                                            25)),
+                                                            child: Image.network(
+                                                                e.image ??
+                                                                    "https://",
+                                                                fit: BoxFit.cover,
+                                                                loadingBuilder:
+                                                                    (BuildContext
+                                                                            context,
+                                                                        Widget
+                                                                            child,
+                                                                        ImageChunkEvent?
+                                                                            loadingProgress) {
+                                                              if (loadingProgress ==
+                                                                  null) {
+                                                                return child;
+                                                              }
+                                                              return Center(
+                                                                child:
+                                                                    CircularProgressIndicator(
+                                                                  color:
+                                                                      secondaryColor,
+                                                                  value: loadingProgress
+                                                                              .expectedTotalBytes !=
+                                                                          null
+                                                                      ? loadingProgress
+                                                                              .cumulativeBytesLoaded /
+                                                                          loadingProgress
+                                                                              .expectedTotalBytes!
+                                                                      : null,
+                                                                ),
+                                                              );
+                                                            }),
+                                                          ),
                                                         ),
-                                                      ),
-                                                    )
-                                                  ],
+                                                      )
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ))
+                                            ],
+                                          ),
+                                    ))
                                     .toList() ??
                                 [],
                           ),
                         ),
                       ],
-                    ) : const SizedBox.shrink(),
+                    ) : const SizedBox.shrink()
                   ],
                 ),
               ),

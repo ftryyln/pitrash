@@ -68,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
                         const SizedBox(
                           height: 15,
                         ),
-                        Text(controller.profileModel?.data?.name ?? "-",
+                        Text(controller.profileModel?.data?.name?.capitalize ?? "-",
                             style: heading.copyWith(
                                 color: primaryColor, fontWeight: bold)),
                         Text(controller.profileModel?.data?.email ?? "-",

@@ -88,13 +88,13 @@ class EducationScreen extends StatelessWidget {
                                     Container(
                                       width: 172,
                                       height: 172,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           color: whiteColor,
                                           borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(20),
                                               topRight: Radius.circular(20))),
                                       child: ClipRRect(
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                             topLeft: Radius.circular(20),
                                             topRight: Radius.circular(20)),
                                         child: Image.network(
@@ -121,7 +121,7 @@ class EducationScreen extends StatelessWidget {
                                                   fontWeight: semiBold),
                                               maxLines: 2,
                                               overflow: TextOverflow.visible),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 8,
                                           ),
                                           Text(

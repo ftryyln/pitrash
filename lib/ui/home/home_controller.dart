@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:final_project/base/base_controller.dart';
 import 'package:final_project/data/model/carousel/carousel_model.dart';
 import 'package:final_project/data/model/education/education_model.dart';
+import 'package:final_project/data/model/schedule/schedule_model.dart';
 import 'package:final_project/data/model/transaction/transaction_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -24,9 +25,14 @@ class HomeController extends BaseController {
   String title = "";
   EducationModel? educationModel;
   TransactionModel? transactionModel;
+  ScheduleModel? scheduleModel;
 
   DateFormat formatter = DateFormat("yyyy-MM-ddTHH:mm:ss.000000Z");
   DateFormat toFormat = DateFormat("MMMM yyyy");
+  DateFormat toDayFormat = DateFormat("dd");
+  DateFormat toMonthFormat = DateFormat("MMMM");
+  DateFormat toYearFormat = DateFormat("yyyy");
+
   NumberFormat numberFormat = NumberFormat.currency(
     decimalDigits: 0,
     locale: "id",
@@ -90,6 +96,18 @@ class HomeController extends BaseController {
     try {
       var response = await repository.getEducation();
       educationModel = response;
+      update();
+      changeState(HomeViewState.none);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<void> getSchedule() async {
+    changeState(HomeViewState.loading);
+    try {
+      var response = await repository.getSchedule();
+      scheduleModel = response;
       update();
       changeState(HomeViewState.none);
     } catch (e) {
