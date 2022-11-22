@@ -27,7 +27,7 @@ abstract class Repository {
   FutureOr<ProfileModel> getProfile();
 
   FutureOr<EditProfileModel?> postEditProfile(String id, String name,
-      String email, String phone, String password, String address, File image,
+      String email, String phone, String password, String address, File? image,
       String token);
 
   FutureOr<ListNotifModel> getNotificationList();
