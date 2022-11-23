@@ -6,7 +6,6 @@ import 'package:final_project/ui/education/education_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 class EducationScreen extends StatelessWidget {
   const EducationScreen({Key? key}) : super(key: key);
@@ -14,138 +13,182 @@ class EducationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<EducationController>(
-        builder: (controller) => Scaffold(
-              body: CustomScrollView(
-                slivers: [
-                  SliverAppBar(
-                    backgroundColor: primaryColor,
-                    elevation: 0,
-                    title: Text("Pengetahuan",
-                        style: title.copyWith(fontWeight: semiBold)),
-                    centerTitle: true,
-                    leading: GestureDetector(
-                      onTap: () {
-                        Get.back();
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: SvgPicture.asset("assets/vector/back.svg",
-                            color: whiteColor),
+        init: EducationController(),
+        builder: (controller) {
+          // if (controller.state == EduViewState.loading) {
+          //   return Scaffold(
+          //     body: Container(
+          //         alignment: Alignment.center,
+          //         child: SizedBox(
+          //             height: 150,
+          //             width: 150,
+          //             child: Lottie.asset("assets/lottie/loading.json"))),
+          //   );
+          // }
+          return Scaffold(
+            body: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  backgroundColor: primaryColor,
+                  elevation: 0,
+                  title: Text("Pengetahuan",
+                      style: title.copyWith(fontWeight: semiBold)),
+                  centerTitle: true,
+                  leading: GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: SvgPicture.asset("assets/vector/back.svg",
+                          color: whiteColor),
+                    ),
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: Card(
+                    elevation: 5,
+                    shadowColor: primaryColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Container(
+                      height: 333,
+                      width: 430,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
                       ),
+                      child: Image.asset("assets/image/education/education.png",
+                          fit: BoxFit.cover),
                     ),
                   ),
-                  SliverToBoxAdapter(
-                    child: Column(
-                      children: [
-                        Card(
-                          elevation: 5,
-                          shadowColor: primaryColor,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Container(
-                            height: 333,
-                            width: 408,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Image.asset(
-                                "assets/image/education/education.png",
-                                fit: BoxFit.cover),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: SizedBox(
-                            width: 172,
-                            child: GestureDetector(
-                              onTap: () => {
-                                Get.to(() => const EducationDetailScreen()),
-                              },
-                            ),
-                          ),
-                        ),
-                      ],
+                ),
+                SliverToBoxAdapter(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+                    height: 50,
+                    width: Get.width,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search_rounded),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)
+                        )
+                      ),
+                      controller: controller.searchController,
+                      onChanged: (value) {
+                        // filter}
+                        if (value.isNotEmpty) {
+                          controller.data = controller.data
+                              .where((element) =>
+                                  element?.title
+                                      ?.toLowerCase()
+                                      .contains(value.toLowerCase()) ==
+                                  true)
+                              .toList();
+                          controller.update();
+                        } else {
+                          controller.data.clear();
+                          controller.getEducation();
+                          controller.update();
+                        }
+                      },
                     ),
                   ),
-                  SliverPadding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      sliver: SliverGrid(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  childAspectRatio: 1,
-                                  mainAxisSpacing: 5,
-                                  crossAxisSpacing: 5),
-                          delegate: SliverChildBuilderDelegate(
-                            (context, index) {
-                              return Card(
-                                elevation: 2,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      width: 172,
-                                      height: 172,
-                                      decoration: const BoxDecoration(
-                                          color: whiteColor,
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(20),
-                                              topRight: Radius.circular(20))),
-                                      child: ClipRRect(
-                                        borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(20),
-                                            topRight: Radius.circular(20)),
-                                        child: Image.network(
-                                          controller.educationModel?.data?[index].image ??
-                                              "https://",
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
+                ),
+                SliverPadding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10),
+                  sliver: SliverGrid(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              childAspectRatio: 1,
+                              mainAxisSpacing: 5,
+                              mainAxisExtent: 264,
+                              crossAxisSpacing: 5),
+                      delegate: SliverChildBuilderDelegate((context, index) {
+                        return GestureDetector(
+                          onTap: () => Get.to(
+                              () => const EducationDetailScreen(),
+                              arguments:
+                                  controller.data[index]),
+                          child: Card(
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 200,
+                                  height: 152,
+                                  decoration: const BoxDecoration(
+                                      color: whiteColor,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(20),
+                                          topRight: Radius.circular(20))),
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20)),
+                                    child: Image.network(
+                                      controller.data[index]!
+                                              .image ??
+                                          "/https://",
+                                      fit: BoxFit.cover,
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 10,
-                                          right: 10,
-                                          top: 8,
-                                          bottom: 8),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                              controller.educationModel?.data?[index].title ?? "No Title",
-                                              style: body.copyWith(
-                                                  color: blackColor,
-                                                  fontWeight: semiBold),
-                                              maxLines: 2,
-                                              overflow: TextOverflow.visible),
-                                          const SizedBox(
-                                            height: 8,
-                                          ),
-                                          Text(
-                                            DateFormat("dd MMMM yyy").format(DateFormat("yyyy-MM-ddTHH:mm:ss.000000Z").parse(controller.educationModel?.data?[0].createdAt ??'-')),
-                                            style: body.copyWith(
-                                                color: greyColor,
-                                                fontWeight: medium),
-                                          ),
-                                          Text(
-                                              DateFormat("HH:mm").format(DateFormat("yyyy-MM-ddTHH:mm:ss.000000Z").parse(controller.educationModel?.data?[0].createdAt ??'-')),
-                                            style: body.copyWith(
-                                                color: greyColor,
-                                                fontWeight: medium),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
+                                  ),
                                 ),
-                              );
-                            },
-                          )))
-                ],
-              ),
-            ));
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10, right: 10, top: 8, bottom: 8),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                          controller.data[index]?.title ??
+                                              "No Title",
+                                          style: body.copyWith(
+                                              color: blackColor,
+                                              fontWeight: semiBold),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.visible),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text(
+                                        controller.toFormat.format(controller
+                                            .formatter
+                                            .parse(controller
+                                                    .data[index]?.createdAt ??
+                                                "yyyy-MM-ddTHH:mm:ss.000000Z")),
+                                        style: body.copyWith(
+                                            color: greyColor,
+                                            fontWeight: medium),
+                                      ),
+                                      Text(
+                                        controller.toClockFormat.format(
+                                            controller.formatter.parse(controller
+                                                    .data[index]!
+                                                    .createdAt ??
+                                                "yyyy-MM-ddTHH:mm:ss.000000Z")),
+                                        style: body.copyWith(
+                                            color: greyColor,
+                                            fontWeight: medium),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }, childCount: controller.data.length)),
+                )
+              ],
+            ),
+          );
+        });
   }
 }

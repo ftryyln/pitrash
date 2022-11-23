@@ -12,10 +12,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
@@ -64,13 +70,17 @@ class HomeScreen extends StatelessWidget {
                                       width: 50,
                                       height: 50,
                                       decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                              color: darkColor, width: 3),
-                                          image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: NetworkImage(
-                                                  controller.imageProfile))),
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                            color: darkColor, width: 3),
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            // onError: (object, stacktrace) => SvgPicture.asset('assets/vector/icon_person.svg'),
+                                            onError: (object, stacktrace) =>
+                                                const Icon(Icons.person),
+                                            image: NetworkImage(
+                                                controller.imageProfile)),
+                                      ),
                                     ),
                                     const SizedBox(
                                       width: 8,
@@ -148,7 +158,8 @@ class HomeScreen extends StatelessWidget {
                                                                   .transactionModel
                                                                   ?.data
                                                                   ?.latest
-                                                                  ?.status ??
+                                                                  ?.first
+                                                                  .status ??
                                                               "-",
                                                           style: tiny.copyWith(
                                                               color: whiteColor,
@@ -169,6 +180,7 @@ class HomeScreen extends StatelessWidget {
                                                               .transactionModel!
                                                               .data!
                                                               .latest!
+                                                              .first
                                                               .price!
                                                               .split('.')
                                                               .first)),
@@ -207,11 +219,12 @@ class HomeScreen extends StatelessWidget {
                                                       controller.toFormat.format(controller
                                                           .formatter
                                                           .parse(controller
-                                                                  .transactionModel
+                                                                  .schedulePaymentModel
                                                                   ?.data
-                                                                  ?.latest
-                                                                  ?.createdAt ??
-                                                              "2022-11-21T12:07:55.000000Z")),
+                                                                  ?.incoming
+                                                                  ?.first
+                                                                  .beginDate ??
+                                                              "Mon, Nov 28, 2022")),
                                                       style: body.copyWith(
                                                           fontWeight: bold)),
                                                 ],
@@ -238,15 +251,13 @@ class HomeScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(20)),
                                   child: Container(
                                     height: 180,
-                                    width: 150,
+                                    width: 170,
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                         color: primaryColor,
                                         borderRadius:
                                             BorderRadius.circular(20)),
                                     child: Container(
-                                      height: 160,
-                                      width: 150,
                                       padding: const EdgeInsets.all(10),
                                       decoration: BoxDecoration(
                                           color: whiteColor,
@@ -256,37 +267,42 @@ class HomeScreen extends StatelessWidget {
                                         children: [
                                           Text(
                                               controller.toDayFormat.format(
-                                                  controller.pickupFormatter.parse(
+                                                  controller.formatter.parse(
                                                       controller
-                                                              .scheduleModel
+                                                              .schedulePickupModel
                                                               ?.data
-                                                              ?.incoming?.last
+                                                              ?.incoming
+                                                              ?.first
                                                               .beginDate ??
                                                           "Mon, Nov 28, 2022")),
                                               style: title.copyWith(
                                                   color: secondaryColor,
                                                   fontSize: 60,
                                                   fontWeight: bold)),
-                                          Text(controller.toMonthFormat.format(
-                                            controller.pickupFormatter.parse(
-                                                controller
-                                                    .scheduleModel
-                                                    ?.data
-                                                    ?.incoming?.last
-                                                    .beginDate ??
-                                                    "Mon, Nov 28, 2022")),
+                                          Text(
+                                              controller.toMonthFormat.format(
+                                                  controller.formatter.parse(
+                                                      controller
+                                                              .schedulePickupModel
+                                                              ?.data
+                                                              ?.incoming
+                                                              ?.first
+                                                              .beginDate ??
+                                                          "Mon, Nov 28, 2022")),
                                               style: heading.copyWith(
                                                   color: primaryColor,
                                                   fontSize: 16,
                                                   fontWeight: medium)),
-                                          Text(controller.toYearFormat.format(
-                                              controller.pickupFormatter.parse(
-                                                  controller
-                                                      .scheduleModel
-                                                      ?.data
-                                                      ?.incoming?.last
-                                                      .beginDate ??
-                                                      "Mon, Nov 28, 2022")),
+                                          Text(
+                                              controller.toYearFormat.format(
+                                                  controller.formatter.parse(
+                                                      controller
+                                                              .schedulePickupModel
+                                                              ?.data
+                                                              ?.incoming
+                                                              ?.first
+                                                              .beginDate ??
+                                                          "Mon, Nov 28, 2022")),
                                               style: title.copyWith(
                                                   color: primaryColor,
                                                   fontSize: 30,
@@ -307,38 +323,37 @@ class HomeScreen extends StatelessWidget {
                                             BorderRadius.circular(20)),
                                     child: Container(
                                       height: 180,
-                                      width: 150,
+                                      width: 170,
                                       padding: const EdgeInsets.all(10),
                                       decoration: BoxDecoration(
                                           color: primaryColor,
                                           borderRadius:
                                               BorderRadius.circular(20)),
                                       child: Container(
-                                        height: 160,
-                                        width: 150,
+                                        padding: EdgeInsets.all(8),
                                         decoration: BoxDecoration(
                                             color: whiteColor,
                                             borderRadius:
                                                 BorderRadius.circular(20)),
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                              MainAxisAlignment.spaceEvenly,
                                           children: [
                                             const Icon(Icons.calendar_month,
-                                                color: primaryColor, size: 50),
-                                            Text("Jadwal",
+                                                color: secondaryColor,
+                                                size: 70),
+                                            Text("Riwayat",
                                                 style: heading.copyWith(
                                                     color: primaryColor,
-                                                    fontSize: 18,
-                                                    fontWeight: bold)),
-                                            Text("Pengambilan",
+                                                    fontSize: 24,
+                                                    fontWeight: bold),
+                                                textAlign: TextAlign.center),
+                                            Text("Jadwal Pengambilan",
                                                 style: heading.copyWith(
                                                     color: primaryColor,
-                                                    fontSize: 18,
-                                                    fontWeight: bold)),
-                                            const SizedBox(
-                                              height: 10,
-                                            ),
+                                                    fontSize: 12,
+                                                    fontWeight: bold),
+                                                textAlign: TextAlign.center),
                                           ],
                                         ),
                                       ),
@@ -607,5 +622,11 @@ class HomeScreen extends StatelessWidget {
             ),
           );
         });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initializeDateFormatting("id");
   }
 }

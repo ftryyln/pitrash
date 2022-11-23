@@ -1,26 +1,37 @@
-import 'package:calendar_view/calendar_view.dart';
 import 'package:dio/dio.dart';
 import 'package:final_project/base/base_controller.dart';
-import 'package:final_project/data/model/schedule/schedule_model.dart';
-import 'package:get/get.dart';
+import 'package:final_project/data/model/schedule/schedule_pickup_model.dart';
+
+enum ScheduleViewState {
+  none,
+  loading,
+  error,
+}
 
 class ScheduleController extends BaseController {
-
-  ScheduleModel? scheduleModel;
+  ScheduleViewState _state = ScheduleViewState.none;
+  ScheduleViewState get state => _state;
+  SchedulePickupModel? schedulePickupModel;
 
   @override
   onInit() {
-    getScheduleData();
+    getSchedulePickup();
     super.onInit();
   }
 
-  Future<void> getScheduleData() async {
+  changeState(ScheduleViewState s) {
+    _state = s;
+    update();
+  }
+
+  Future<void> getSchedulePickup() async {
+    changeState(ScheduleViewState.loading);
     try {
-      var response = await repository.getSchedule();
-      scheduleModel = response;
+      var response = await repository.getSchedulePickup();
+      schedulePickupModel = response;
       update();
+      changeState(ScheduleViewState.none);
     } on DioError catch(e) {
-      scheduleModel = ScheduleModel.fromJson(e.response?.data);
       update();
     }
   }

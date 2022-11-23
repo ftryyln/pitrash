@@ -30,7 +30,8 @@ class EducationDetailScreen extends StatelessWidget {
                       color: whiteColor),
                 ),
               ),
-              title: Text(controller.data.userId?.name?.capitalize ?? "", style: title),
+              title: Text(controller.data.userId?.name?.capitalize ?? "",
+                  style: title),
               centerTitle: true,
             ),
             body: Column(
@@ -78,9 +79,11 @@ class EducationDetailScreen extends StatelessWidget {
                                             topLeft: Radius.circular(20)),
                                         color: primaryColor),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       children: [
-                                        SvgPicture.asset("assets/vector/line.svg"),
+                                        SvgPicture.asset(
+                                            "assets/vector/line.svg"),
                                         const SizedBox(
                                           height: 20,
                                         ),
@@ -91,14 +94,17 @@ class EducationDetailScreen extends StatelessWidget {
                                                 left: 20, right: 20),
                                             decoration: BoxDecoration(
                                                 color: whiteColor,
-                                                borderRadius: BorderRadius.circular(20)),
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
                                             child: Center(
                                                 child: Text(
-                                                    DateFormat("dd MMMM yyyy, HH:mm")
+                                                    DateFormat(
+                                                            "dd MMMM yyyy, HH:mm")
                                                         .format(DateFormat(
-                                                        "yyyy-MM-ddTHH:mm:ss.000000Z")
-                                                        .parse(controller
-                                                        .data.createdAt!)),
+                                                                "yyyy-MM-ddTHH:mm:ss.000000Z")
+                                                            .parse(controller
+                                                                .data
+                                                                .createdAt!)),
                                                     style: tiny.copyWith(
                                                         color: secondaryColor,
                                                         fontWeight: bold)))),

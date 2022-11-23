@@ -5,6 +5,7 @@ import 'package:final_project/ui/payment/payment_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class PaymentScreen extends StatelessWidget {
   const PaymentScreen({Key? key}) : super(key: key);
@@ -14,6 +15,16 @@ class PaymentScreen extends StatelessWidget {
     return GetBuilder<PaymentController>(
         init: PaymentController(),
         builder: (controller) {
+          if (controller.state == PaymentViewState.loading) {
+            return Scaffold(
+              body: Container(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                      height: 150,
+                      width: 150,
+                      child: Lottie.asset("assets/lottie/loading.json"))),
+            );
+          }
           return Scaffold(
             backgroundColor: whiteColor,
             appBar: AppBar(
@@ -57,32 +68,25 @@ class PaymentScreen extends StatelessWidget {
                                   Text("Tagihan Anda",
                                       style:
                                           title.copyWith(color: primaryColor)),
-                                  // Container(
-                                  //   padding: const EdgeInsets.only(
-                                  //       right: 7,
-                                  //       left: 7,
-                                  //       top: 5,
-                                  //       bottom: 5),
-                                  //   width: 125,
-                                  //   height: 33,
-                                  //   decoration: BoxDecoration(
-                                  //       color: primaryColor,
-                                  //       borderRadius:
-                                  //       BorderRadius.circular(
-                                  //           20)),
-                                  //   child: Center(
-                                  //     child: Text(
-                                  //         controller
-                                  //             .transactionModel
-                                  //             ?.data!
-                                  //             .latest!
-                                  //             .status ??
-                                  //             "",
-                                  //         style: tiny.copyWith(
-                                  //             color: whiteColor,
-                                  //             fontWeight: bold)),
-                                  //   ),
-                                  // )
+                                  Container(
+                                    padding: const EdgeInsets.only(
+                                        right: 7, left: 7, top: 5, bottom: 5),
+                                    width: 125,
+                                    height: 33,
+                                    decoration: BoxDecoration(
+                                        color: redColor,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: Center(
+                                      child: Text(
+                                          controller.transactionModel?.data
+                                                  ?.latest?.first.status ??
+                                              "-",
+                                          style: tiny.copyWith(
+                                              color: whiteColor,
+                                              fontWeight: bold)),
+                                    ),
+                                  )
                                 ],
                               ),
                               const SizedBox(
@@ -101,7 +105,16 @@ class PaymentScreen extends StatelessWidget {
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                      Text("Desember 2022",
+                                      Text(
+                                          controller.toFormat.format(controller
+                                              .formatter
+                                              .parse(controller
+                                                      .schedulePaymentModel
+                                                      ?.data
+                                                      ?.incoming
+                                                      ?.first
+                                                      .beginDate ??
+                                                  "Thu, Dec 1, 2022")),
                                           style: tiny.copyWith(
                                               color: blackColor,
                                               fontWeight: bold)),
@@ -110,14 +123,22 @@ class PaymentScreen extends StatelessWidget {
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
-                                      Text("Periode Tagihan",
+                                      Text("Batas Pembayaran",
                                           style: tiny.copyWith(
                                               color: greyColor,
                                               fontWeight: extralight)),
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                      Text("25 Desember 2022",
+                                      Text(
+                                          controller.toDateFormat.format(
+                                              controller.formatter.parse(controller
+                                                      .schedulePaymentModel
+                                                      ?.data
+                                                      ?.incoming
+                                                      ?.first
+                                                      .dueDate ??
+                                                  "Sun, Dec 25, 2022")),
                                           style: tiny.copyWith(
                                               color: blackColor,
                                               fontWeight: bold)),
@@ -140,7 +161,16 @@ class PaymentScreen extends StatelessWidget {
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    Text("Rp 15.000",
+                                    Text(
+                                        controller.numberFormat
+                                            .format(int.parse(
+                                            controller
+                                                .transactionModel!
+                                                .data!
+                                                .latest!.first
+                                                .price!
+                                                .split('.')
+                                                .first)),
                                         style: title.copyWith(
                                             color: blackColor,
                                             fontWeight: bold)),
@@ -150,29 +180,34 @@ class PaymentScreen extends StatelessWidget {
                               const SizedBox(
                                 height: 35,
                               ),
-                              Card(
-                                elevation: 5,
-                                color: primaryColor,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  height: 40,
-                                  decoration: BoxDecoration(
-                                      color: primaryColor,
-                                      gradient: LinearGradient(
-                                          colors: [
-                                            primaryColor,
-                                            darkColor.withOpacity(0.5)
-                                          ],
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter),
+                              GestureDetector(
+                                onTap: (){
+                                  controller.whatsAppOpen();
+                                },
+                                child: Card(
+                                  elevation: 5,
+                                  color: primaryColor,
+                                  shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20)),
-                                  child: Center(
-                                      child: Text(
-                                    "Bayar",
-                                    style: body.copyWith(fontWeight: semiBold),
-                                  )),
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                        color: primaryColor,
+                                        gradient: LinearGradient(
+                                            colors: [
+                                              primaryColor,
+                                              darkColor.withOpacity(0.5)
+                                            ],
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter),
+                                        borderRadius: BorderRadius.circular(20)),
+                                    child: Center(
+                                        child: Text(
+                                      "Bayar",
+                                      style: body.copyWith(fontWeight: semiBold),
+                                    )),
+                                  ),
                                 ),
                               ),
                             ],

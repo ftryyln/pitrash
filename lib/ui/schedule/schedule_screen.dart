@@ -1,4 +1,3 @@
-import 'package:calendar_view/calendar_view.dart';
 import 'package:final_project/const/color.dart';
 import 'package:final_project/const/font_weight.dart';
 import 'package:final_project/const/text_style.dart';
@@ -33,14 +32,56 @@ class ScheduleScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              body: controller.scheduleModel != null ? ListView.builder(itemCount: controller.scheduleModel?.data?.history?.length, itemBuilder: (context, index) {
-                var item =  controller.scheduleModel?.data?.history?[index];
-                return ListTile(
-                  title: Text(item?.category ?? "-"),
-                  subtitle: Text("${item?.beginDate} - ${item?.dueDate}"),
-                );
-              }) : const Center(child: CircularProgressIndicator.adaptive())
-          );
+              body: controller.schedulePickupModel != null
+                  ? Column(
+                      children: [
+                        Expanded(
+                          child: ListView.builder(
+                              itemCount: controller
+                                  .schedulePickupModel?.data?.history?.length,
+                              itemBuilder: (context, index) {
+                                var item = controller
+                                    .schedulePickupModel?.data?.history?[index];
+                                return Padding(
+                                    padding: EdgeInsets.all(8),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: primaryColor.withOpacity(0.3),
+                                          borderRadius:
+                                              BorderRadius.circular(25)),
+                                      child: Row(children: [
+                                        SizedBox(
+                                            width: 50,
+                                            height: 50,
+                                            child: SvgPicture.asset(
+                                                "assets/vector/schedulenotif.svg")),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(item?.category ?? "-",
+                                                  style: body.copyWith(
+                                                      color: primaryColor,
+                                                      fontWeight: semiBold),
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.visible),
+                                              Text("${item?.dueDate}",
+                                                  style: tiny.copyWith(
+                                                      color: greyColor,
+                                                      fontWeight: medium)),
+                                            ],
+                                          ),
+                                        ),
+                                      ]),
+                                    ));
+                              }),
+                        ),
+                      ],
+                    )
+                  : const Center(child: CircularProgressIndicator.adaptive()));
         });
   }
 }

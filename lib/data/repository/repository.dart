@@ -8,7 +8,8 @@ import 'package:final_project/data/model/education/education_model.dart';
 import 'package:final_project/data/model/notification/list_notif_model.dart';
 import 'package:final_project/data/model/profile/edit_profile_model.dart';
 import 'package:final_project/data/model/profile/profile_model.dart';
-import 'package:final_project/data/model/schedule/schedule_model.dart';
+import 'package:final_project/data/model/schedule/schedule_payment_model.dart';
+import 'package:final_project/data/model/schedule/schedule_pickup_model.dart';
 import 'package:final_project/data/model/transaction/history_model.dart';
 import 'package:final_project/data/model/transaction/transaction_model.dart';
 
@@ -36,5 +37,7 @@ abstract class Repository {
 
   FutureOr<List<CarouselModel>> getCarousel();
 
-  FutureOr<ScheduleModel> getSchedule();
+  FutureOr<SchedulePickupModel> getSchedulePickup();
+
+  FutureOr<SchedulePaymentModel> getSchedulePayment();
 }

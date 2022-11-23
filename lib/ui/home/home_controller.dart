@@ -3,7 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:final_project/base/base_controller.dart';
 import 'package:final_project/data/model/carousel/carousel_model.dart';
 import 'package:final_project/data/model/education/education_model.dart';
-import 'package:final_project/data/model/schedule/schedule_model.dart';
+import 'package:final_project/data/model/schedule/schedule_payment_model.dart';
+import 'package:final_project/data/model/schedule/schedule_pickup_model.dart';
 import 'package:final_project/data/model/transaction/transaction_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -16,8 +17,8 @@ enum HomeViewState {
 
 class HomeController extends BaseController {
   HomeViewState _state = HomeViewState.none;
-
   HomeViewState get state => _state;
+
   String imageProfile = "";
   List<String> imageCarousel = [];
   List<CarouselModel> listCarousel = [];
@@ -25,11 +26,11 @@ class HomeController extends BaseController {
   String title = "";
   EducationModel? educationModel;
   TransactionModel? transactionModel;
-  ScheduleModel? scheduleModel;
+  SchedulePickupModel? schedulePickupModel;
+  SchedulePaymentModel? schedulePaymentModel;
 
-  DateFormat formatter = DateFormat("yyyy-MM-ddTHH:mm:ss.000000Z");
-  DateFormat toFormat = DateFormat("MMMM yyyy");
-  DateFormat pickupFormatter = DateFormat('EEE, MMM dd, yyyy');
+  DateFormat formatter = DateFormat('EEE, MMM dd, yyyy');
+  DateFormat toFormat = DateFormat("MMMM yyyy", "id");
   DateFormat toDayFormat = DateFormat("dd");
   DateFormat toMonthFormat = DateFormat("MMMM");
   DateFormat toYearFormat = DateFormat("yyyy");
@@ -50,7 +51,8 @@ class HomeController extends BaseController {
     getProfile();
     getEducation();
     getTransaction();
-    getSchedule();
+    getSchedulePickup();
+    getSchedulePayment();
   }
 
   changeState(HomeViewState s) {
@@ -59,6 +61,7 @@ class HomeController extends BaseController {
   }
 
   Future<void> getProfile() async {
+    changeState(HomeViewState.loading);
     try {
       var response = await repository.getProfile();
       imageProfile = response.data?.userDetail?.image ?? "https://";
@@ -84,6 +87,7 @@ class HomeController extends BaseController {
   }
 
   Future<void> getTransaction() async {
+    changeState(HomeViewState.loading);
     try {
       var response = await repository.getTransaction();
       transactionModel = response;
@@ -105,11 +109,23 @@ class HomeController extends BaseController {
     }
   }
 
-  Future<void> getSchedule() async {
+  Future<void> getSchedulePickup() async {
     changeState(HomeViewState.loading);
     try {
-      var response = await repository.getSchedule();
-      scheduleModel = response;
+      var response = await repository.getSchedulePickup();
+      schedulePickupModel = response;
+      update();
+      changeState(HomeViewState.none);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<void> getSchedulePayment() async {
+    changeState(HomeViewState.loading);
+    try {
+      var response = await repository.getSchedulePayment();
+      schedulePaymentModel = response;
       update();
       changeState(HomeViewState.none);
     } catch (e) {

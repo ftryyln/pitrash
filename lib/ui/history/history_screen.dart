@@ -64,8 +64,7 @@ class HistoryScreen extends StatelessWidget {
                                                   .format(double.parse(
                                                   controller
                                                       .historyModel
-                                                      ?.data!.latest
-                                                      ?.price ??
+                                                      ?.data?.history?.first.price ??
                                                       "0")),
                                               style: body.copyWith(
                                                   color: blackColor,

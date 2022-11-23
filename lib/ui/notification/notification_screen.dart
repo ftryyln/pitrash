@@ -36,36 +36,6 @@ class NotificationScreen extends StatelessWidget {
             ),
             body: Column(
               children: [
-                CupertinoSlidingSegmentedControl<int>(
-                  backgroundColor: CupertinoColors.white,
-                  thumbColor: primaryColor,
-                  padding: const EdgeInsets.all(20),
-                  groupValue: controller.groupValue,
-                  children: {
-                    0: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(12),
-                        child: Text("Pickup Schedule", style: TextStyle(color: Colors.white)),
-                      ),
-                    ),
-                    1: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(12),
-                        child: Text("Payment", style: TextStyle(color: Colors.white)),
-                      ),
-                    ),
-                  },
-                  onValueChanged: (value) {
-                    controller.groupValue = value!;
-                    controller.update();
-                  },
-                ),
                 Expanded(
                   child: ListView.builder(primary: false, shrinkWrap: true, itemCount: controller.listNotifModel?.data?.length ?? 0, itemBuilder: (context, index) {
                     var item = controller.listNotifModel?.data?[index];
@@ -87,10 +57,10 @@ class NotificationScreen extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(item?.time ?? "Hari Ini",
+                                  Text(item?.time ?? "-",
                                       style: tiny.copyWith(
                                           color: greyColor, fontWeight: medium)),
-                                  Text(item?.notification ?? "Pickup Hari Ini",
+                                  Text(item?.notification ?? "-",
                                       style: body.copyWith(
                                           color: primaryColor,
                                           fontWeight: semiBold),

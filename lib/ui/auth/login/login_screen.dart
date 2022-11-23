@@ -23,7 +23,7 @@ class LoginScreen extends StatelessWidget {
                   controller.update();
                 },
                 child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
+                  physics: const AlwaysScrollableScrollPhysics(),
                   child: Column(
                     children: [
                       SvgPicture.asset("assets/vector/bgappbar.svg",
@@ -91,19 +91,19 @@ class LoginScreen extends StatelessWidget {
                                                   .passwordController.text);
                                         }
                                       },
-                                      child: Text("Masuk",
-                                          style: heading.copyWith(
-                                              fontWeight: bold)),
                                       style: ElevatedButton.styleFrom(
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
-                                                  BorderRadius.circular(10))))),
-                              SizedBox(
+                                                  BorderRadius.circular(10))),
+                                      child: Text("Masuk",
+                                          style: heading.copyWith(
+                                              fontWeight: bold)))),
+                              const SizedBox(
                                 height: 100,
                               ),
-                              Divider(
+                              const Divider(
                                   height: 1, color: greyColor, thickness: 1),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                               Row(
@@ -114,7 +114,7 @@ class LoginScreen extends StatelessWidget {
                                       style:
                                           heading1.copyWith(color: blackColor),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     GestureDetector(

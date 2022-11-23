@@ -2,25 +2,25 @@ import 'dart:convert';
 /// meta : {"code":"200","status":"success","message":"list:"}
 /// data : {"history":[{"id":8,"created_at":"2022-11-22T14:44:34.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Sat, Jan 1, 2022","Due_Date":"Sun, Nov 27, 2022","Category":"Pickup"},{"id":6,"created_at":"2022-11-22T14:25:32.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Tue, Nov 22, 2022","Due_Date":"Sun, Nov 27, 2022","Category":"Pickup"},{"id":4,"created_at":"2022-11-22T02:42:10.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Sun, Nov 20, 2022","Due_Date":"Sun, Nov 20, 2022","Category":"Pickup"}],"incoming":[{"id":7,"created_at":"2022-11-22T14:26:23.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Mon, Nov 28, 2022","Due_Date":"Sun, Nov 27, 2022","Category":"Pickup"},{"id":3,"created_at":"2022-11-22T02:41:19.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Sun, Dec 4, 2022","Due_Date":"Sun, Dec 4, 2022","Category":"Pickup"},{"id":2,"created_at":"2022-11-22T02:40:57.000000Z","updated_at":null,"user_id":1,"Begin_Date":"Sun, Nov 27, 2022","Due_Date":"Sun, Nov 27, 2022","Category":"Pickup"}]}
 
-ScheduleModel scheduleModelFromJson(String str) => ScheduleModel.fromJson(json.decode(str));
-String scheduleModelToJson(ScheduleModel data) => json.encode(data.toJson());
-class ScheduleModel {
-  ScheduleModel({
+SchedulePickupModel schedulePickupModelFromJson(String str) => SchedulePickupModel.fromJson(json.decode(str));
+String schedulePickupModelToJson(SchedulePickupModel data) => json.encode(data.toJson());
+class SchedulePickupModel {
+  SchedulePickupModel({
       Meta? meta, 
       Data? data,}){
     _meta = meta;
     _data = data;
 }
 
-  ScheduleModel.fromJson(dynamic json) {
+  SchedulePickupModel.fromJson(dynamic json) {
     _meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
     _data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
   Meta? _meta;
   Data? _data;
-ScheduleModel copyWith({  Meta? meta,
+SchedulePickupModel copyWith({  Meta? meta,
   Data? data,
-}) => ScheduleModel(  meta: meta ?? _meta,
+}) => SchedulePickupModel(  meta: meta ?? _meta,
   data: data ?? _data,
 );
   Meta? get meta => _meta;

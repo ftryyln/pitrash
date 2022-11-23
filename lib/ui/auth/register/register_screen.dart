@@ -65,8 +65,9 @@ class RegisterScreen extends StatelessWidget {
                                 padding: const EdgeInsets.only(top: 5),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.error_rounded, color: redColor),
-                                    SizedBox(width: 10),
+                                    const Icon(Icons.error_rounded,
+                                        color: redColor),
+                                    const SizedBox(width: 10),
                                     Text("Nama Lengkap Harus Diisi",
                                         style: tiny.copyWith(color: redColor))
                                   ],
@@ -74,7 +75,7 @@ class RegisterScreen extends StatelessWidget {
                               ))
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Text("Nomor Ponsel",
@@ -98,14 +99,14 @@ class RegisterScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 5),
                             child: Row(
                               children: [
-                                Icon(Icons.error_rounded, color: redColor),
-                                SizedBox(width: 10),
+                                const Icon(Icons.error_rounded, color: redColor),
+                                const SizedBox(width: 10),
                                 Text("Nomor Ponsel Harus Diisi",
                                     style: tiny.copyWith(color: redColor))
                               ],
                             ),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Text("Email",
@@ -128,14 +129,14 @@ class RegisterScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 5),
                             child: Row(
                               children: [
-                                Icon(Icons.error_rounded, color: redColor),
-                                SizedBox(width: 10),
+                                const Icon(Icons.error_rounded, color: redColor),
+                                const SizedBox(width: 10),
                                 Text("Email Harus Diisi",
                                     style: tiny.copyWith(color: redColor))
                               ],
                             ),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Text("Kata Sandi",
@@ -172,14 +173,14 @@ class RegisterScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 5),
                             child: Row(
                               children: [
-                                Icon(Icons.error_rounded, color: redColor),
-                                SizedBox(width: 10),
+                                const Icon(Icons.error_rounded, color: redColor),
+                                const SizedBox(width: 10),
                                 Text("Kata Sandi Harus Diisi",
                                     style: tiny.copyWith(color: redColor))
                               ],
                             ),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Text("Konfirmasi Kata Sandi",
@@ -222,8 +223,8 @@ class RegisterScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 5),
                             child: Row(
                               children: [
-                                Icon(Icons.error_rounded, color: redColor),
-                                SizedBox(width: 10),
+                                const Icon(Icons.error_rounded, color: redColor),
+                                const SizedBox(width: 10),
                                 Text("Konfirmasi Password Harus Diisi",
                                     style: tiny.copyWith(color: redColor))
                               ],
@@ -235,14 +236,14 @@ class RegisterScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 5),
                             child: Row(
                               children: [
-                                Icon(Icons.error_rounded, color: redColor),
-                                SizedBox(width: 10),
+                                const Icon(Icons.error_rounded, color: redColor),
+                                const SizedBox(width: 10),
                                 Text("Kata Sandi Harus Sama",
                                     style: tiny.copyWith(color: redColor))
                               ],
                             ),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Text("Address",
@@ -266,14 +267,14 @@ class RegisterScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(top: 5),
                             child: Row(
                               children: [
-                                Icon(Icons.error_rounded, color: redColor),
-                                SizedBox(width: 10),
+                                const Icon(Icons.error_rounded, color: redColor),
+                                const SizedBox(width: 10),
                                 Text("Alamat Harus Diisi",
                                     style: tiny.copyWith(color: redColor))
                               ],
                             ),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 25,
                       ),
                       SizedBox(
@@ -307,53 +308,63 @@ class RegisterScreen extends StatelessWidget {
                                         .isEmpty ||
                                     controller
                                         .addreessController.text.isEmpty) {
-                                    if (controller.nameController.text.isEmpty) {
-                                      controller.isVisibleName = true;
-                                    }
-                                    if (controller
-                                        .phoneNumberController.text.isEmpty) {
-                                      controller.isVisiblePhone = true;
-                                    }
-                                    if (controller.emailController.text.isEmpty) {
-                                      controller.isVisibleEmail = true;
-                                    }
-                                    if (controller
-                                        .passwordController.text.isEmpty) {
-                                      controller.isVisiblePass = true;
-                                    }
-                                    if (controller
-                                        .confirmPasswordController.text.isEmpty) {
-                                      controller.isVisibleConfirmPass = true;
-                                    }
-                                    if (controller
-                                        .addreessController.text.isEmpty) {
-                                      controller.isVisibleAddress = true;
-                                    }
+                                  if (controller.nameController.text.isEmpty) {
+                                    controller.isVisibleName = true;
+                                  }
+                                  if (controller
+                                      .phoneNumberController.text.isEmpty) {
+                                    controller.isVisiblePhone = true;
+                                  }
+                                  if (controller.emailController.text.isEmpty) {
+                                    controller.isVisibleEmail = true;
+                                  }
+                                  if (controller
+                                      .passwordController.text.isEmpty) {
+                                    controller.isVisiblePass = true;
+                                  }
+                                  if (controller
+                                      .confirmPasswordController.text.isEmpty) {
+                                    controller.isVisibleConfirmPass = true;
+                                  }
+                                  if (controller
+                                      .addreessController.text.isEmpty) {
+                                    controller.isVisibleAddress = true;
+                                  }
                                 } else {
-                                  controller.doRegister(
+                                  controller
+                                      .doRegister(
                                     name: controller.nameController.text,
-                                    phoneNumber: controller.phoneNumberController.text,
+                                    phoneNumber:
+                                        controller.phoneNumberController.text,
                                     email: controller.emailController.text,
-                                    password: controller.passwordController.text,
+                                    password:
+                                        controller.passwordController.text,
                                     address: controller.addreessController.text,
-                                  ).then((value) {
-                                    if(value?.meta?.code == 201) {
-                                      Fluttertoast.showToast(msg: value?.meta?.code == 201 ? 'Pendaftaran Berhasil' : "Pendaftaran Gagal");
+                                  )
+                                      .then((value) {
+                                    if (value?.meta?.code == 201) {
+                                      Fluttertoast.showToast(
+                                          msg: value?.meta?.code == 201
+                                              ? 'Pendaftaran Berhasil'
+                                              : "Pendaftaran Gagal");
                                       Get.back();
                                     } else {
-                                      Fluttertoast.showToast(msg: value?.meta?.code == 201 ? 'Pendaftaran Berhasil' : "Pendaftaran Gagal");
+                                      Fluttertoast.showToast(
+                                          msg: value?.meta?.code == 201
+                                              ? 'Pendaftaran Berhasil'
+                                              : "Pendaftaran Gagal");
                                     }
                                   });
                                 }
                                 controller.update();
                               },
-                              child: Text("Daftar",
-                                  style: heading.copyWith(fontWeight: bold)),
                               style: ElevatedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
-                                          BorderRadius.circular(10))))),
-                      SizedBox(
+                                          BorderRadius.circular(10))),
+                              child: Text("Daftar",
+                                  style: heading.copyWith(fontWeight: bold)))),
+                      const SizedBox(
                         height: 25,
                       )
                     ],
