@@ -13,14 +13,15 @@ enum PaymentViewState {
 
 class PaymentController extends BaseController {
   PaymentViewState _state = PaymentViewState.none;
+
   PaymentViewState get state => _state;
 
   TransactionModel? transactionModel;
   SchedulePaymentModel? schedulePaymentModel;
 
   DateFormat formatter = DateFormat("EEE, MMM dd, yyyy");
-  DateFormat toDateFormat = DateFormat("dd MMMM yyyy");
-  DateFormat toFormat = DateFormat("MMMM yyyy");
+  DateFormat toDateFormat = DateFormat("dd MMMM yyyy", "id");
+  DateFormat toFormat = DateFormat("MMMM yyyy", "id");
 
   NumberFormat numberFormat = NumberFormat.currency(
     decimalDigits: 0,
@@ -36,7 +37,8 @@ class PaymentController extends BaseController {
   }
 
   void whatsAppOpen() async {
-    await FlutterLaunch.launchWhatsapp(phone: "+62895619019395", message: "Saya akan membayar");
+    await FlutterLaunch.launchWhatsapp(
+        phone: "+62895619019395", message: "Saya akan membayar");
   }
 
   changeState(PaymentViewState s) {

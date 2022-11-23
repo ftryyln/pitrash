@@ -158,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   .transactionModel
                                                                   ?.data
                                                                   ?.latest
-                                                                  ?.first
+                                                                  ?.last
                                                                   .status ??
                                                               "-",
                                                           style: tiny.copyWith(
@@ -177,13 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   controller.numberFormat
                                                       .format(int.parse(
                                                           controller
-                                                              .transactionModel!
-                                                              .data!
-                                                              .latest!
-                                                              .first
-                                                              .price!
-                                                              .split('.')
-                                                              .first)),
+                                                              .transactionModel!.data!.latest!.last.price!.split('.').first)),
                                                   style: title.copyWith(
                                                       color: blackColor,
                                                       fontWeight: bold)),

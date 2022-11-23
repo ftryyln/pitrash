@@ -1,14 +1,30 @@
 import 'package:final_project/const/color.dart';
 import 'package:final_project/const/font_weight.dart';
 import 'package:final_project/const/text_style.dart';
+import 'package:final_project/ui/payment/detail/detail_payment_screen.dart';
 import 'package:final_project/ui/payment/payment_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:lottie/lottie.dart';
 
-class PaymentScreen extends StatelessWidget {
+class PaymentScreen extends StatefulWidget {
   const PaymentScreen({Key? key}) : super(key: key);
+
+  @override
+  State<PaymentScreen> createState() => _PaymentScreenState();
+}
+
+class _PaymentScreenState extends State<PaymentScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    initializeDateFormatting("id");
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,13 +90,14 @@ class PaymentScreen extends StatelessWidget {
                                     width: 125,
                                     height: 33,
                                     decoration: BoxDecoration(
-                                        color: redColor,
+                                        color: controller.transactionModel?.data
+                                            ?.latest?.last.status?.toLowerCase() == "belum dibayar" ? redColor : primaryColor,
                                         borderRadius:
                                             BorderRadius.circular(20)),
                                     child: Center(
                                       child: Text(
                                           controller.transactionModel?.data
-                                                  ?.latest?.first.status ??
+                                                  ?.latest?.last.status ??
                                               "-",
                                           style: tiny.copyWith(
                                               color: whiteColor,
@@ -164,13 +181,7 @@ class PaymentScreen extends StatelessWidget {
                                     Text(
                                         controller.numberFormat
                                             .format(int.parse(
-                                            controller
-                                                .transactionModel!
-                                                .data!
-                                                .latest!.first
-                                                .price!
-                                                .split('.')
-                                                .first)),
+                                            controller.transactionModel?.data?.latest?.first.price?.split('.').first ?? "0")),
                                         style: title.copyWith(
                                             color: blackColor,
                                             fontWeight: bold)),
@@ -181,8 +192,14 @@ class PaymentScreen extends StatelessWidget {
                                 height: 35,
                               ),
                               GestureDetector(
-                                onTap: (){
-                                  controller.whatsAppOpen();
+                                onTap: () {
+                                  // controller.whatsAppOpen();
+                                  if(controller.transactionModel?.data
+                                      ?.latest?.last.status?.toLowerCase() == "belum dibayar") {
+                                    Get.to(() => const DetailPaymentScreen());
+                                  } else {
+                                    Fluttertoast.showToast(msg: "Tagihan anda sudah dibayar!");
+                                  }
                                 },
                                 child: Card(
                                   elevation: 5,
@@ -193,7 +210,8 @@ class PaymentScreen extends StatelessWidget {
                                     width: MediaQuery.of(context).size.width,
                                     height: 40,
                                     decoration: BoxDecoration(
-                                        color: primaryColor,
+                                        color: controller.transactionModel?.data
+                                            ?.latest?.last.status?.toLowerCase() != "belum dibayar" ? primaryColor : greyColor,
                                         gradient: LinearGradient(
                                             colors: [
                                               primaryColor,

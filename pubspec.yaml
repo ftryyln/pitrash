@@ -28,11 +28,11 @@ dependencies:
   infinite_scroll_pagination: ^3.2.0
   flutter_launcher_icons: ^0.11.0
   flutter_launch: ^0.3.0
+  slide_countdown: ^0.3.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^2.0.0
 
 flutter_icons:

@@ -1,10 +1,8 @@
 import 'package:final_project/base/base_controller.dart';
-import 'package:final_project/data/storage_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ChangePasswordController extends BaseController {
-  StorageCore storage = StorageCore();
 
   //RegisterModel? registerModel = RegisterModel();
   final isObscured = false.obs;
