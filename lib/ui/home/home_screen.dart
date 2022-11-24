@@ -157,57 +157,33 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                 true
                                                             ? greyColor
                                                             : controller
-                                                            .transactionModel
-                                                            ?.data
-                                                            ?.latest != null ? controller
                                                                         .transactionModel
                                                                         ?.data
-                                                                        ?.latest
-                                                                        ?.last
-                                                                        .status
-                                                                        ?.toLowerCase() ==
-                                                                    "belum dibayar"
-                                                                ? redColor
-                                                                : primaryColor : redColor,
+                                                                        ?.latest !=
+                                                                    null
+                                                                ? controller
+                                                                            .transactionModel
+                                                                            ?.data
+                                                                            ?.latest
+                                                                            ?.last
+                                                                            .status
+                                                                            ?.toLowerCase() ==
+                                                                        "belum dibayar"
+                                                                    ? redColor
+                                                                    : primaryColor
+                                                                : redColor,
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(20)),
                                                     child: Center(
-                                                      child: controller
-                                                                  .transactionModel
-                                                                  ?.data
-                                                                  ?.latest
-                                                                  ?.last
-                                                                  .status !=
-                                                              null
-                                                          ? Text(
-                                                              controller.transactionModel?.data?.waiting != null ||
-                                                                      controller
-                                                                              .transactionModel
-                                                                              ?.data
-                                                                              ?.waiting
-                                                                              ?.isNotEmpty ==
-                                                                          true
-                                                                  ? controller
-                                                                          .transactionModel
-                                                                          ?.data
-                                                                          ?.waiting
-                                                                          ?.last
-                                                                          .status ??
-                                                                      "-"
-                                                                  : controller
-                                                                          .transactionModel
-                                                                          ?.data
-                                                                          ?.latest
-                                                                          ?.last
-                                                                          .status ??
-                                                                      "-",
+                                                      child: Text(
+                                                        controller.transactionModel?.data?.waiting?.isNotEmpty == true && controller.transactionModel?.data?.waiting != null ? controller.transactionModel?.data?.waiting?.last.status ?? "-" :
+                                                          controller.transactionModel?.data?.latest?.isNotEmpty == true && controller.transactionModel?.data?.latest != null ? controller.transactionModel?.data?.latest?.last.status ?? "-" : "-",
                                                               textAlign: TextAlign
                                                                   .center,
                                                               style: tiny.copyWith(
                                                                   color: whiteColor,
                                                                   fontWeight: bold))
-                                                          : const Text("-"),
                                                     ),
                                                   )
                                                 ],
