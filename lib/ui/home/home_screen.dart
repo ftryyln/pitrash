@@ -86,9 +86,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                                             fit: BoxFit.cover,
                                             // onError: (object, stacktrace) => SvgPicture.asset('assets/vector/icon_person.svg'),
                                             onError: (object, stacktrace) =>
-                                                const Icon(Icons.person),
-                                            image: NetworkImage(
-                                                controller.imageProfile)),
+                                                Image.asset("assets/vector/icon_person.png"),
+                                            image: controller.imageProfile.isNotEmpty || controller.imageProfile != null ? NetworkImage(
+                                                controller.imageProfile) : const AssetImage("assets/vector/icon_person.png") as ImageProvider<Object>),
                                       ),
                                     ),
                                     const SizedBox(

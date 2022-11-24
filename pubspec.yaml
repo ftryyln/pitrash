@@ -29,6 +29,7 @@ dependencies:
   flutter_launcher_icons: ^0.11.0
   flutter_launch: ^0.3.0
   slide_countdown: ^0.3.4
+  flutter_svg_provider: ^1.0.3
 
 dev_dependencies:
   flutter_test:
