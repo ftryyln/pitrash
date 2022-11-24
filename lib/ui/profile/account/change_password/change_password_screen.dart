@@ -183,22 +183,23 @@ class ChangePasswordScreen extends StatelessWidget {
                                         .text.isEmpty) {
                                       controller.isVisibleConfirmPass = true;
                                     }
+                                  } else if(controller.newPasswordController.text != controller.confirmPasswordController.text) {
+                                    Fluttertoast.showToast(msg: "Konfirmasi password tidak sama!");
                                   } else {
                                     controller.postChangePassword(
                                       password: controller.newPasswordController.text,
                                     )
                                         .then((value) {
-                                      if (value?.meta?.code == 201) {
-                                        Fluttertoast.showToast(
-                                            msg: value?.meta?.code == 201
-                                                ? 'Pendaftaran Berhasil'
-                                                : "Pendaftaran Gagal");
+                                          debugPrint("status code ganti password ${value?.meta?.code}");
+                                      if (value?.meta?.code == 202) {
+                                        Fluttertoast.showToast(msg: 'Ganti Password Berhasil');
                                         Get.back();
                                       } else {
-                                        Fluttertoast.showToast(
-                                            msg: value?.meta?.code == 201
-                                                ? 'Pendaftaran Berhasil'
-                                                : "Pendaftaran Gagal");
+                                        Fluttertoast.showToast(msg: 'Ganti Password Gagal');
+                                        // Fluttertoast.showToast(
+                                        //     msg: value?.meta?.code == 202
+                                        //         ? 'Ganti Password Berhasil'
+                                        //         : "Ganti Password Gagal");
                                       }
                                     });
                                   }

@@ -36,18 +36,13 @@ class ChangePasswordController extends BaseController {
   }
 
   Future<ChangePasswordModel?> postChangePassword({required String password}) async {
-    try {
       var response = await repository.postChangePassword(
           newPasswordController.text, token!);
-      Fluttertoast.showToast(msg: response.meta!.message!);
+      // Fluttertoast.showToast(msg: response.meta!.message!);
       if (response.meta?.status?.toLowerCase() == "success") {
         // Get.offAll(() => const ProfileScreen());
         Get.back();
       }
-    } on DioError catch (e) {
-      Get.showSnackbar(GetSnackBar(
-        message: "Terjadi Kesalahan ${e.response?.statusMessage}",));
-    }
-    return null;
+      return response;
   }
 }

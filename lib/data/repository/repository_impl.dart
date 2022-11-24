@@ -252,7 +252,7 @@ class RepositoryImpl implements Repository {
           options: Options(headers: {
             "Authorization": "Bearer $token",
             "Accept": "application/json",
-            "Content-Type": "multipart/form-data"
+            // "Content-Type": "multipart/form-data"
           }));
       return ChangePasswordModel.fromJson(response.data);
     } on DioError catch (e) {
