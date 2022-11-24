@@ -118,7 +118,9 @@ class DetailPaymentScreen extends StatelessWidget {
                       height: 8,
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        controller.postUploadPayment();
+                      },
                       child: Card(
                         elevation: 5,
                         color: whiteColor,

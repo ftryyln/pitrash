@@ -7,12 +7,14 @@ import 'package:final_project/data/model/auth/register_model.dart';
 import 'package:final_project/data/model/carousel/carousel_model.dart';
 import 'package:final_project/data/model/education/education_model.dart';
 import 'package:final_project/data/model/notification/list_notif_model.dart';
+import 'package:final_project/data/model/profile/change_password_model.dart';
 import 'package:final_project/data/model/profile/edit_profile_model.dart';
 import 'package:final_project/data/model/profile/profile_model.dart';
 import 'package:final_project/data/model/schedule/schedule_payment_model.dart';
 import 'package:final_project/data/model/schedule/schedule_pickup_model.dart';
 import 'package:final_project/data/model/transaction/history_model.dart';
 import 'package:final_project/data/model/transaction/transaction_model.dart';
+import 'package:final_project/data/model/transaction/upload_payment_model.dart';
 import 'package:final_project/data/network_core.dart';
 import 'package:final_project/data/repository/repository.dart';
 import 'package:final_project/data/storage_core.dart';
@@ -153,7 +155,6 @@ class RepositoryImpl implements Repository {
       var formData = FormData.fromMap({
         "name": name,
         "email": email,
-        // "password": password,
         "address": address,
         "phone": phone,
       });
@@ -215,6 +216,47 @@ class RepositoryImpl implements Repository {
       return SchedulePickupModel.fromJson(response.data);
     } on DioError catch (e) {
       return SchedulePickupModel.fromJson(e.response?.data);
+    }
+  }
+
+  @override
+  FutureOr<UploadPaymentModel> postUploadPayment(
+      File? image, String token) async {
+    try {
+      var formData = FormData.fromMap({});
+
+      if (image != null) {
+        formData.files.addAll(
+            [MapEntry("image", await MultipartFile.fromFile(image.path))]);
+      }
+
+      var response = await network.dio.post("/transaction/payment",
+          data: formData,
+          options: Options(headers: {
+            "Authorization": "Bearer $token",
+            "Accept": "application/json",
+            "Content-Type": "multipart/form-data"
+          }));
+      return UploadPaymentModel.fromJson(response.data);
+    } on DioError catch (e) {
+      return UploadPaymentModel.fromJson(e.response?.data);
+    }
+  }
+
+  @override
+  FutureOr<ChangePasswordModel> postChangePassword(
+      String password, String token) async {
+    try {
+      var response = await network.dio.post("/user/editpassword",
+          data: {'password': password},
+          options: Options(headers: {
+            "Authorization": "Bearer $token",
+            "Accept": "application/json",
+            "Content-Type": "multipart/form-data"
+          }));
+      return ChangePasswordModel.fromJson(response.data);
+    } on DioError catch (e) {
+      return ChangePasswordModel.fromJson(e.response?.data);
     }
   }
 }

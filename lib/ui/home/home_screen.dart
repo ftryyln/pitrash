@@ -339,13 +339,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                             Text("Riwayat",
                                                 style: heading.copyWith(
                                                     color: primaryColor,
-                                                    fontSize: 24,
+                                                    fontSize: 20,
                                                     fontWeight: bold),
                                                 textAlign: TextAlign.center),
                                             Text("Jadwal Pengambilan",
                                                 style: heading.copyWith(
                                                     color: primaryColor,
-                                                    fontSize: 12,
+                                                    fontSize: 10,
                                                     fontWeight: bold),
                                                 textAlign: TextAlign.center),
                                           ],
@@ -448,12 +448,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               const EducationDetailScreen(),
                                                           arguments: e),
                                                       child: SizedBox(
-                                                        width: 200,
-                                                        height: 160,
+                                                        width: 180,
+                                                        height: 180,
                                                         child: Column(
                                                           children: [
                                                             Card(
                                                               elevation: 5,
+                                                              shadowColor: primaryColor,
                                                               shape: const RoundedRectangleBorder(
                                                                   borderRadius: BorderRadius.only(
                                                                       topLeft:
@@ -508,6 +509,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             ),
                                                             Card(
                                                               elevation: 5,
+                                                              shadowColor: primaryColor,
                                                               shape: const RoundedRectangleBorder(
                                                                   borderRadius: BorderRadius.only(
                                                                       topLeft:
@@ -526,7 +528,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                 padding:
                                                                     const EdgeInsets
                                                                         .all(8),
-                                                                height: 110,
+                                                                height: 130,
                                                                 width: 180,
                                                                 decoration: const BoxDecoration(
                                                                     color:

@@ -1,19 +1,29 @@
+import 'package:dio/dio.dart';
 import 'package:final_project/base/base_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
-class ChangePasswordController extends BaseController {
+import '../../../../data/model/profile/change_password_model.dart';
+import '../../../../data/storage_core.dart';
 
-  //RegisterModel? registerModel = RegisterModel();
-  final isObscured = false.obs;
-  final TextEditingController oldPasswordController = TextEditingController(text: '');
-  final TextEditingController newPasswordController = TextEditingController(text: '');
-  final TextEditingController confirmPasswordController = TextEditingController(text: '');
+class ChangePasswordController extends BaseController {
+  String? token = StorageCore().getAccessToken();
+
+  bool isVisiblePass = false;
+  bool isVisibleConfirmPass = false;
+  bool isNotMatch = false;
+  bool isObscuredPass = false;
+  bool isObscuredConfirmPass = false;
+
+  final TextEditingController newPasswordController =
+  TextEditingController();
+  final TextEditingController confirmPasswordController =
+  TextEditingController();
 
   @override
   void onInit() {
     super.onInit();
-    oldPasswordController.text;
     newPasswordController.text;
     confirmPasswordController.text;
   }
@@ -21,27 +31,23 @@ class ChangePasswordController extends BaseController {
   @override
   void dispose() {
     super.dispose();
-    oldPasswordController.text;
     newPasswordController.text;
     confirmPasswordController.text;
   }
 
-  void doRegister(
-      String oldPassword, String password, String confirmPasword) async {
-    // try {
-    //   // isLoading.isTrue;
-    //   var response =
-    //   await repository.postRegister(name, email, username, password);
-    //   registerModel = response;
-    //   if (registerModel?.meta?.status == "success") {
-    //     Fluttertoast.showToast(msg: registerModel!.meta!.message!);
-    //     update();
-    //     Get.offAll(() => const LoginPage());
-    //   } else if (registerModel?.meta?.status == "error") {
-    //     Fluttertoast.showToast(msg: 'data tidak lengkap');
-    //   }
-    // } catch (e) {
+  Future<ChangePasswordModel?> postChangePassword({required String password}) async {
+    try {
+      var response = await repository.postChangePassword(
+          newPasswordController.text, token!);
+      Fluttertoast.showToast(msg: response.meta!.message!);
+      if (response.meta?.status?.toLowerCase() == "success") {
+        // Get.offAll(() => const ProfileScreen());
+        Get.back();
+      }
+    } on DioError catch (e) {
+      Get.showSnackbar(GetSnackBar(
+        message: "Terjadi Kesalahan ${e.response?.statusMessage}",));
+    }
     return null;
-    //}
   }
 }

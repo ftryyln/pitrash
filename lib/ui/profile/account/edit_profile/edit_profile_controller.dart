@@ -23,7 +23,6 @@ class EditProfileController extends BaseController {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  // final TextEditingController confirmPasswordController = TextEditingController();
   final TextEditingController addreessController = TextEditingController();
 
   @override
@@ -33,7 +32,6 @@ class EditProfileController extends BaseController {
     emailController.text = prevEmail;
     phoneNumberController.text = prevPhone;
     passwordController.text;
-    // confirmPasswordController.text;
     addreessController.text = prevAddress;
   }
 
@@ -44,7 +42,6 @@ class EditProfileController extends BaseController {
     phoneNumberController.dispose();
     emailController.dispose();
     passwordController.dispose();
-    // confirmPasswordController.dispose();
     addreessController.dispose();
   }
 

@@ -8,10 +8,8 @@ import 'package:get/get.dart';
 
 class LoginController extends BaseController {
   LoginModel loginModel = LoginModel();
-  final TextEditingController emailController =
-      TextEditingController(text: 'fit@mail.com');
-  final TextEditingController passwordController =
-      TextEditingController(text: '12345678');
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   bool isObscured = false;

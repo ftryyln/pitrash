@@ -41,7 +41,7 @@ class OnBoardingScreen extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: 25),
                               child: GestureDetector(
-                                onTap: () => Get.to(LoginScreen()),
+                                onTap: () => Get.to(const LoginScreen()),
                                 child: Text("Skip",
                                     style: heading.copyWith(fontWeight: regular)),
                               ),
@@ -95,7 +95,7 @@ class OnBoardingScreen extends StatelessWidget {
                             child: Stack(
                               children: [
                                 SvgPicture.asset("assets/vector/buttonnext.svg"),
-                                Positioned(bottom: 30, top: 30, left: 25, right: 20,
+                                Positioned(bottom: 30, top: 30, left: 24, right: 15,
                                     child: Text("Next", style: heading.copyWith(fontWeight: bold)))
                               ],
                             )),
