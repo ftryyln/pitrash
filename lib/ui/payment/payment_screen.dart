@@ -303,5 +303,6 @@ class _PaymentScreenState extends State<PaymentScreen>
       Future.wait(
           [controller.getTransaction(), controller.getSchedulePayment()]);
     }
+    controller.update();
   }
 }

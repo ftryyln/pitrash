@@ -703,6 +703,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         controller.getSchedulePickup(),
         controller.getSchedulePayment()
       ]);
+      controller.update();
     }
   }
 }
