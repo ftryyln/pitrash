@@ -21,11 +21,20 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
+
+
+  @override
+  void initState() {
+    super.initState();
+    initializeDateFormatting("id");
+    Get.put<HomeController>(HomeController());
+  }
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
-        init: HomeController(),
+        // init: HomeController(),
         builder: (controller) {
           if (controller.state == HomeViewState.loading) {
             return Scaffold(
@@ -644,8 +653,17 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    initializeDateFormatting("id");
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if(state == AppLifecycleState.resumed) {
+      var controller = Get.find<HomeController>();
+      Future.wait([
+        controller.getCarousel(),
+        controller.getProfile(),
+        controller.getEducation(),
+        controller.getTransaction(),
+        controller.getSchedulePickup(),
+        controller.getSchedulePayment()
+      ]);
+    }
   }
 }

@@ -17,6 +17,7 @@ enum HomeViewState {
 
 class HomeController extends BaseController {
   HomeViewState _state = HomeViewState.none;
+
   HomeViewState get state => _state;
 
   String imageProfile = "";
@@ -47,12 +48,20 @@ class HomeController extends BaseController {
   @override
   void onInit() {
     super.onInit();
-    getCarousel();
-    getProfile();
-    getEducation();
-    getTransaction();
-    getSchedulePickup();
-    getSchedulePayment();
+    Future.wait([
+      getCarousel(),
+      getProfile(),
+      getEducation(),
+      getTransaction(),
+      getSchedulePickup(),
+      getSchedulePayment()
+    ]);
+    // getCarousel();
+    // getProfile();
+    // getEducation();
+    // getTransaction();
+    // getSchedulePickup();
+    // getSchedulePayment();
   }
 
   changeState(HomeViewState s) {

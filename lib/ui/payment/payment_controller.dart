@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:final_project/base/base_controller.dart';
 import 'package:final_project/data/model/schedule/schedule_payment_model.dart';
 import 'package:final_project/data/model/transaction/transaction_model.dart';
@@ -31,8 +30,7 @@ class PaymentController extends BaseController {
   @override
   void onInit() {
     super.onInit();
-    getTransaction();
-    getSchedulePayment();
+    Future.wait([getTransaction(), getSchedulePayment()]);
   }
 
   // void whatsAppOpen() async {
@@ -47,24 +45,16 @@ class PaymentController extends BaseController {
 
   Future<void> getTransaction() async {
     changeState(PaymentViewState.loading);
-    try {
-      var response = await repository.getTransaction();
-      transactionModel = response;
-      update();
-    } on DioError catch (e) {
-      print(e.response?.data.toString());
-    }
+    var response = await repository.getTransaction();
+    transactionModel = response;
+    update();
   }
 
   Future<void> getSchedulePayment() async {
     changeState(PaymentViewState.loading);
-    try {
-      var response = await repository.getSchedulePayment();
-      schedulePaymentModel = response;
-      update();
-      changeState(PaymentViewState.none);
-    } catch (e) {
-      return null;
-    }
+    var response = await repository.getSchedulePayment();
+    schedulePaymentModel = response;
+    update();
+    changeState(PaymentViewState.none);
   }
 }

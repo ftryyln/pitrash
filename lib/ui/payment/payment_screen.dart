@@ -17,19 +17,18 @@ class PaymentScreen extends StatefulWidget {
   State<PaymentScreen> createState() => _PaymentScreenState();
 }
 
-class _PaymentScreenState extends State<PaymentScreen> {
-
+class _PaymentScreenState extends State<PaymentScreen>
+    with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
     initializeDateFormatting("id");
+    Get.put<PaymentController>(PaymentController());
   }
-
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<PaymentController>(
-        init: PaymentController(),
         builder: (controller) {
           if (controller.state == PaymentViewState.loading) {
             return Scaffold(
@@ -89,24 +88,54 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                         right: 7, left: 7, top: 5, bottom: 5),
                                     width: 125,
                                     decoration: BoxDecoration(
-                                        color: controller
-                                            .transactionModel
-                                            ?.data?.waiting?.isNotEmpty == true ? greyColor :
-                                        controller
-                                            .transactionModel
-                                            ?.data
-                                            ?.latest
-                                            ?.last
-                                            .status
-                                            ?.toLowerCase() ==
-                                            "belum dibayar"
-                                            ? redColor
-                                            : primaryColor,
+                                        color: controller.transactionModel?.data
+                                                    ?.waiting?.isNotEmpty ==
+                                                true
+                                            ? greyColor
+                                            : controller.transactionModel?.data
+                                                        ?.latest?.last.status
+                                                        ?.toLowerCase() ==
+                                                    "belum dibayar"
+                                                ? redColor
+                                                : primaryColor,
                                         borderRadius:
                                             BorderRadius.circular(20)),
                                     child: Center(
-                                      child: Text(controller.transactionModel?.data?.waiting?.isNotEmpty == true && controller.transactionModel?.data?.waiting != null ? controller.transactionModel?.data?.waiting?.last.status ?? "-" :
-                                      controller.transactionModel?.data?.latest?.isNotEmpty == true && controller.transactionModel?.data?.latest != null ? controller.transactionModel?.data?.latest?.last.status ?? "-" : "-",
+                                      child: Text(
+                                          controller
+                                                          .transactionModel
+                                                          ?.data
+                                                          ?.waiting
+                                                          ?.isNotEmpty ==
+                                                      true &&
+                                                  controller.transactionModel?.data?.waiting !=
+                                                      null
+                                              ? controller
+                                                      .transactionModel
+                                                      ?.data
+                                                      ?.waiting
+                                                      ?.last
+                                                      .status ??
+                                                  "-"
+                                              : controller
+                                                              .transactionModel
+                                                              ?.data
+                                                              ?.latest
+                                                              ?.isNotEmpty ==
+                                                          true &&
+                                                      controller
+                                                              .transactionModel
+                                                              ?.data
+                                                              ?.latest !=
+                                                          null
+                                                  ? controller
+                                                          .transactionModel
+                                                          ?.data
+                                                          ?.latest
+                                                          ?.last
+                                                          .status ??
+                                                      "-"
+                                                  : "-",
                                           textAlign: TextAlign.center,
                                           style: tiny.copyWith(
                                               color: whiteColor,
@@ -158,13 +187,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                       ),
                                       Text(
                                           controller.toDateFormat.format(
-                                              controller.formatter.parse(controller
-                                                      .schedulePaymentModel
-                                                      ?.data
-                                                      ?.incoming
-                                                      ?.first
-                                                      .dueDate ??
-                                                  "Sun, Dec 25, 2022")),
+                                              controller.formatter.parse(
+                                                  controller
+                                                          .schedulePaymentModel
+                                                          ?.data
+                                                          ?.incoming
+                                                          ?.first
+                                                          .dueDate ??
+                                                      "Sun, Dec 25, 2022")),
                                           style: tiny.copyWith(
                                               color: blackColor,
                                               fontWeight: bold)),
@@ -188,9 +218,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                       height: 10,
                                     ),
                                     Text(
-                                        controller.numberFormat
-                                            .format(int.parse(
-                                            controller.transactionModel?.data?.latest?.first.price?.split('.').first ?? "0")),
+                                        controller.numberFormat.format(
+                                            int.parse(controller
+                                                    .transactionModel
+                                                    ?.data
+                                                    ?.latest
+                                                    ?.first
+                                                    .price
+                                                    ?.split('.')
+                                                    .first ??
+                                                "0")),
                                         style: title.copyWith(
                                             color: blackColor,
                                             fontWeight: bold)),
@@ -203,11 +240,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               GestureDetector(
                                 onTap: () {
                                   // controller.whatsAppOpen();
-                                  if(controller.transactionModel?.data
-                                      ?.latest?.last.status?.toLowerCase() == "belum dibayar") {
+                                  print(
+                                      "bayar ${controller.transactionModel?.data?.latest?.last.status?.toLowerCase()}");
+                                  if (controller.transactionModel?.data?.latest
+                                          ?.last.status
+                                          ?.toLowerCase() ==
+                                      "belum dibayar") {
                                     Get.to(() => const DetailPaymentScreen());
                                   } else {
-                                    Fluttertoast.showToast(msg: "Tagihan anda sudah dibayar!");
+                                    Fluttertoast.showToast(
+                                        msg: "Tagihan anda sudah dibayar!");
                                   }
                                 },
                                 child: Card(
@@ -220,7 +262,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     height: 40,
                                     decoration: BoxDecoration(
                                         color: controller.transactionModel?.data
-                                            ?.latest?.last.status?.toLowerCase() != "belum dibayar" ? primaryColor : greyColor,
+                                                    ?.latest?.last.status
+                                                    ?.toLowerCase() !=
+                                                "belum dibayar"
+                                            ? primaryColor
+                                            : greyColor,
                                         gradient: LinearGradient(
                                             colors: [
                                               primaryColor,
@@ -228,11 +274,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                             ],
                                             begin: Alignment.topCenter,
                                             end: Alignment.bottomCenter),
-                                        borderRadius: BorderRadius.circular(20)),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                     child: Center(
                                         child: Text(
                                       "Bayar",
-                                      style: body.copyWith(fontWeight: semiBold),
+                                      style:
+                                          body.copyWith(fontWeight: semiBold),
                                     )),
                                   ),
                                 ),
@@ -248,5 +296,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
             ),
           );
         });
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    var controller = Get.find<PaymentController>();
+    if (state == AppLifecycleState.resumed) {
+      Future.wait(
+          [controller.getTransaction(), controller.getSchedulePayment()]);
+    }
   }
 }

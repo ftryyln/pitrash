@@ -78,7 +78,12 @@ class DetailPaymentScreen extends StatelessWidget {
                               ),
                               SlideCountdown(
                                 duration: DateFormat("EEE, MMM dd, yyyy")
-                                    .parse("Fri, Nov 30, 2022")
+                                    .parse(controller
+                                    .schedulePaymentModel
+                                    ?.data
+                                    ?.incoming
+                                    ?.first
+                                    .dueDate ?? "Fri, Nov 30, 2022")
                                     .difference(DateTime.now()),
                               )
                             ])),
