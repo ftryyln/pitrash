@@ -148,19 +148,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     width: 125,
                                                     height: 33,
                                                     decoration: BoxDecoration(
-                                                        color: redColor,
+                                                        color: controller
+                                                            .transactionModel
+                                                            ?.data
+                                                            ?.latest
+                                                            ?.last
+                                                            .status?.toLowerCase() == "belum dibayar" ? redColor : primaryColor,
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(20)),
                                                     child: Center(
                                                       child: Text(
-                                                          controller
-                                                                  .transactionModel
-                                                                  ?.data
-                                                                  ?.latest
-                                                                  ?.last
-                                                                  .status ??
-                                                              "-",
+                                                          controller.transactionModel?.data?.latest?.last.status ?? "-",
                                                           style: tiny.copyWith(
                                                               color: whiteColor,
                                                               fontWeight:

@@ -126,16 +126,17 @@ class ProfileScreen extends StatelessWidget {
                           height: 15,
                         ),
                         GestureDetector(
-                          onTap: () =>
-                              {Get.to(() => const ChangePasswordScreen())},
+                          onTap: () => Get.to(() => const ChangePasswordScreen()),
                           child: SizedBox(
                             width: Get.width,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text("Ubah Kata Sandi",
-                                    style:
-                                        heading1.copyWith(color: blackColor)),
+                                Expanded(
+                                  child: Text("Ubah Kata Sandi",
+                                      style:
+                                          heading1.copyWith(color: blackColor)),
+                                ),
                                 const Icon(Icons.arrow_forward_ios_rounded,
                                     color: primaryColor, size: 14),
                               ],
