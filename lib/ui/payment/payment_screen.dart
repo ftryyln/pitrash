@@ -88,17 +88,25 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                     padding: const EdgeInsets.only(
                                         right: 7, left: 7, top: 5, bottom: 5),
                                     width: 125,
-                                    height: 33,
                                     decoration: BoxDecoration(
-                                        color: controller.transactionModel?.data
-                                            ?.latest?.last.status?.toLowerCase() == "belum dibayar" ? redColor : primaryColor,
+                                        color: controller
+                                            .transactionModel
+                                            ?.data?.waiting?.isNotEmpty == true ? greyColor :
+                                        controller
+                                            .transactionModel
+                                            ?.data
+                                            ?.latest
+                                            ?.last
+                                            .status
+                                            ?.toLowerCase() ==
+                                            "belum dibayar"
+                                            ? redColor
+                                            : primaryColor,
                                         borderRadius:
                                             BorderRadius.circular(20)),
                                     child: Center(
-                                      child: Text(
-                                          controller.transactionModel?.data
-                                                  ?.latest?.last.status ??
-                                              "-",
+                                      child: Text(controller.transactionModel?.data?.waiting != null || controller.transactionModel?.data?.waiting?.isNotEmpty == true ? controller.transactionModel?.data?.waiting?.last.status ?? "-" : controller.transactionModel?.data?.latest?.last.status ?? "-",
+                                          textAlign: TextAlign.center,
                                           style: tiny.copyWith(
                                               color: whiteColor,
                                               fontWeight: bold)),
