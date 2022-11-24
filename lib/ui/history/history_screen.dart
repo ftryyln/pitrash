@@ -48,7 +48,8 @@ class HistoryScreen extends StatelessWidget {
                                   ),
                                   GestureDetector(
                                     onTap: () => {
-                                      Get.to(() => const HistoryDetailScreen())
+                                      Get.to(() => const HistoryDetailScreen(),arguments: controller.historyModel?.data?.history?[index].image
+                                      )
                                     },
                                     child: Container(
                                       width: Get.width,

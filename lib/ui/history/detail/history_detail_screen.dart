@@ -32,7 +32,7 @@ class HistoryDetailScreen extends StatelessWidget {
             ),
             body: SingleChildScrollView(
               child: SizedBox(
-                height: 1006,
+                height: 987,
                 child: Stack(
                   children: [
                     SvgPicture.asset("assets/vector/bgappbar.svg",
@@ -42,8 +42,8 @@ class HistoryDetailScreen extends StatelessWidget {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Image.network(
-                                "",
+                            Image.asset(
+                                "assets/image/historydetail/transaction.png",scale: 1.08,
                                 fit: BoxFit.contain),
                             const SizedBox(
                               height: 20,
@@ -55,7 +55,7 @@ class HistoryDetailScreen extends StatelessWidget {
                             ),
                             SizedBox(
                               height: 524,
-                              width: 300,
+                              width: 258,
                               child: DottedBorder(
                                   borderType: BorderType.RRect,
                                   radius: const Radius.circular(20),

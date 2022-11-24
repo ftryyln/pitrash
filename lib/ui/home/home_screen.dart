@@ -150,9 +150,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     // height: 33,
                                                     decoration: BoxDecoration(
                                                         color: controller
-                                                            .transactionModel
-                                                            ?.data?.waiting?.isNotEmpty == true ? greyColor :
-                                                        controller
+                                                                    .transactionModel
+                                                                    ?.data
+                                                                    ?.waiting
+                                                                    ?.isNotEmpty ==
+                                                                true
+                                                            ? greyColor
+                                                            : controller
                                                                         .transactionModel
                                                                         ?.data
                                                                         ?.latest
@@ -166,13 +170,41 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             BorderRadius
                                                                 .circular(20)),
                                                     child: Center(
-                                                      child: Text(
-                                                          controller.transactionModel?.data?.waiting != null || controller.transactionModel?.data?.waiting?.isNotEmpty == true ? controller.transactionModel?.data?.waiting?.last.status ?? "-" : controller.transactionModel?.data?.latest?.last.status ?? "-",
-                                                          textAlign: TextAlign.center,
-                                                          style: tiny.copyWith(
-                                                              color: whiteColor,
-                                                              fontWeight:
-                                                                  bold)),
+                                                      child: controller
+                                                                  .transactionModel
+                                                                  ?.data
+                                                                  ?.latest
+                                                                  ?.last
+                                                                  .status !=
+                                                              null
+                                                          ? Text(
+                                                              controller.transactionModel?.data?.waiting != null ||
+                                                                      controller
+                                                                              .transactionModel
+                                                                              ?.data
+                                                                              ?.waiting
+                                                                              ?.isNotEmpty ==
+                                                                          true
+                                                                  ? controller
+                                                                          .transactionModel
+                                                                          ?.data
+                                                                          ?.waiting
+                                                                          ?.last
+                                                                          .status ??
+                                                                      "-"
+                                                                  : controller
+                                                                          .transactionModel
+                                                                          ?.data
+                                                                          ?.latest
+                                                                          ?.last
+                                                                          .status ??
+                                                                      "-",
+                                                              textAlign: TextAlign
+                                                                  .center,
+                                                              style: tiny.copyWith(
+                                                                  color: whiteColor,
+                                                                  fontWeight: bold))
+                                                          : const Text("-"),
                                                     ),
                                                   )
                                                 ],
@@ -185,7 +217,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   controller.numberFormat
                                                       .format(int.parse(
                                                           controller
-                                                              .transactionModel!.data!.latest!.last.price!.split('.').first)),
+                                                              .transactionModel!
+                                                              .data!
+                                                              .latest!
+                                                              .last
+                                                              .price!
+                                                              .split('.')
+                                                              .first)),
                                                   style: title.copyWith(
                                                       color: blackColor,
                                                       fontWeight: bold)),
@@ -462,7 +500,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           children: [
                                                             Card(
                                                               elevation: 5,
-                                                              shadowColor: primaryColor,
+                                                              shadowColor:
+                                                                  primaryColor,
                                                               shape: const RoundedRectangleBorder(
                                                                   borderRadius: BorderRadius.only(
                                                                       topLeft:
@@ -482,7 +521,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                 width: 180,
                                                                 padding:
                                                                     const EdgeInsets
-                                                                            .all(7),
+                                                                        .all(7),
                                                                 decoration: const BoxDecoration(
                                                                     color:
                                                                         primaryColor,
@@ -511,13 +550,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                           1,
                                                                       overflow:
                                                                           TextOverflow
-                                                                              .visible, textAlign: TextAlign.center),
+                                                                              .visible,
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .center),
                                                                 ),
                                                               ),
                                                             ),
                                                             Card(
                                                               elevation: 5,
-                                                              shadowColor: primaryColor,
+                                                              shadowColor:
+                                                                  primaryColor,
                                                               shape: const RoundedRectangleBorder(
                                                                   borderRadius: BorderRadius.only(
                                                                       topLeft:
