@@ -157,6 +157,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                 true
                                                             ? greyColor
                                                             : controller
+                                                            .transactionModel
+                                                            ?.data
+                                                            ?.latest != null ? controller
                                                                         .transactionModel
                                                                         ?.data
                                                                         ?.latest
@@ -165,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                         ?.toLowerCase() ==
                                                                     "belum dibayar"
                                                                 ? redColor
-                                                                : primaryColor,
+                                                                : primaryColor : redColor,
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(20)),
