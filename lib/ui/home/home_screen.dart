@@ -186,8 +186,39 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                                                                 .circular(20)),
                                                     child: Center(
                                                       child: Text(
-                                                        controller.transactionModel?.data?.waiting?.isNotEmpty == true && controller.transactionModel?.data?.waiting != null ? controller.transactionModel?.data?.waiting?.last.status ?? "-" :
-                                                          controller.transactionModel?.data?.latest?.isNotEmpty == true && controller.transactionModel?.data?.latest != null ? controller.transactionModel?.data?.latest?.last.status ?? "-" : "-",
+
+                                                          controller.transactionModel?.data
+                                                              ?.waiting
+                                                              ?.isNotEmpty ==
+                                                              true &&
+                                                              controller.transactionModel?.data?.waiting !=
+                                                                  null
+                                                              ? controller
+                                                              .transactionModel
+                                                              ?.data
+                                                              ?.waiting
+                                                              ?.last
+                                                              .status ??
+                                                              "-"
+                                                              : controller
+                                                              .transactionModel
+                                                              ?.data
+                                                              ?.latest
+                                                              ?.isNotEmpty ==
+                                                              true &&
+                                                              controller
+                                                                  .transactionModel
+                                                                  ?.data
+                                                                  ?.latest !=
+                                                                  null
+                                                              ? controller
+                                                              .transactionModel
+                                                              ?.data
+                                                              ?.latest
+                                                              ?.last
+                                                              .status ??
+                                                              "-"
+                                                              : "-",
                                                               textAlign: TextAlign
                                                                   .center,
                                                               style: tiny.copyWith(

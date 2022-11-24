@@ -102,9 +102,7 @@ class _PaymentScreenState extends State<PaymentScreen>
                                             BorderRadius.circular(20)),
                                     child: Center(
                                       child: Text(
-                                          controller
-                                                          .transactionModel
-                                                          ?.data
+                                          controller.transactionModel?.data
                                                           ?.waiting
                                                           ?.isNotEmpty ==
                                                       true &&
