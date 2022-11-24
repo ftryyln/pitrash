@@ -50,6 +50,14 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             backgroundColor: whiteColor,
             body: RefreshIndicator(
               onRefresh: () async {
+                Future.wait([
+                  controller.getCarousel(),
+                  controller.getProfile(),
+                  controller.getEducation(),
+                  controller.getTransaction(),
+                  controller.getSchedulePickup(),
+                  controller.getSchedulePayment()
+                ]);
                 controller.update();
               },
               child: SingleChildScrollView(
@@ -87,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                                             // onError: (object, stacktrace) => SvgPicture.asset('assets/vector/icon_person.svg'),
                                             onError: (object, stacktrace) =>
                                                 Image.asset("assets/vector/icon_person.png"),
-                                            image: controller.imageProfile.isNotEmpty || controller.imageProfile != null ? NetworkImage(
+                                            image: controller.imageProfile.isNotEmpty ? NetworkImage(
                                                 controller.imageProfile) : const AssetImage("assets/vector/icon_person.png") as ImageProvider<Object>),
                                       ),
                                     ),
