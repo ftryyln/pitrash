@@ -2,7 +2,6 @@ import 'package:final_project/const/color.dart';
 import 'package:final_project/const/font_weight.dart';
 import 'package:final_project/const/text_style.dart';
 import 'package:final_project/ui/profile/account/change_password/change_password_controller.dart';
-import 'package:final_project/ui/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -36,8 +35,8 @@ class ChangePasswordScreen extends StatelessWidget {
                 children: [
                   SvgPicture.asset("assets/vector/bgappbar.svg",
                       fit: BoxFit.cover),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
+                  SizedBox(
+                    width: Get.width,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -45,7 +44,7 @@ class ChangePasswordScreen extends StatelessWidget {
                             width: 300, height: 300),
                         Text("Ubah Kata Sandi",
                             style: title.copyWith(color: primaryColor)),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Padding(
@@ -60,7 +59,7 @@ class ChangePasswordScreen extends StatelessWidget {
                                   Text("Kata Sandi Lama",
                                       style: body.copyWith(color: greyColor)),
                                   SizedBox(
-                                    width: 230,
+                                    width: Get.width*0.51,
                                     height: 40,
                                     child: TextFormField(
                                         controller: controller.oldPasswordController,
@@ -79,7 +78,7 @@ class ChangePasswordScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 15,
                               ),
                               Row(
@@ -89,7 +88,7 @@ class ChangePasswordScreen extends StatelessWidget {
                                   Text("Kata Sandi Baru",
                                       style: body.copyWith(color: greyColor)),
                                   SizedBox(
-                                    width: 230,
+                                    width: Get.width*0.51,
                                     height: 40,
                                     child: TextFormField(
                                         controller: controller.newPasswordController,
@@ -108,7 +107,7 @@ class ChangePasswordScreen extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 35,
                               ),
                               Card(

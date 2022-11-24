@@ -17,7 +17,7 @@ abstract class Repository {
   FutureOr<LoginModel> postLogin(String email, String password);
 
   Future<RegisterModel?> postRegister(
-      String name, String phone, String email, String password, String address);
+      String name, String email,  String password, String phone, String address);
 
   FutureOr<LogoutModel> postLogout(String email, String password);
 

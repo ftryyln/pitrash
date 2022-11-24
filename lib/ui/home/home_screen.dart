@@ -244,7 +244,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20)),
                                   child: Container(
-                                    height: 180,
+                                    height: 190,
                                     width: 170,
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(
@@ -316,7 +316,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         borderRadius:
                                             BorderRadius.circular(20)),
                                     child: Container(
-                                      height: 180,
+                                      height: 190,
                                       width: 170,
                                       padding: const EdgeInsets.all(10),
                                       decoration: BoxDecoration(
@@ -324,7 +324,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           borderRadius:
                                               BorderRadius.circular(20)),
                                       child: Container(
-                                        padding: EdgeInsets.all(8),
+                                        padding: const EdgeInsets.all(8),
                                         decoration: BoxDecoration(
                                             color: whiteColor,
                                             borderRadius:
@@ -448,7 +448,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                               const EducationDetailScreen(),
                                                           arguments: e),
                                                       child: SizedBox(
-                                                        width: 180,
+                                                        width: 200,
                                                         height: 160,
                                                         child: Column(
                                                           children: [
@@ -473,14 +473,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                 width: 180,
                                                                 padding:
                                                                     const EdgeInsets
-                                                                            .only(
-                                                                        right:
-                                                                            13,
-                                                                        left:
-                                                                            13,
-                                                                        top: 7,
-                                                                        bottom:
-                                                                            7),
+                                                                            .all(7),
                                                                 decoration: const BoxDecoration(
                                                                     color:
                                                                         primaryColor,
@@ -509,7 +502,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                           1,
                                                                       overflow:
                                                                           TextOverflow
-                                                                              .visible),
+                                                                              .visible, textAlign: TextAlign.center),
                                                                 ),
                                                               ),
                                                             ),

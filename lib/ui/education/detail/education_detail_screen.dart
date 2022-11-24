@@ -31,7 +31,7 @@ class EducationDetailScreen extends StatelessWidget {
                 ),
               ),
               title: Text(controller.data.userId?.name?.capitalize ?? "",
-                  style: title),
+                  style: title, maxLines: 1, overflow: TextOverflow.visible),
               centerTitle: true,
             ),
             body: Column(
@@ -56,9 +56,7 @@ class EducationDetailScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10)),
                           child: Center(
                             child: Text(controller.data.title ?? "No Title",
-                                style: titleArticle,
-                                maxLines: 2,
-                                overflow: TextOverflow.visible),
+                                style: titleArticle, textAlign: TextAlign.center),
                           ),
                         ),
                         Positioned(
@@ -88,7 +86,7 @@ class EducationDetailScreen extends StatelessWidget {
                                           height: 20,
                                         ),
                                         Container(
-                                            width: 230,
+                                            width: Get.width*0.7,
                                             height: 20,
                                             padding: const EdgeInsets.only(
                                                 left: 20, right: 20),

@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:final_project/base/base_controller.dart';
 import 'package:final_project/data/model/schedule/schedule_payment_model.dart';
 import 'package:final_project/data/model/transaction/transaction_model.dart';
-import 'package:flutter_launch/flutter_launch.dart';
 import 'package:intl/intl.dart';
 
 enum PaymentViewState {
@@ -36,10 +35,10 @@ class PaymentController extends BaseController {
     getSchedulePayment();
   }
 
-  void whatsAppOpen() async {
-    await FlutterLaunch.launchWhatsapp(
-        phone: "+62895619019395", message: "Saya akan membayar");
-  }
+  // void whatsAppOpen() async {
+  //   await FlutterLaunch.launchWhatsapp(
+  //       phone: "+62895619019395", message: "Saya akan membayar");
+  // }
 
   changeState(PaymentViewState s) {
     _state = s;

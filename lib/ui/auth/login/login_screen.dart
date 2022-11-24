@@ -112,7 +112,7 @@ class LoginScreen extends StatelessWidget {
                                     Text(
                                       "Belum memiliki akun?",
                                       style:
-                                          heading1.copyWith(color: blackColor),
+                                          tiny.copyWith(color: blackColor),
                                     ),
                                     const SizedBox(
                                       width: 10,
@@ -122,7 +122,7 @@ class LoginScreen extends StatelessWidget {
                                           Get.to(() => const RegisterScreen()),
                                       child: Text(
                                         "Daftar sekarang.",
-                                        style: heading1.copyWith(
+                                        style: tiny.copyWith(
                                             color: primaryColor,
                                             fontWeight: extraBold),
                                       ),

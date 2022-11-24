@@ -37,7 +37,7 @@ class HistoryDetailScreen extends StatelessWidget {
                   children: [
                     SvgPicture.asset("assets/vector/bgappbar.svg",
                         fit: BoxFit.cover),
-                    Container(
+                    SizedBox(
                       width: Get.width,
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -58,11 +58,11 @@ class HistoryDetailScreen extends StatelessWidget {
                               width: 300,
                               child: DottedBorder(
                                   borderType: BorderType.RRect,
-                                  radius: Radius.circular(20),
-                                  dashPattern: [10, 10],
+                                  radius: const Radius.circular(20),
+                                  dashPattern: const [10, 10],
                                   color: primaryColor,
                                   strokeWidth: 2,
-                                  padding: EdgeInsets.all(10),
+                                  padding: const EdgeInsets.all(10),
                                   child: Card(
                                     color: primaryColor,
                                     shape: RoundedRectangleBorder(

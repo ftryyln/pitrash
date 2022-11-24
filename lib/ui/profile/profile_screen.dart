@@ -44,7 +44,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 40, bottom: 0, left: 172, right: 172),
+                            top: 40, bottom: 0, left: 170, right: 170),
                         child: Text("Profil", style: title),
                       )
                     ],
@@ -235,7 +235,7 @@ class ProfileScreen extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
                             child: Container(
-                              width: MediaQuery.of(context).size.width,
+                              width: Get.width,
                               height: 40,
                               decoration: BoxDecoration(
                                   color: redColor,

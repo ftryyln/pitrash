@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:final_project/base/base_controller.dart';
 import 'package:final_project/data/storage_core.dart';
-import 'package:final_project/ui/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -21,19 +20,19 @@ class EditProfileController extends BaseController {
 
   final isObscured = false.obs;
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  // final TextEditingController confirmPasswordController = TextEditingController();
   final TextEditingController addreessController = TextEditingController();
 
   @override
   void onInit() {
     super.onInit();
     nameController.text = prevName;
-    phoneNumberController.text = prevPhone;
     emailController.text = prevEmail;
-    // passwordController.text;
+    phoneNumberController.text = prevPhone;
+    passwordController.text;
     // confirmPasswordController.text;
     addreessController.text = prevAddress;
   }
@@ -45,7 +44,7 @@ class EditProfileController extends BaseController {
     phoneNumberController.dispose();
     emailController.dispose();
     passwordController.dispose();
-    confirmPasswordController.dispose();
+    // confirmPasswordController.dispose();
     addreessController.dispose();
   }
 

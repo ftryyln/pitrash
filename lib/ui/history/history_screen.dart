@@ -1,6 +1,7 @@
 import 'package:final_project/const/color.dart';
 import 'package:final_project/const/font_weight.dart';
 import 'package:final_project/const/text_style.dart';
+import 'package:final_project/ui/history/detail/history_detail_screen.dart';
 import 'package:final_project/ui/history/history_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -45,40 +46,49 @@ class HistoryScreen extends StatelessWidget {
                                   const SizedBox(
                                     height: 25,
                                   ),
-                                  Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                          controller.toFormat.format(
-                                              controller.formatter
-                                                  .parse(controller
-                                                  .historyModel?.data?.history?[index].updatedAt ?? "2022-11-22T13:43:23.000000Z")),
-                                          style: body.copyWith(
-                                              color: blackColor,
-                                              fontWeight: medium)),
-                                      Row(
+                                  GestureDetector(
+                                    onTap: () => {
+                                      Get.to(() => const HistoryDetailScreen())
+                                    },
+                                    child: Container(
+                                      width: Get.width,
+                                      color: whiteColor,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                              controller.numberFormat
-                                                  .format(double.parse(
-                                                  controller
-                                                      .historyModel
-                                                      ?.data?.history?.first.price ??
-                                                      "0")),
+                                              controller.toFormat.format(
+                                                  controller.formatter
+                                                      .parse(controller
+                                                      .historyModel?.data?.history?[index].updatedAt ?? "2022-11-22T13:43:23.000000Z")),
                                               style: body.copyWith(
                                                   color: blackColor,
-                                                  fontWeight:
-                                                  medium)),
-                                          const Icon(
-                                            Icons
-                                                .arrow_forward_ios_rounded,
-                                            color: primaryColor,
-                                            size: 14,
-                                          )
+                                                  fontWeight: medium)),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                  controller.numberFormat
+                                                      .format(double.parse(
+                                                      controller
+                                                          .historyModel
+                                                          ?.data?.history?.first.price ??
+                                                          "0")),
+                                                  style: body.copyWith(
+                                                      color: blackColor,
+                                                      fontWeight:
+                                                      medium)),
+                                              const Icon(
+                                                Icons
+                                                    .arrow_forward_ios_rounded,
+                                                color: primaryColor,
+                                                size: 14,
+                                              )
+                                            ],
+                                          ),
                                         ],
                                       ),
-                                    ],
+                                    ),
                                   ),
                                   const SizedBox(
                                     height: 15,

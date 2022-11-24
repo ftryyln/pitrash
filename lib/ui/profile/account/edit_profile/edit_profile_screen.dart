@@ -32,7 +32,7 @@ class EditProfileScreen extends StatelessWidget {
             ),
             body: SingleChildScrollView(
               child: SizedBox(
-                height: 996,
+                height: 800,
                 child: Stack(children: [
                   SvgPicture.asset("assets/vector/bgappbar.svg",
                       fit: BoxFit.cover),
