@@ -139,6 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           color: greyColor,
                                                           fontWeight: bold)),
                                                   Container(
+                                                    alignment: Alignment.center,
                                                     padding:
                                                         const EdgeInsets.only(
                                                             right: 7,
@@ -146,20 +147,28 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             top: 5,
                                                             bottom: 5),
                                                     width: 125,
-                                                    height: 33,
+                                                    // height: 33,
                                                     decoration: BoxDecoration(
                                                         color: controller
                                                             .transactionModel
-                                                            ?.data
-                                                            ?.latest
-                                                            ?.last
-                                                            .status?.toLowerCase() == "belum dibayar" ? redColor : primaryColor,
+                                                            ?.data?.waiting?.isNotEmpty == true ? greyColor :
+                                                        controller
+                                                                        .transactionModel
+                                                                        ?.data
+                                                                        ?.latest
+                                                                        ?.last
+                                                                        .status
+                                                                        ?.toLowerCase() ==
+                                                                    "belum dibayar"
+                                                                ? redColor
+                                                                : primaryColor,
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(20)),
                                                     child: Center(
                                                       child: Text(
-                                                          controller.transactionModel?.data?.latest?.last.status ?? "-",
+                                                          controller.transactionModel?.data?.waiting != null || controller.transactionModel?.data?.waiting?.isNotEmpty == true ? controller.transactionModel?.data?.waiting?.last.status ?? "-" : controller.transactionModel?.data?.latest?.last.status ?? "-",
+                                                          textAlign: TextAlign.center,
                                                           style: tiny.copyWith(
                                                               color: whiteColor,
                                                               fontWeight:
