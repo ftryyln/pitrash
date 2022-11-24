@@ -55,7 +55,7 @@ class HistoryDetailScreen extends StatelessWidget {
                             ),
                             SizedBox(
                               height: 524,
-                              width: 258,
+                              width: Get.width*0.626,
                               child: DottedBorder(
                                   borderType: BorderType.RRect,
                                   radius: const Radius.circular(20),
@@ -69,9 +69,12 @@ class HistoryDetailScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: Center(
-                                      child: Image.network(
-                                          controller.image,
-                                          fit: BoxFit.contain),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Image.network(
+                                            controller.image,
+                                            fit: BoxFit.contain),
+                                      ),
                                     ),
                                   )),
                             ),
