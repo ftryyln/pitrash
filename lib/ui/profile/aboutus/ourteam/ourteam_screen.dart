@@ -1,7 +1,6 @@
 import 'package:final_project/const/color.dart';
 import 'package:final_project/const/text_style.dart';
 import 'package:final_project/ui/profile/aboutus/ourteam/ourteam_controller.dart';
-import 'package:final_project/ui/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -45,7 +44,7 @@ class OurTeamScreen extends StatelessWidget {
                       height: 20,
                     ),
                     Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                           color: whiteColor,
                           borderRadius: BorderRadius.circular(70)),
@@ -59,18 +58,18 @@ class OurTeamScreen extends StatelessWidget {
                                 border:
                                     Border.all(color: primaryColor, width: 3),
                                 color: primaryColor,
-                                image: DecorationImage(
-                                    image: AssetImage("assets/image/image.jpg"),
+                                image: const DecorationImage(
+                                    image: AssetImage("assets/image/fit.jpg"),
                                     fit: BoxFit.cover)),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("Fitry Yuliani",
-                                  style: title.copyWith(color: primaryColor)),
+                                  style: title.copyWith(fontSize: 22, color: primaryColor)),
                               Text("Mobile Developer",
                                   style: heading.copyWith(color: greyColor))
                             ],
@@ -82,7 +81,7 @@ class OurTeamScreen extends StatelessWidget {
                       height: 10,
                     ),
                     Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                           color: whiteColor,
                           borderRadius: BorderRadius.circular(70)),
@@ -95,7 +94,7 @@ class OurTeamScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text("Andrian Dwi",
-                                    style: title.copyWith(color: primaryColor)),
+                                    style: title.copyWith(fontSize: 22, color: primaryColor)),
                                 Text(
                                   "Front-End Web Developer",
                                   style: heading.copyWith(color: greyColor),
@@ -104,7 +103,7 @@ class OurTeamScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Container(
@@ -115,8 +114,8 @@ class OurTeamScreen extends StatelessWidget {
                                 border:
                                     Border.all(color: primaryColor, width: 3),
                                 color: primaryColor,
-                                image: DecorationImage(
-                                    image: AssetImage("assets/image/image.jpg"),
+                                image: const DecorationImage(
+                                    image: AssetImage("assets/image/andrian.jpg"),
                                     fit: BoxFit.cover)),
                           ),
                         ],
@@ -126,7 +125,7 @@ class OurTeamScreen extends StatelessWidget {
                       height: 10,
                     ),
                     Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                           color: whiteColor,
                           borderRadius: BorderRadius.circular(70)),
@@ -139,14 +138,14 @@ class OurTeamScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text("Agus Priyo",
-                                    style: title.copyWith(color: primaryColor)),
+                                    style: title.copyWith(fontSize: 22, color: primaryColor)),
                                 Text("Front-End Web Developer",
                                     style: heading.copyWith(color: greyColor),
                                     textAlign: TextAlign.end),
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Container(
@@ -157,8 +156,8 @@ class OurTeamScreen extends StatelessWidget {
                                 border:
                                     Border.all(color: primaryColor, width: 3),
                                 color: primaryColor,
-                                image: DecorationImage(
-                                    image: AssetImage("assets/image/image.jpg"),
+                                image: const DecorationImage(
+                                    image: AssetImage("assets/image/agus.jpeg"),
                                     fit: BoxFit.cover)),
                           ),
                         ],
@@ -168,7 +167,7 @@ class OurTeamScreen extends StatelessWidget {
                       height: 10,
                     ),
                     Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                           color: whiteColor,
                           borderRadius: BorderRadius.circular(70)),
@@ -182,18 +181,18 @@ class OurTeamScreen extends StatelessWidget {
                                 border:
                                     Border.all(color: primaryColor, width: 3),
                                 color: primaryColor,
-                                image: DecorationImage(
-                                    image: AssetImage("assets/image/image.jpg"),
+                                image: const DecorationImage(
+                                    image: AssetImage("assets/image/qowi.jpg"),
                                     fit: BoxFit.cover)),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("Abdul Qowi",
-                                  style: title.copyWith(color: primaryColor)),
+                                  style: title.copyWith(fontSize: 22, color: primaryColor)),
                               Text("Back-End Developer",
                                   style: heading.copyWith(color: greyColor))
                             ],
@@ -205,7 +204,7 @@ class OurTeamScreen extends StatelessWidget {
                       height: 10,
                     ),
                     Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                           color: whiteColor,
                           borderRadius: BorderRadius.circular(70)),
@@ -219,18 +218,18 @@ class OurTeamScreen extends StatelessWidget {
                                 border:
                                     Border.all(color: primaryColor, width: 3),
                                 color: primaryColor,
-                                image: DecorationImage(
-                                    image: AssetImage("assets/image/image.jpg"),
+                                image: const DecorationImage(
+                                    image: AssetImage("assets/image/eryn.jpg"),
                                     fit: BoxFit.cover)),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("Eryan Alifa",
-                                  style: title.copyWith(color: primaryColor)),
+                                  style: title.copyWith(fontSize: 22, color: primaryColor)),
                               Text("Back-End Developer",
                                   style: heading.copyWith(color: greyColor))
                             ],
@@ -241,7 +240,7 @@ class OurTeamScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    Divider(
+                    const Divider(
                       color: whiteColor,
                       height: 5,
                       thickness: 1,
